@@ -37,8 +37,9 @@ class BolterShot : FastProjectile
 		+ROLLSPRITE;
 		Speed 30;
 		Projectile;
-		Radius 12;
-		Height 24;
+		Scale 0.5;
+		Radius 6;
+		Height 12;
 		MissileHeight 8;
 		RenderStyle "add";
 	}
@@ -62,6 +63,7 @@ class BolterTrail : Actor
 		RenderStyle "add";
 		+ROLLSPRITE;
 		+NOGRAVITY;
+		Scale 0.5;
 	}
 	states
 	{
