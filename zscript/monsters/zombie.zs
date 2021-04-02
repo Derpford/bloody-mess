@@ -11,8 +11,10 @@ class BloodyZombie : Zombieman replaces Zombieman
 	states
 	{
 		Stagger:
-			POSS G 3 { angle += 10 * random(-2,2); }
-			POSS H 3;
+			POSS G 3 { angle += 15 * random(-2,2); }
+			POSS H 5;
 			POSS G 5 A_Pain();
+			POSS A 3;
+			Goto See;
 	}
 }
