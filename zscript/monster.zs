@@ -24,4 +24,15 @@ mixin class BloodyMonster
 		}
 		return super.DamageMobj(inf,src,dmg,mod,flags,ang);
 	}
+
+	override void Die(Actor src, Actor inf, int flags, Name mod)
+	{
+		for(int i = deathBonusAmt; i > 0; i--)
+		{
+			A_SpawnItemEX("BloodyHealthBonus",radius,xvel:random(3,5),angle:angleTo(src)+random(-5,5));
+		}
+		super.Die(src,inf,flags,mod);
+	}
+
+
 }
