@@ -21,8 +21,13 @@ mixin class BloodyMonster
 			{
 				A_SpawnItemEX("BloodyArmorBonus",radius,xvel:random(3,5),angle:angleTo(src)+random(-5,5));
 			}
+			return super.DamageMobj(inf,src,dmg,mod,flags|DMG_NO_PAIN,ang);
 		}
-		return super.DamageMobj(inf,src,dmg,mod,flags,ang);
+		else
+		{
+			return super.DamageMobj(inf,src,dmg,mod,flags,ang);
+		}
+
 	}
 
 	override void Die(Actor src, Actor inf, int flags, Name mod)
