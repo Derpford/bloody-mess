@@ -1,4 +1,4 @@
-class BloodyHealBonus : HealthBonus
+class BloodyHealBonus : HealthBonus replaces HealthBonus
 {
 	// To make up for the health drain over time, this health bonus gives 3 points of health.
 	default
@@ -7,11 +7,11 @@ class BloodyHealBonus : HealthBonus
 	}
 }
 
-class BloodyArmorBonus : ArmorBonus
+class BloodyArmorBonus : ArmorBonus replaces ArmorBonus
 {
 	// So too for the armor bonus.
 	default
 	{
-		Inventory.Amount 3;
+		Armor.SaveAmount 3;
 	}
 }

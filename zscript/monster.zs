@@ -29,7 +29,7 @@ mixin class BloodyMonster
 	{
 		for(int i = deathBonusAmt; i > 0; i--)
 		{
-			A_SpawnItemEX("BloodyHealthBonus",radius,xvel:random(3,5),angle:angleTo(src)+random(-5,5));
+			A_SpawnItemEX("BloodyHealBonus",radius,xvel:random(3,5),angle:angleTo(src)+random(-5,5));
 		}
 		super.Die(src,inf,flags,mod);
 	}
