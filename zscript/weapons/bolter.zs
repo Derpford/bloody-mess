@@ -19,7 +19,7 @@ class Bolter : Weapon
 			PLBG A 1 A_WeaponReady();
 			Loop;
 		Fire:
-			PLBG B 2 { A_FireProjectile("BolterShot"); A_StartSound("sounds/bolter/BOLTFIRE"); }
+			PLBG B 2 { A_FireProjectile("BolterShot"); A_StartSound("weapon/boltf"); }
 			PLBG C 5;
 			PLBG A 4;
 			Goto Ready;
