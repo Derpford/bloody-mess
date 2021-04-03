@@ -1,9 +1,13 @@
 version "4.5"
 
+// Player object/misc
+#include "zscript/player.zs"
+#include "zscript/effects.zs"
+// Weapons/ammo
 #include "zscript/weapons/ammo.zs"
 #include "zscript/weapons/bolter.zs"
-#include "zscript/player.zs"
+// Health/Armor
 #include "zscript/bonus.zs"
+// Monsters
 #include "zscript/monster.zs"
-#include "zscript/effects.zs"
 #include "zscript/monsters/zombie.zs"
