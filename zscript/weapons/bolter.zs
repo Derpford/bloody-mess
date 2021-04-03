@@ -49,7 +49,8 @@ class BolterShot : FastProjectile
 			DLIT J 1 { roll += 12; }
 			Loop;
 		Death:
-			DLIT ONMLKJ 1;
+			DLIT O 1 A_StartSound("weapon/bolth");
+			DLIT NMLKJ 1;
 			DLIT JKLMNO 1;
 			Stop;
 	}
