@@ -6,6 +6,7 @@ version "4.5"
 // Weapons/ammo
 #include "zscript/weapons/ammo.zs"
 #include "zscript/weapons/bolter.zs"
+#include "zscript/weapons/shotg.zs"
 // Health/Armor
 #include "zscript/bonus.zs"
 // Monsters
