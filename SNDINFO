@@ -1,2 +1,6 @@
 weapon/boltf "sounds/bolter/BOLTFIRE"
 weapon/shotr "sounds/shotg/TACPUMP"
+weapon/nailh "sounds/nailsg/NAILHIT"
+$rolloff weapon/nailh 800 2400
+weapon/nailhx "sounds/nailsg/NAILHTBD"
+$rolloff weapon/nailhx 800 2400

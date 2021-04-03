@@ -64,8 +64,12 @@ class NailShot : FastProjectile
 			NLPJ A 1;
 			Loop;
 		Death:
-			NLPJ BC 1 Bright { A_SetRenderStyle(1.0,STYLE_Add); }
+			NLPJ BC 1 Bright { A_SetRenderStyle(1.0,STYLE_Add); A_StartSound("weapon/nailh",flags:CHANF_OVERLAP); }
 			NLPJ DEFG 1;
+			Stop;
+		XDeath:
+			BLUD A 1 { A_StartSound("weapon/nailhx",flags:CHANF_OVERLAP); }
+			BLUD BCD 1;
 			Stop;
 	}
 }
