@@ -23,13 +23,13 @@ class Bolter : Weapon
 			{ 
 				A_FireProjectile("BolterShot"); 
 				A_StartSound("weapon/boltf"); 
-				A_WeaponOffset(8,0,WOF_ADD|WOF_INTERPOLATE);
+				A_WeaponOffset(8,0,WOF_ADD);
 			}
-			PLBG A 3 A_WeaponOffset(8,6,WOF_ADD|WOF_INTERPOLATE);
-			PLBG C 4 A_WeaponOffset(4,4,WOF_ADD|WOF_INTERPOLATE);
-			PLBG A 3 A_WeaponOffset(-4,0,WOF_ADD|WOF_INTERPOLATE);
-			PLBG A 3 A_WeaponOffset(-16,-3,WOF_ADD|WOF_INTERPOLATE);
-			PLBG A 2 A_WeaponOffset(0,-7,WOF_ADD|WOF_INTERPOLATE);
+			PLBG A 3 A_WeaponOffset(8,6,WOF_ADD);
+			PLBG C 4 A_WeaponOffset(4,4,WOF_ADD);
+			PLBG A 3 A_WeaponOffset(-4,0,WOF_ADD);
+			PLBG A 3 A_WeaponOffset(-16,-3,WOF_ADD);
+			PLBG A 2 A_WeaponOffset(0,-7,WOF_ADD);
 			Goto Ready;
 
 	}
