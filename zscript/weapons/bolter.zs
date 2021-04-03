@@ -19,9 +19,17 @@ class Bolter : Weapon
 			PLBG A 1 A_WeaponReady();
 			Loop;
 		Fire:
-			PLBG B 2 { A_FireProjectile("BolterShot"); A_StartSound("weapon/boltf"); }
-			PLBG C 5;
-			PLBG A 4;
+			PLBG B 3 
+			{ 
+				A_FireProjectile("BolterShot"); 
+				A_StartSound("weapon/boltf"); 
+				A_WeaponOffset(8,0,WOF_ADD|WOF_INTERPOLATE);
+			}
+			PLBG A 3 A_WeaponOffset(8,6,WOF_ADD|WOF_INTERPOLATE);
+			PLBG C 4 A_WeaponOffset(4,4,WOF_ADD|WOF_INTERPOLATE);
+			PLBG A 3 A_WeaponOffset(-4,0,WOF_ADD|WOF_INTERPOLATE);
+			PLBG A 3 A_WeaponOffset(-16,-3,WOF_ADD|WOF_INTERPOLATE);
+			PLBG A 2 A_WeaponOffset(0,-7,WOF_ADD|WOF_INTERPOLATE);
 			Goto Ready;
 
 	}
