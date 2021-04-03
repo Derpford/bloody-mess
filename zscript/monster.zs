@@ -12,7 +12,7 @@ mixin class BloodyMonster
 
 	override int DamageMobj(Actor inf, Actor src, int dmg, Name mod, int flags, double ang)
 	{
-		if(!InStateSequence(CurState,ResolveState("Death")) && !InStateSequence(CurState,ResolveState("XDeath")) && health-dmg > 0 && health-dmg < staggerHealth)
+		if(health-dmg > 0 && health-dmg < staggerHealth)
 		{
 			// We're not dead, but we're staggered.
 			staggerHealth = floor(staggerHealth/2);
