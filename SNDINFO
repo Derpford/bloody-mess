@@ -2,6 +2,7 @@ weapon/boltf "sounds/bolter/BOLTFIRE"
 weapon/bolth "sounds/repeater/REPGHIT"
 weapon/shotr "sounds/shotg/TACPUMP"
 weapon/nailh "sounds/nailsg/NAILHIT"
+$limit weapon/nailh 0
 $rolloff weapon/nailh 800 2400
 weapon/nailhx "sounds/nailsg/NAILHTBD"
 $rolloff weapon/nailhx 800 2400
