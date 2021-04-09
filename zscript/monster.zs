@@ -17,18 +17,18 @@ mixin class BloodyMonster
 		{
 			dropAng = angleTo(src);
 		}
-		if(health-dmg > 0 && health-dmg < staggerHealth)
+		if(health-dmg < staggerHealth)
 		{
 			// We're not dead, but we're staggered.
 			while(health-dmg < staggerHealth)
 			{
 				staggerHealth = floor(staggerHealth/2);
-				SetState(ResolveState("Stagger"));
 				for(int i = staggerBonusAmt; i > 0; i--)
 				{
 					A_SpawnItemEX("BloodyArmorBonus",radius,xvel:random(3,5),angle:dropAng+random(-5,5));
 				}
 			}
+			if( health - damage > 0 ) { SetState(ResolveState("Stagger")); }
 			return super.DamageMobj(inf,src,dmg,mod,flags|DMG_NO_PAIN,ang);
 		}
 		else
