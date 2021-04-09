@@ -21,7 +21,7 @@ class NailShotty : Weapon replaces Shotgun
 			TACT A 1 A_Raise(18);
 			Loop;
 		Deselect:
-			TACT A 1 A_Raise(18);
+			TACT A 1 A_Lower(18);
 			Loop;
 		Ready:
 			TACT A 1 
