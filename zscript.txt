@@ -12,3 +12,4 @@ version "4.5"
 // Monsters
 #include "zscript/monster.zs"
 #include "zscript/monsters/zombie.zs"
+#include "zscript/monsters/shotgunner.zs"
