@@ -26,7 +26,7 @@ mixin class BloodyMonster
 				SetState(ResolveState("Stagger"));
 				for(int i = staggerBonusAmt; i > 0; i--)
 				{
-					A_SpawnItemEX("BloodyArmorBonus",radius,xvel:random(3,5),dropAng+random(-5,5));
+					A_SpawnItemEX("BloodyArmorBonus",radius,xvel:random(3,5),angle:dropAng+random(-5,5));
 				}
 			}
 			return super.DamageMobj(inf,src,dmg,mod,flags|DMG_NO_PAIN,ang);
@@ -47,7 +47,7 @@ mixin class BloodyMonster
 		}
 		for(int i = deathBonusAmt; i > 0; i--)
 		{
-			A_SpawnItemEX("BloodyHealBonus",radius,xvel:random(3,5),dropAng+random(-5,5));
+			A_SpawnItemEX("BloodyHealBonus",radius,xvel:random(3,5),angle:dropAng+random(-5,5));
 		}
 		super.Die(src,inf,flags,mod);
 	}
