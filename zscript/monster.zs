@@ -20,7 +20,7 @@ mixin class BloodyMonster
 		if(health-dmg < staggerHealth)
 		{
 			// We're not dead, but we're staggered.
-			while(health-dmg < staggerHealth && staggerHealth > 0)
+			while(health-dmg < staggerHealth && staggerHealth > 5)
 			{
 				staggerHealth = floor(staggerHealth/2);
 				for(int i = staggerBonusAmt; i > 0; i--)
