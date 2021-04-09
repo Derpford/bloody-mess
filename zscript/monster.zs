@@ -12,6 +12,11 @@ mixin class BloodyMonster
 
 	override int DamageMobj(Actor inf, Actor src, int dmg, Name mod, int flags, double ang)
 	{
+		double dropAng = 0.0;
+		if(src)
+		{
+			dropAng = angleTo(src);
+		}
 		if(health-dmg > 0 && health-dmg < staggerHealth)
 		{
 			// We're not dead, but we're staggered.
@@ -19,7 +24,7 @@ mixin class BloodyMonster
 			SetState(ResolveState("Stagger"));
 			for(int i = staggerBonusAmt; i > 0; i--)
 			{
-				A_SpawnItemEX("BloodyArmorBonus",radius,xvel:random(3,5),angle:angleTo(src)+random(-5,5));
+				A_SpawnItemEX("BloodyArmorBonus",radius,xvel:random(3,5),dropAng+random(-5,5));
 			}
 			return super.DamageMobj(inf,src,dmg,mod,flags|DMG_NO_PAIN,ang);
 		}
@@ -32,9 +37,14 @@ mixin class BloodyMonster
 
 	override void Die(Actor src, Actor inf, int flags, Name mod)
 	{
+		double dropAng = 0.0;
+		if(src)
+		{
+			dropAng = angleTo(src);
+		}
 		for(int i = deathBonusAmt; i > 0; i--)
 		{
-			A_SpawnItemEX("BloodyHealBonus",radius,xvel:random(3,5),angle:angleTo(src)+random(-5,5));
+			A_SpawnItemEX("BloodyHealBonus",radius,xvel:random(3,5),dropAng+random(-5,5));
 		}
 		super.Die(src,inf,flags,mod);
 	}
