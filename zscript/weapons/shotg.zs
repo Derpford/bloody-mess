@@ -9,6 +9,7 @@ class NailShotty : Weapon replaces Shotgun
 		Weapon.SlotNumber 2;
 		Weapon.AmmoType1 "Nail";
 		Weapon.AmmoUse1 0;
+		Weapon.AmmoGive 4;
 	}
 
 	states
@@ -23,11 +24,15 @@ class NailShotty : Weapon replaces Shotgun
 			TACT A 1 A_Raise(18);
 			Loop;
 		Ready:
-			TACT A 1 A_WeaponReady;
+			TACT A 1 
+			{
+				if(CountInv("Nail") > 0) { A_WeaponReady(); } else { A_WeaponReady(WRF_NOFIRE); }
+			}
 			Loop;
 		Fire:
 			TACT E 2 
 			{ 
+				A_TakeInventory("Nail",1);
 				A_StartSound("weapons/shotgf");
 				// Technically, I could do this with a loop, but I don't want to deal with that.
 				A_FireProjectile("NailShot",-2.3,spawnheight: 8, pitch: -2.3); 
