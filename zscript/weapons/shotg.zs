@@ -2,6 +2,8 @@ class NailShotty : Weapon replaces Shotgun
 {
 	// A nail-firing shotgun. Shoots a square pattern of nails.
 
+	mixin Spinner;
+
 	default
 	{
 		Weapon.SlotNumber 2;
