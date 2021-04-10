@@ -137,7 +137,7 @@ class CoilShockwave : Actor
 	{
 		Spawn:
 			RPUF A 0;
-			RPUF A 0 { target = target.target; }
+			RPUF A 0 { if(target) { target = target.target; } }
 			// Normally, A_Explode does not hurt its owner.
 			// However, its owner is tracked via the `target` var,
 			// which for a FastProjectile's trail actors, is the FastProjectile.
