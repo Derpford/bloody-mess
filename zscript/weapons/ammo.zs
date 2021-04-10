@@ -39,3 +39,22 @@ class NailBox : Nail
 			Stop;
 	}
 }
+
+class Coil : Ammo replaces Clip
+{
+	// A small coilgun ammo pack.
+	mixin Spinner;
+
+	default
+	{
+		Scale 1;
+		Inventory.Amount 10;
+	}
+
+	states
+	{
+		Spawn:
+			WAMC AB 4;
+			Loop;
+	}
+}
