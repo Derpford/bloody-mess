@@ -1,4 +1,4 @@
-class CoilRepeater : Weapon
+class CoilRepeater : Weapon replaces Chaingun
 {
 	// A heavy coilgun with full-auto capability. Spins up as it fires, shooting faster but less accurately.
 	mixin Spinner;
