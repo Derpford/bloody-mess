@@ -12,5 +12,6 @@ mixin class Spinner
 	override void Tick()
 	{
 		angle += 12.0;
+		Super.Tick();
 	}
 }
