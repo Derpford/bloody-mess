@@ -19,6 +19,7 @@ class CoilRepeater : Weapon
 
 	action void A_FireCoil()
 	{
+		A_TakeInventory("Coil",1);
 		A_FireProjectile("CoilTracer",frandom(-1,1)*(4 - invoker.shotSpeed),pitch:frandom(0,-1.5)*(4 - invoker.shotSpeed) );
 	}
 
@@ -47,7 +48,7 @@ class CoilRepeater : Weapon
 			{
 				A_StopSound(4);
 				invoker.shotCount += 1;
-				if(invoker.shotCount % 4 == 0)
+				if((invoker.shotCount % 4 == 0 && invoker.shotSpeed > 2) || invoker.shotCount % 8 == 0)
 				{
 					invoker.shotCount = 0;
 					invoker.shotSpeed = max(invoker.shotSpeed-1,0);
