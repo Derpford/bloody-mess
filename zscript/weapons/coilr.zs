@@ -38,14 +38,18 @@ class CoilRepeater : Weapon
 			}
 			Loop;
 		Fire:
-		FireHold:
+			REPG ABCD 0 { A_SetTics(invoker.shotSpeed); A_StartSound("weapon/repsu",4,flags:CHANF_NOSTOP); }
+			Goto FireReal;
+		Hold:
 			REPG A 0
 			{
 				if(invoker.shotSpeed == 0) { return ResolveState("FullAuto"); } else { return ResolveState(null); }
 			}
-			REPG ABCD 0 { A_SetTics(invoker.shotSpeed); A_StartSound("weapon/repsu",4,flags:CHANF_NOSTOP); }
+			REPG ABCD 0 { A_WeaponOffset(0,-4,WOF_ADD); A_SetTics(invoker.shotSpeed); A_StartSound("weapon/repsu",4,flags:CHANF_NOSTOP); }
+		FireReal:
 			REPG E 0
 			{
+				A_WeaponOffset(0,16,WOF_ADD);
 				A_StopSound(4);
 				invoker.shotCount += 1;
 				if((invoker.shotCount % 4 == 0 && invoker.shotSpeed > 2) || invoker.shotCount % 8 == 0)
@@ -63,18 +67,14 @@ class CoilRepeater : Weapon
 			REPG E 0 A_Refire();
 			Goto SpinDown;
 		FullAuto:
-			REPG E 1 Bright { A_StartSound("weapon/repf",1); A_FireCoil();} // and here
-			REPG A 1;
-			REPG B 1;
-			REPG F 1 Bright { A_StartSound("weapon/repf",1); A_FireCoil();} // and here
-			REPG B 1;
-			REPG C 1;
-			REPG G 1 Bright { A_StartSound("weapon/repf",1); A_FireCoil();} // and here
-			REPG C 1;
-			REPG D 1;
-			REPG H 1 Bright { A_StartSound("weapon/repf",1); A_FireCoil();} // and here
-			REPG D 1;
-			REPG A 1;
+			REPG E 1 Bright { A_StartSound("weapon/repf",1); A_WeaponOffset(0,16,WOF_ADD); A_FireCoil(); } // and here
+			REPG AB 1 A_WeaponOffset(0,-8,WOF_ADD);
+			REPG F 1 Bright { A_StartSound("weapon/repf",1); A_WeaponOffset(0,16,WOF_ADD); A_FireCoil(); } // and here
+			REPG BC 1 A_WeaponOffset(0,-8,WOF_ADD);
+			REPG G 1 Bright { A_StartSound("weapon/repf",1); A_WeaponOffset(0,16,WOF_ADD); A_FireCoil(); } // and here
+			REPG CD 1 A_WeaponOffset(0,-8,WOF_ADD);
+			REPG H 1 Bright { A_StartSound("weapon/repf",1); A_WeaponOffset(0,16,WOF_ADD); A_FireCoil(); } // and here
+			REPG DA 1 A_WeaponOffset(0,-8,WOF_ADD);
 			REPG E 0 A_Refire();
 		SpinDown:
 			REPG ABCD 0 { A_SetTics(invoker.shotSpeed); A_Refire(); A_StartSound("weapon/repsd",flags:CHANF_NOSTOP); }
