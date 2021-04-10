@@ -49,6 +49,8 @@ class Coil : Ammo replaces Clip
 	{
 		Scale 1;
 		Inventory.Amount 10;
+		Inventory.MaxAmount 300;
+		Ammo.BackpackAmount 600;
 	}
 
 	states
