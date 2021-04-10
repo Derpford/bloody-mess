@@ -60,3 +60,23 @@ class Coil : Ammo replaces Clip
 			Loop;
 	}
 }
+
+class CoilCase : Coil replaces ClipBox
+
+{
+	// A case of coilgun charges.
+	mixin Spinner;
+
+	default
+	{
+		Scale 1;
+		Inventory.Amount 60;
+	}
+
+	states
+	{
+		Spawn:
+			WAMC CD 4;
+			Loop;
+	}
+}
