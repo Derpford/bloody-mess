@@ -54,7 +54,7 @@ class CoilRepeater : Weapon
 					invoker.shotSpeed = max(invoker.shotSpeed-1,0);
 				}
 			}
-			REPG E 0 
+			REPG E 1 Bright 
 			{ 
 				A_SetTics(invoker.shotSpeed); 
 				A_StartSound("weapon/repf",1); 
@@ -63,16 +63,16 @@ class CoilRepeater : Weapon
 			REPG E 0 A_Refire();
 			Goto SpinDown;
 		FullAuto:
-			REPG E 1 { A_StartSound("weapon/repf",1); A_FireCoil();} // and here
+			REPG E 1 Bright { A_StartSound("weapon/repf",1); A_FireCoil();} // and here
 			REPG A 1;
 			REPG B 1;
-			REPG F 1 { A_StartSound("weapon/repf",1); A_FireCoil();} // and here
+			REPG F 1 Bright { A_StartSound("weapon/repf",1); A_FireCoil();} // and here
 			REPG B 1;
 			REPG C 1;
-			REPG G 1 { A_StartSound("weapon/repf",1); A_FireCoil();} // and here
+			REPG G 1 Bright { A_StartSound("weapon/repf",1); A_FireCoil();} // and here
 			REPG C 1;
 			REPG D 1;
-			REPG H 1 { A_StartSound("weapon/repf",1); A_FireCoil();} // and here
+			REPG H 1 Bright { A_StartSound("weapon/repf",1); A_FireCoil();} // and here
 			REPG D 1;
 			REPG A 1;
 			REPG E 0 A_Refire();

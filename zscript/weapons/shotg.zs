@@ -30,7 +30,7 @@ class NailShotty : Weapon replaces Shotgun
 			}
 			Loop;
 		Fire:
-			TACT E 2 
+			TACT E 2 Bright 
 			{ 
 				A_TakeInventory("Nail",1);
 				A_StartSound("weapons/shotgf");
@@ -40,7 +40,7 @@ class NailShotty : Weapon replaces Shotgun
 				A_FireProjectile("NailShot",-2.3,spawnheight: 8, pitch: 2.3); 
 				A_FireProjectile("NailShot",2.3,spawnheight: 8, pitch: 2.3); 
 			}
-			TACT F 2 { A_FireProjectile("NailShot2",0,spawnheight: 8); }
+			TACT F 2 Bright { A_FireProjectile("NailShot2",0,spawnheight: 8); }
 			TACT A 5;
 			TACT BC 4;
 			TACT D 3 A_StartSound("weapon/shotr");
