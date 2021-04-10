@@ -17,6 +17,11 @@ class CoilRepeater : Weapon
 		CoilRepeater.FireRate 4;
 	}
 
+	action void A_FireCoil()
+	{
+		A_FireProjectile("CoilTracer",random(-1,1)*(4 - invoker.shotSpeed),pitch:random(0,-2)*(4 - invoker.shotSpeed) );
+	}
+
 	states
 	{
 		Select:
@@ -48,17 +53,22 @@ class CoilRepeater : Weapon
 					invoker.shotSpeed = max(invoker.shotSpeed-1,0);
 				}
 			}
-			REPG E 0 { A_SetTics(invoker.shotSpeed); A_StartSound("weapon/repf",1); } // shot goes here
+			REPG E 0 
+			{ 
+				A_SetTics(invoker.shotSpeed); 
+				A_StartSound("weapon/repf",1); 
+				A_FireCoil();
+			} // shot goes here
 			REPG E 0 A_Refire();
 			Goto SpinDown;
 		FullAuto:
-			REPG E 1 { A_StartSound("weapon/repf",1); } // and here
+			REPG E 1 { A_StartSound("weapon/repf",1); A_FireCoil();} // and here
 			REPG B 1;
-			REPG F 1 { A_StartSound("weapon/repf",1); } // and here
+			REPG F 1 { A_StartSound("weapon/repf",1); A_FireCoil();} // and here
 			REPG C 1;
-			REPG G 1 { A_StartSound("weapon/repf",1); } // and here
+			REPG G 1 { A_StartSound("weapon/repf",1); A_FireCoil();} // and here
 			REPG D 1;
-			REPG H 1 { A_StartSound("weapon/repf",1); } // and here
+			REPG H 1 { A_StartSound("weapon/repf",1); A_FireCoil();} // and here
 			REPG A 1;
 			REPG E 0 A_Refire();
 		SpinDown:
@@ -76,5 +86,60 @@ class CoilRepeater : Weapon
 				}
 			}
 			goto Ready;
+	}
+}
+
+class CoilTracer : FastProjectile
+{
+	// The tracer that the Coil Repeater fires.
+	// Does no damage! Damage is handled by the shockwave.
+	default
+	{
+		+THRUACTORS;
+		Scale 0.5;
+		RenderStyle "Add";
+		DamageFunction 0;
+		MissileType "CoilShockwave";
+		MissileHeight 8;
+		Radius 4;
+		Speed 80;
+	}
+
+	states
+	{
+		Spawn:
+			RPUF A 1;
+			Loop;
+		Death:
+			RPUF ABCDEF 1;
+			Stop;
+	}
+}
+
+class CoilShockwave : Actor
+{
+	// The shockwave left in the tracer's wake.
+	// Does the actual damage.
+	default
+	{
+		+NOGRAVITY;
+		Scale 0.3;
+		RenderStyle "Add";
+		Alpha 0.3;
+	}
+
+	states
+	{
+		Spawn:
+			RPUF A 0;
+			RPUF A 0 { target = target.target; }
+			// Normally, A_Explode does not hurt its owner.
+			// However, its owner is tracked via the `target` var,
+			// which for a FastProjectile's trail actors, is the FastProjectile.
+			// We get around this by setting our target to our target's target, which is the player.
+			RPUF FDBA 1;
+			RPUF A 0 A_Explode(10,8,XF_NOSPLASH,true,4);
+			RPUF ABCDEF 1;
+			Stop;
 	}
 }
