@@ -10,6 +10,7 @@ class Nail : Ammo replaces Shell
 		Inventory.Amount 2;
 		Inventory.MaxAmount 50;
 		Ammo.BackpackAmount 100;
+		Inventory.PickupMessage "Grabbed some nails.";
 	}
 
 	states
@@ -30,6 +31,7 @@ class NailBox : Nail
 	{
 		Scale 1;
 		Inventory.Amount 10;
+		Inventory.PickupMessage "Got a box of nails.";
 	}
 
 	states
@@ -51,6 +53,7 @@ class Coil : Ammo replaces Clip
 		Inventory.Amount 10;
 		Inventory.MaxAmount 300;
 		Ammo.BackpackAmount 600;
+		Inventory.PickupMessage "Grabbed a coil charge pack.";
 	}
 
 	states
@@ -71,6 +74,7 @@ class CoilCase : Coil replaces ClipBox
 	{
 		Scale 1;
 		Inventory.Amount 60;
+		Inventory.PickupMessage "Grabbed a case of coil charges.";
 	}
 
 	states

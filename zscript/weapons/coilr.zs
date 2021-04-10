@@ -15,6 +15,7 @@ class CoilRepeater : Weapon replaces Chaingun
 		Weapon.AmmoUse1 0;
 		Weapon.AmmoGive1 25;
 		CoilRepeater.FireRate 4;
+		Inventory.PickupMessage "Retrieved a Coil Repeater!";
 	}
 
 	action void A_FireCoil()

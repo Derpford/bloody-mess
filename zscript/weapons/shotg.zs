@@ -10,6 +10,7 @@ class NailShotty : Weapon replaces Shotgun
 		Weapon.AmmoType1 "Nail";
 		Weapon.AmmoUse1 0;
 		Weapon.AmmoGive 4;
+		Inventory.PickupMessage "Snagged a Nail Shotgun!";
 	}
 
 	states

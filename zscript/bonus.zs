@@ -5,6 +5,7 @@ class BloodyHealBonus : HealthBonus replaces HealthBonus
 	default
 	{
 		Inventory.Amount 3;
+		Inventory.PickupMessage "Health bonus!";
 	}
 }
 
@@ -15,5 +16,6 @@ class BloodyArmorBonus : ArmorBonus replaces ArmorBonus
 	default
 	{
 		Armor.SaveAmount 3;
+		Inventory.PickupMessage "Armor bonus!";
 	}
 }
