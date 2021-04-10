@@ -19,7 +19,7 @@ class CoilRepeater : Weapon
 
 	action void A_FireCoil()
 	{
-		A_FireProjectile("CoilTracer",random(-1,1)*(4 - invoker.shotSpeed),pitch:random(0,-2)*(4 - invoker.shotSpeed) );
+		A_FireProjectile("CoilTracer",frandom(-1,1)*(4 - invoker.shotSpeed),pitch:frandom(0,-1.5)*(4 - invoker.shotSpeed) );
 	}
 
 	states
@@ -138,7 +138,7 @@ class CoilShockwave : Actor
 			// which for a FastProjectile's trail actors, is the FastProjectile.
 			// We get around this by setting our target to our target's target, which is the player.
 			RPUF FDBA 1;
-			RPUF A 0 A_Explode(10,8,XF_NOSPLASH,true,4);
+			RPUF A 0 A_Explode(2,8,XF_NOSPLASH,true,4);
 			RPUF ABCDEF 1;
 			Stop;
 	}
