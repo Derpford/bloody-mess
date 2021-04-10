@@ -15,7 +15,7 @@ class Nail : Ammo replaces Shell
 	states
 	{
 		Spawn:
-			NAMO A 0;
+			NAMO A -1;
 			Stop;
 	}
 }
@@ -35,7 +35,7 @@ class NailBox : Nail
 	states
 	{
 		Spawn:
-			NBOX A 0;
+			NBOX A -1;
 			Stop;
 	}
 }
