@@ -35,7 +35,7 @@ class CoilRepeater : Weapon
 		FireHold:
 			REPG A 0
 			{
-				if(invoker.shotSpeed == 1) { return ResolveState("FullAuto"); } else { return ResolveState(null); }
+				if(invoker.shotSpeed == 0) { return ResolveState("FullAuto"); } else { return ResolveState(null); }
 			}
 			REPG ABCD 0 { A_SetTics(invoker.shotSpeed); A_StartSound("weapon/repsu",4,flags:CHANF_NOSTOP); }
 			REPG E 0
@@ -45,14 +45,21 @@ class CoilRepeater : Weapon
 				if(invoker.shotCount % 4 == 0)
 				{
 					invoker.shotCount = 0;
-					invoker.shotSpeed = max(invoker.shotSpeed-1,1);
+					invoker.shotSpeed = max(invoker.shotSpeed-1,0);
 				}
 			}
 			REPG E 0 { A_SetTics(invoker.shotSpeed); A_StartSound("weapon/repf",1); } // shot goes here
 			REPG E 0 A_Refire();
 			Goto SpinDown;
 		FullAuto:
-			REPG EFGH 3 { A_StartSound("weapon/repf",1); } // and here
+			REPG E 1 { A_StartSound("weapon/repf",1); } // and here
+			REPG B 1;
+			REPG F 1 { A_StartSound("weapon/repf",1); } // and here
+			REPG C 1;
+			REPG G 1 { A_StartSound("weapon/repf",1); } // and here
+			REPG D 1;
+			REPG H 1 { A_StartSound("weapon/repf",1); } // and here
+			REPG A 1;
 			REPG E 0 A_Refire();
 		SpinDown:
 			REPG ABCD 0 { A_SetTics(invoker.shotSpeed); A_Refire(); A_StartSound("weapon/repsd",flags:CHANF_NOSTOP); }
