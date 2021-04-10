@@ -25,6 +25,9 @@ class CoilRepeater : Weapon
 
 	states
 	{
+		Spawn:
+			REPG I -1;
+			Stop;
 		Select:
 			REPG DCBA 1 A_Raise(12);
 			Loop;
