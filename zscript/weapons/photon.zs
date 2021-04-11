@@ -10,7 +10,7 @@ class PACannon : Weapon replaces PlasmaGun
 	default
 	{
 		Weapon.SlotNumber 5;
-		PACannon.FireRate 4;
+		PACannon.FireRate 6;
 	}
 
 	states
@@ -34,7 +34,8 @@ class PACannon : Weapon replaces PlasmaGun
 		Fire:
 			BFPF A 1 { A_SetTics(invoker.shotSpeed); A_StartSound("weapon/photf",1); } // Projectile fires here.
 			BFPF BC 1 A_SetTics(invoker.shotSpeed);
-			BFPS DCBA 1 { A_SetTics(floor(invoker.shotSpeed/2)); invoker.shotSpeed = invoker.shotSpeed/2; }
+			BFPS D 1 { A_SetTics(floor(invoker.shotSpeed/2)); invoker.shotSpeed = max(invoker.shotSpeed-1,1); }
+			BFPS CBA 1 { A_SetTics(floor(invoker.shotSpeed/2)); }
 			BFPS A 0 A_Refire;
 		Cooldown:
 			BFPS DADA 4;
