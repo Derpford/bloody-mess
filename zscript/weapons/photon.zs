@@ -32,13 +32,42 @@ class PACannon : Weapon replaces PlasmaGun
 			}
 			Loop;
 		Fire:
-			BFPF A 1 { A_SetTics(max(floor(invoker.shotSpeed/2),1)); A_StartSound("weapon/photf",1,CHANF_OVERLAP); } // Projectile fires here.
+			BFPF A 1 
+			{ 
+				A_SetTics(max(floor(invoker.shotSpeed/2),1)); 
+				A_StartSound("weapon/photf",1,CHANF_OVERLAP);
+				for(int i = -2; i < 3; i+=1)
+				{
+					A_FireProjectile("PhotonShot",invoker.shotSpeed*i);
+				}
+			} // Projectile fires here.
 			BFPF BC 1 A_SetTics(max(floor(invoker.shotSpeed),1));
 			BFPS D 1 { A_SetTics(floor(invoker.shotSpeed/2)); invoker.shotSpeed = max(invoker.shotSpeed-1,1); }
-			BFPS CBA 1 { A_SetTics(floor(invoker.shotSpeed/2)); }
+			BFPS B 1 { A_SetTics(floor(invoker.shotSpeed/2)); }
 			BFPS A 0 A_Refire;
 		Cooldown:
 			BFPS DBADBA 4;
 			Goto Ready;
+	}
+}
+
+class PhotonShot : FastProjectile
+{
+	// A ball of light.
+	default
+	{
+		DamageFunction 10;
+		RenderStyle "add";
+		Speed 60;
+	}
+
+	states
+	{
+		Spawn:
+			BAL1 AB 4 Bright;
+			Loop;
+		Death:
+			BAL1 CDE 4 Bright;
+			Stop;
 	}
 }
