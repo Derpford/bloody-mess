@@ -32,7 +32,7 @@ class PACannon : Weapon replaces PlasmaGun
 			}
 			Loop;
 		Fire:
-			BFPF A 1 { A_SetTics(invoker.shotSpeed); A_StartSound("weapon/photf",1); } // Projectile fires here.
+			BFPF A 1 { A_SetTics(invoker.shotSpeed); A_StartSound("weapon/photf",1,CHANF_OVERLAP); } // Projectile fires here.
 			BFPF BC 1 A_SetTics(invoker.shotSpeed);
 			BFPS D 1 { A_SetTics(floor(invoker.shotSpeed/2)); invoker.shotSpeed = max(invoker.shotSpeed-1,1); }
 			BFPS CBA 1 { A_SetTics(floor(invoker.shotSpeed/2)); }
