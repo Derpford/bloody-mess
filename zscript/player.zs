@@ -7,6 +7,7 @@ class BloodyMessPlayer : DoomPlayer
 	default
 	{
 		Player.StartItem "Bolter";
+		Player.StartItem "Coil",0;
 	}
 
 	override bool CanTouchItem(Inventory item)
