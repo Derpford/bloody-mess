@@ -10,7 +10,7 @@ class PACannon : Weapon replaces PlasmaGun
 	default
 	{
 		Weapon.SlotNumber 5;
-		PACannon.FireRate 6;
+		PACannon.FireRate 16;
 	}
 
 	states
@@ -32,19 +32,19 @@ class PACannon : Weapon replaces PlasmaGun
 			}
 			Loop;
 		Fire:
-			BFPF A 1 
+			BFPF A 3 
 			{ 
 				A_SetTics(max(floor(invoker.shotSpeed/2),1)); 
 				A_StartSound("weapon/photf",1,CHANF_OVERLAP);
 				for(int i = -2; i < 3; i+=1)
 				{
-					A_FireProjectile("PhotonShot",invoker.shotSpeed*i);
+					A_FireProjectile("PhotonShot",invoker.shotSpeed*i*0.5);
 				}
 			} // Projectile fires here.
-			BFPF BC 1 A_SetTics(max(floor(invoker.shotSpeed),1));
-			BFPS D 1 { A_SetTics(floor(invoker.shotSpeed/2)); invoker.shotSpeed = max(invoker.shotSpeed-1,1); }
-			BFPS B 1 { A_SetTics(floor(invoker.shotSpeed/2)); }
+			BFPF BC 3 A_SetTics(max(floor(invoker.shotSpeed)/4,1));
+			BFPS D 0 { invoker.shotSpeed = max(invoker.shotSpeed*0.90,1); }
 			BFPS A 0 A_Refire;
+
 		Cooldown:
 			BFPS DBADBA 4;
 			Goto Ready;
