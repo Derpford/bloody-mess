@@ -4,6 +4,8 @@ class PACannon : Weapon replaces PlasmaGun
 	// Fires a spread of shots which narrows as you hold down the trigger.
 	// More powerful than Coil shots, less ammo.
 	// Spread is entirely horizontal.
+	mixin Spinner;
+
 	int shotSpeed;
 	int shotSpeedMax;
 	Property FireRate : shotSpeedMax;
