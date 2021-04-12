@@ -81,7 +81,7 @@ class ThermiteBall : Actor
 			MISL B 8 Bright
 			{
 				bNOGRAVITY = true;
-				A_Explode(32);
+				A_Explode(36,40,flags:0,fulldamagedistance:20);
 				for (int i = 0; i < 360; i += 90)
 				{
 					A_SpawnItemEX("ThermiteFlame",xofs:8,xvel:1,angle:i);
