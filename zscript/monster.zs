@@ -40,6 +40,16 @@ mixin class BloodyMonster
 
 	override void Die(Actor src, Actor inf, int flags, Name mod)
 	{
+		Array<String> dropList;// = {"Clip","Shell","RocketAmmo","Cell"}; // TODO: Get these dynamically
+		Inventory Next = src.Inv;
+		while (Next)
+		{
+			if (Next is 'Ammo')
+			{
+				dropList.push(Next.GetClassName());
+			}
+			Next = Next.Inv;
+		}
 		double dropAng = 0.0;
 		if(src)
 		{
@@ -47,10 +57,9 @@ mixin class BloodyMonster
 		}
 		for(int i = deathBonusAmt; i > 0; i--)
 		{
-			if(CountInv("Disintegrate")>0)
+			if(CountInv("Disintegrate")>0 && dropList.size() > 0)
 			{
-				Array<String> dropList = {"Clip","Shell","RocketAmmo","Cell"}; // TODO: Get these dynamically
-				A_SpawnItemEX(dropList[random(0,3)],radius,xvel:random(3,5),angle:dropAng+random(-5,5));
+				A_SpawnItemEX(dropList[random(0,dropList.size()-1)],radius,xvel:random(3,5),angle:dropAng+random(-5,5));
 			}
 			else
 			{
