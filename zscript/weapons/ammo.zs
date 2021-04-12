@@ -84,3 +84,45 @@ class CoilCase : Coil replaces ClipBox
 			Loop;
 	}
 }
+
+class LightGem : Ammo replaces Cell
+{
+	// A glowy rock to feed your PACannon with.
+	mixin Spinner;
+
+	default
+	{
+		Inventory.Amount 20;
+		Inventory.MaxAmount 200;
+		Ammo.BackpackAmount 400;
+		Inventory.PickupMessage "Grabbed a Light Gem.";
+	}
+
+	states
+	{
+		Spawn:
+			KGZS B 4;
+			KGZS B 4 Bright;
+			Loop;
+	}
+}
+
+class PowerOrb : LightGem replaces CellPack
+{
+	// A bigger, glowier rock.
+
+	default
+	{
+		Scale 1.5;
+		Inventory.Amount 100;
+		Inventory.PickupMessage "Grabbed a Power Orb.";
+	}
+
+	states
+	{
+		Spawn:
+			KGZS A 4;
+			KGZS A 4 Bright;
+			Loop;
+	}
+}
