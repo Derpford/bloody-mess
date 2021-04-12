@@ -21,7 +21,6 @@ class BloodyMessPlayer : DoomPlayer
 		
 		if(DrainTimer < 1)
 		{
-			console.printf("Health is "..health);
 			if(health > 100)
 			{
 				A_SetHealth(health-1);
