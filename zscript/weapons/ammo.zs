@@ -25,7 +25,7 @@ class NailBox : Nail
 {
 	// Box o' Nails.
 
-	mixin Spinner;
+	//mixin Spinner;
 
 	default
 	{
@@ -68,7 +68,7 @@ class CoilCase : Coil replaces ClipBox
 
 {
 	// A case of coilgun charges.
-	mixin Spinner;
+	//mixin Spinner;
 
 	default
 	{
