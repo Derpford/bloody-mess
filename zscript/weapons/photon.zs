@@ -1,4 +1,4 @@
-class PACannon : Weapon replaces PlasmaGun
+class PACannon : Weapon replaces PlasmaRifle
 {
 	// The Photon Accelerator Cannon.
 	// Fires a spread of shots which narrows as you hold down the trigger.
@@ -13,6 +13,10 @@ class PACannon : Weapon replaces PlasmaGun
 	{
 		Weapon.SlotNumber 5;
 		PACannon.FireRate 16;
+		Weapon.AmmoType1 "LightGem";
+		Weapon.AmmoUse1 0;
+		Weapon.AmmoGive1 20;
+		Inventory.PickupMessage "Packed a Particle Accelerator Cannon, man!";
 	}
 
 	states
@@ -44,6 +48,7 @@ class PACannon : Weapon replaces PlasmaGun
 				{
 					A_FireProjectile("PhotonShot",invoker.shotSpeed*i*0.5);
 				}
+				A_TakeInventory("LightGem",1);
 			} // Projectile fires here.
 			BFPF BC 3 A_SetTics(max(floor(invoker.shotSpeed)/4,1));
 			BFPS D 0 { invoker.shotSpeed = max(invoker.shotSpeed*0.90,1); }
