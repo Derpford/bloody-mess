@@ -50,7 +50,7 @@ class Coil : Ammo replaces Clip
 	default
 	{
 		Scale 1;
-		Inventory.Amount 10;
+		Inventory.Amount 15;
 		Inventory.MaxAmount 300;
 		Ammo.BackpackAmount 600;
 		Inventory.PickupMessage "Grabbed a coil charge pack.";
