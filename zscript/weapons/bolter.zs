@@ -75,7 +75,7 @@ class Disintegrate : Inventory
 	override void DoEffect()
 	{
 		// We just track the time limit here.
-		A_SpawnItemEX("BolterTrail",xofs:owner.radius,xvel:3,angle:frandom(0,360));
+		owner.A_SpawnItemEX("BolterTrail",xofs:owner.radius,zofs:owner.height/2,xvel:3,angle:frandom(0,360));
 		owner.A_TakeInventory("Disintegrate",1);
 	}
 }
