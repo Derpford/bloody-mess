@@ -8,6 +8,10 @@ class ThermiteGrinder : Weapon replaces SuperShotgun
 	default
 	{
 		Weapon.SlotNumber 2;
+		Weapon.AmmoType1 "Nail";
+		Weapon.AmmoGive1 12;
+		Weapon.AmmoUse1 0;
+		Inventory.PickupMessage "Tracked down a Thermite Grinder!";
 	}
 
 	states
@@ -22,12 +26,20 @@ class ThermiteGrinder : Weapon replaces SuperShotgun
 			NLSG A 1 A_Lower(18);
 			Loop;
 		Ready:
-			NLSG A 1 A_WeaponReady();
+			NLSG A 1 
+			{ 
+				if(CountInv("Nail")>=2) { A_WeaponReady(); } Else { A_WeaponReady(WRF_NOFIRE); }
+			}
 			Loop;
 		Fire:
 			NLSG B 2
 			{
 				// Shot goes here.
+				A_TakeInventory("Nail",2);
+				for ( int i = -1; i <= 1; i++ )
+				{
+					A_FireProjectile("ThermiteBall",angle:i*10,pitch:-10);
+				}
 				A_WeaponOffset(0,12,WOF_ADD);
 				A_StartSound("weapon/thermf");
 			}
@@ -39,4 +51,64 @@ class ThermiteGrinder : Weapon replaces SuperShotgun
 			Goto Ready;
 	}
 	
+}
+
+class ThermiteBall : Actor
+{
+	// A ball of ignited thermite.
+
+	default
+	{
+		+FLATSPRITE;
+		PROJECTILE;
+		-NOGRAVITY;
+		RenderStyle "Add";
+		Speed 25;
+		Height 8;
+		Radius 8;
+		DamageFunction 12;
+	}
+
+	states
+	{
+		Spawn:
+			MANF AB 3 Bright
+			{
+				pitch = -5*vel.z;
+			}
+			Loop;
+		Death:
+			MISL B 8 Bright
+			{
+				bNOGRAVITY = true;
+				A_Explode(32);
+				for (int i = 0; i < 360; i += 90)
+				{
+					A_SpawnItemEX("ThermiteFlame",xofs:8,xvel:1,angle:i);
+				}
+			}
+			MISL C 6 Bright;
+			MISL D 4 Bright;
+			Stop;
+	}
+
+}
+
+class ThermiteFlame : Actor
+{
+	// A special effect.
+
+	default
+	{
+		+WALLSPRITE;
+		+NOINTERACTION;
+		RenderStyle "Add";
+	}
+
+	states
+	{
+		Spawn:
+			FIRE ABCDEFGH 3 Bright;
+			Stop;
+	}
 }
