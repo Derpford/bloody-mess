@@ -9,6 +9,7 @@ version "4.5"
 #include "zscript/weapons/shotg.zs"
 #include "zscript/weapons/coilr.zs"
 #include "zscript/weapons/photon.zs"
+#include "zscript/weapons/therm.zs"
 // Health/Armor
 #include "zscript/bonus.zs"
 // Monsters

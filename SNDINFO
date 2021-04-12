@@ -18,3 +18,5 @@ weapon/photf "sounds/photon/PHOTFIRE"
 $limit weapon/photf 0
 weapon/photi "sounds/photon/BRPSIDLE"
 weapon/photr "sounds/photon/PHOTCHRG"
+
+weapon/thermf "sounds/nailsg/NLSGFIRE"
