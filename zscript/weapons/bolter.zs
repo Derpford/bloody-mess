@@ -43,6 +43,7 @@ class BolterShot : FastProjectile
 		DamageFunction 10;
 		MissileType "BolterTrail";
 		+ROLLSPRITE;
+		+HITTRACER;
 		Speed 30;
 		Projectile;
 		Scale 0.5;
@@ -57,10 +58,25 @@ class BolterShot : FastProjectile
 			DLIT J 1 { roll += 12; }
 			Loop;
 		Death:
-			DLIT O 1 A_StartSound("weapon/bolth");
+			DLIT O 1 { A_StartSound("weapon/bolth"); tracer.A_GiveInventory("Disintegrate",70); }
 			DLIT NMLKJ 1;
 			DLIT JKLMNO 1;
 			Stop;
+	}
+}
+
+class Disintegrate : Inventory
+{
+	// Enemies that die while this is present will drop random ammunition.
+	default
+	{
+		Inventory.MaxAmount 70;
+	}
+	override void DoEffect()
+	{
+		// We just track the time limit here.
+		A_SpawnItemEX("BolterTrail",xofs:owner.radius,xvel:3,angle:frandom(0,360));
+		owner.A_TakeInventory("Disintegrate",1);
 	}
 }
 

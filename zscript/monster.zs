@@ -47,7 +47,15 @@ mixin class BloodyMonster
 		}
 		for(int i = deathBonusAmt; i > 0; i--)
 		{
-			A_SpawnItemEX("BloodyHealBonus",radius,xvel:random(3,5),angle:dropAng+random(-5,5));
+			if(CountInv("Disintegrate")>0)
+			{
+				Array<String> dropList = {"Clip","Shell","RocketAmmo","Cell"}; // TODO: Get these dynamically
+				A_SpawnItemEX(dropList[random(0,3)],radius,xvel:random(3,5),angle:dropAng+random(-5,5));
+			}
+			else
+			{
+				A_SpawnItemEX("BloodyHealBonus",radius,xvel:random(3,5),angle:dropAng+random(-5,5));
+			}
 		}
 		super.Die(src,inf,flags,mod);
 	}
