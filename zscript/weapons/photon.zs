@@ -61,12 +61,15 @@ class PhotonShot : FastProjectile
 		DamageFunction 10;
 		RenderStyle "add";
 		Speed 60;
+		Height 12;
+		Radius 8;
 	}
 
 	states
 	{
 		Spawn:
-			BAL1 AB 4 Bright;
+			BAL1 A 4;
+			BAL1 B 4 Bright;
 			Loop;
 		Death:
 			BAL1 CDE 4 Bright;
