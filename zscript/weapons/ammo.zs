@@ -21,7 +21,7 @@ class Nail : Ammo replaces Shell
 	}
 }
 
-class NailBox : Nail
+class NailBox : Nail replaces ShellBox
 {
 	// Box o' Nails.
 
