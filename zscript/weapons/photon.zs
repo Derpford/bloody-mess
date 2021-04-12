@@ -28,6 +28,7 @@ class PACannon : Weapon replaces PlasmaGun
 			BFPI ABCDEFGHIJJIHGFEDCBA 1 
 			{
 				A_WeaponReady();
+				A_StartSound("weapon/photi",flags:CHANF_NOSTOP);
 				invoker.shotSpeed = invoker.shotSpeedMax;
 			}
 			Loop;
@@ -35,6 +36,7 @@ class PACannon : Weapon replaces PlasmaGun
 			BFPF A 3 
 			{ 
 				A_SetTics(max(floor(invoker.shotSpeed/2),1)); 
+				A_StopSound(4);
 				A_StartSound("weapon/photf",1,CHANF_OVERLAP);
 				for(int i = -2; i < 3; i+=1)
 				{
@@ -44,9 +46,9 @@ class PACannon : Weapon replaces PlasmaGun
 			BFPF BC 3 A_SetTics(max(floor(invoker.shotSpeed)/4,1));
 			BFPS D 0 { invoker.shotSpeed = max(invoker.shotSpeed*0.90,1); }
 			BFPS A 0 A_Refire;
-
+			BFPS A 0 { if(invoker.shotSpeed > 8) { return ResolveState("Ready"); } else { return ResolveState(null); } }
 		Cooldown:
-			BFPS DBADBA 4;
+			BFPS DBADBA 4 A_StartSound("weapon/photr",flags:CHANF_NOSTOP);
 			Goto Ready;
 	}
 }
