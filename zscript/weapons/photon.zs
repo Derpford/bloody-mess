@@ -33,7 +33,7 @@ class PACannon : Weapon replaces PlasmaRifle
 		Ready:
 			BFPI ABCDEFGHIJJIHGFEDCBA 1 
 			{
-				A_WeaponReady();
+				if(CountInv("LightGem")>0) { A_WeaponReady(); } else { A_WeaponReady(WRF_NOFIRE); }
 				A_StartSound("weapon/photi",flags:CHANF_NOSTOP);
 				invoker.shotSpeed = invoker.shotSpeedMax;
 			}
