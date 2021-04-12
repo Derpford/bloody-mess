@@ -57,7 +57,7 @@ mixin class BloodyMonster
 		}
 		for(int i = deathBonusAmt; i > 0; i--)
 		{
-			if(CountInv("Disintegrate")>0 && dropList.size() > 0)
+			if((CountInv("Disintegrate")>0 || mod == "Disintegrate") && dropList.size() > 0)
 			{
 				A_SpawnItemEX(dropList[random(0,dropList.size()-1)],radius,xvel:random(3,5),angle:dropAng+random(-5,5));
 			}

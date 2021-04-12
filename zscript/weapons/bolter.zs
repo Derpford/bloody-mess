@@ -41,6 +41,7 @@ class BolterShot : FastProjectile
 	default
 	{
 		DamageFunction 10;
+		DamageType "Disintegrate";
 		MissileType "BolterTrail";
 		+ROLLSPRITE;
 		+HITTRACER;
