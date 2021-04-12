@@ -21,7 +21,7 @@ class CoilRepeater : Weapon replaces Chaingun
 	action void A_FireCoil()
 	{
 		A_TakeInventory("Coil",1);
-		A_FireProjectile("CoilTracer",frandom(-1,1)*(4 - invoker.shotSpeed),pitch:frandom(0,-1.5)*(4 - invoker.shotSpeed) );
+		A_FireProjectile("CoilTracer",frandom(-2.5,2.5)*(4 - invoker.shotSpeed),pitch:frandom(0.5,-1.25)*(4 - invoker.shotSpeed) );
 	}
 
 	states

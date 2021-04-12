@@ -36,10 +36,10 @@ class NailShotty : Weapon replaces Shotgun
 				A_TakeInventory("Nail",1);
 				A_StartSound("weapons/shotgf");
 				// Technically, I could do this with a loop, but I don't want to deal with that.
-				A_FireProjectile("NailShot",-2.3,spawnheight: 8, pitch: -2.3); 
-				A_FireProjectile("NailShot",2.3,spawnheight: 8, pitch: -2.3); 
-				A_FireProjectile("NailShot",-2.3,spawnheight: 8, pitch: 2.3); 
-				A_FireProjectile("NailShot",2.3,spawnheight: 8, pitch: 2.3); 
+				A_FireProjectile("NailShot",-1.3,spawnheight: 8, pitch: -1.3); 
+				A_FireProjectile("NailShot",1.3,spawnheight: 8, pitch: -1.3); 
+				A_FireProjectile("NailShot",-1.3,spawnheight: 8, pitch: 1.3); 
+				A_FireProjectile("NailShot",1.3,spawnheight: 8, pitch: 1.3); 
 			}
 			TACT F 2 Bright { A_FireProjectile("NailShot2",0,spawnheight: 8); }
 			TACT A 5;
