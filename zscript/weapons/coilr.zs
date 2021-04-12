@@ -21,7 +21,7 @@ class CoilRepeater : Weapon replaces Chaingun
 	action void A_FireCoil()
 	{
 		A_TakeInventory("Coil",1);
-		A_FireProjectile("CoilTracer",frandom(-2.5,2.5)*(4 - invoker.shotSpeed),pitch:frandom(0.5,-1.25)*(4 - invoker.shotSpeed) );
+		A_FireProjectile("CoilTracer",frandom(-2.2,2.2)*(4 - invoker.shotSpeed),pitch:frandom(0.1,-0.15)*(4 - invoker.shotSpeed) );
 	}
 
 	states
@@ -56,7 +56,7 @@ class CoilRepeater : Weapon replaces Chaingun
 				A_WeaponOffset(0,16,WOF_ADD);
 				A_StopSound(4);
 				invoker.shotCount += 1;
-				if((invoker.shotCount % 4 == 0 && invoker.shotSpeed > 2) || invoker.shotCount % 8 == 0)
+				if(invoker.shotCount % (10 - (2*invoker.shotSpeed) ) == 0)//&& invoker.shotSpeed > 2) || invoker.shotCount % 8 == 0)
 				{
 					invoker.shotCount = 0;
 					invoker.shotSpeed = max(invoker.shotSpeed-1,0);
@@ -147,7 +147,7 @@ class CoilShockwave : Actor
 			// which for a FastProjectile's trail actors, is the FastProjectile.
 			// We get around this by setting our target to our target's target, which is the player.
 			RPUF FDBA 1;
-			RPUF A 0 A_Explode(2,8,XF_NOSPLASH,true,4);
+			RPUF A 0 A_Explode(4,8,XF_NOSPLASH,true,4);
 			RPUF ABCDEF 1;
 			Stop;
 	}
