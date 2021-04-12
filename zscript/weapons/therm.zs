@@ -28,10 +28,14 @@ class ThermiteGrinder : Weapon replaces SuperShotgun
 			NLSG B 2
 			{
 				// Shot goes here.
-				A_StartSound("weapons/thermf");
+				A_WeaponOffset(0,12,WOF_ADD);
+				A_StartSound("weapon/thermf");
 			}
-			NLSG C 3;
+			NLSG C 2 A_WeaponOffset(0,8,WOF_ADD);
 			NLSG A 5;
+			NLSG A 8 A_WeaponOffset(0,-10,WOF_ADD);
+			NLSG A 5;
+			NLSG A 6 A_WeaponOffset(0,-10,WOF_ADD);
 			Goto Ready;
 	}
 	
