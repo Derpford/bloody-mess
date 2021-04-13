@@ -81,7 +81,7 @@ class CoilRepeater : Weapon replaces Chaingun
 			REPG DA 1 A_WeaponOffset(0,-8,WOF_ADD);
 			REPG E 0 { if(CountInv("Coil")>0) {A_Refire();} }
 		SpinDown:
-			REPG ABCD 0 { A_SetTics(invoker.shotSpeed); A_Refire(); A_StartSound("weapon/repsd",flags:CHANF_NOSTOP); }
+			REPG ABCD 0 { A_SetTics(invoker.shotSpeed); if(CountInv("Coil")>0) {A_Refire();} A_StartSound("weapon/repsd",flags:CHANF_NOSTOP); }
 			REPG A 0
 			{
 				if(invoker.shotSpeed < 4)
