@@ -2,7 +2,7 @@ class BloodyCaco : Cacodemon replaces Cacodemon
 {
 	mixin BloodyMonster;
 
-	int spinangle;
+	double spinangle;
 
 	default
 	{
@@ -14,12 +14,13 @@ class BloodyCaco : Cacodemon replaces Cacodemon
 	{
 		Stagger:
 			HEAD E 3 { A_Pain(); random(0,1)? (spinangle = 20) : (spinangle = -20); }
+		StaggerLoop:
 			HEAD EEFFEEFF 3 
 			{ 
-				State res;
-				angle += spinangle; spinangle *= 0.5;
-				(abs(spinangle)>1)? (res = ResolveState(null)) : (res = ResolveState("see"));
-				return res;
+				angle += spinangle; spinangle *= 0.80;
+				console.printf("spinning: "..spinangle.." "..angle);
+				if(abs(spinangle)>1) 
+				{ return ResolveState(null); } else { return ResolveState("see"); }
 			}
 			Loop;
 	}
