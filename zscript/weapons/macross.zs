@@ -72,7 +72,7 @@ class MacrossMissile: FastProjectile
 		PROJECTILE;
 		DamageFunction 16;
 		Speed 60;
-
+		+THRUACTORS;
 	}
 
 	states
@@ -107,13 +107,25 @@ class MacrossMissile: FastProjectile
 		Fly:
 			HSBM A 1
 			{
-				bNOGRAVITY = true;
+				bTHRUACTORS = false;
 				if(tracer) { VelIntercept(tracer); }
 			}
 		FlyLoop:
 			HSBM A 1;
 			Loop;
 		Death:
+			MISL B 0 
+			{
+				if(bTHRUACTORS)
+				{
+					// We got here from the spawn loop.
+					return ResolveState("Spawn");
+				}
+				else
+				{
+					return ResolveState(null);
+				}
+			}
 			MISL B 4 Bright { A_Explode(40); A_StartSound("weapon/macrox"); }
 			MISL CD 6 Bright;
 			Stop;
