@@ -82,7 +82,16 @@ class MacrossMissile: FastProjectile
 			HSBM A 1 
 			{ 
 				angle += 15;
-				A_ScaleVelocity(0.5);
+				vel.x *= 0.85;
+				vel.y *= 0.85;
+				if(vel.z < 0)
+				{
+					vel.z *= 0.85;
+				}
+				else
+				{
+					vel.z -= 1;
+				}
 				if(CountInv("SignalItem")>0)
 				{
 					// Set angle here.
@@ -98,6 +107,7 @@ class MacrossMissile: FastProjectile
 		Fly:
 			HSBM A 1
 			{
+				bNOGRAVITY = true;
 				if(tracer) { VelIntercept(tracer); }
 			}
 		FlyLoop:
