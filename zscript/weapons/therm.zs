@@ -67,6 +67,7 @@ class ThermiteBall : Actor
 		Height 8;
 		Radius 8;
 		DamageFunction 12;
+		DamageType "Thermite";
 	}
 
 	states

@@ -25,7 +25,15 @@ mixin class BloodyMonster
 				staggerHealth = floor(staggerHealth/2);
 				for(int i = staggerBonusAmt; i > 0; i--)
 				{
-					A_SpawnItemEX("BloodyArmorBonus",radius,xvel:random(3,5),angle:dropAng+random(-5,5));
+					if(mod == "Thermite")
+					{
+						//Spawn bomblets here.
+						A_SpawnItemEX("MiniThermite",radius,xvel:random(3,5),angle:dropAng+random(-15,15));
+					}
+					else
+					{
+						A_SpawnItemEX("BloodyArmorBonus",radius,xvel:random(3,5),angle:dropAng+random(-5,5));
+					}
 				}
 			}
 			if( health - damage > 0 ) { SetState(ResolveState("Stagger")); }
@@ -69,5 +77,32 @@ mixin class BloodyMonster
 		super.Die(src,inf,flags,mod);
 	}
 
+}
 
+class MiniThermite : Actor
+{
+	// A thermite bomblet. Produced by staggering an enemy with the Thermite Grinder.
+	// Shoot it to pop it, producing an explosion.
+
+	default
+	{
+		Scale 0.5;
+		Health 10;
+		Height 24;
+		Radius 8;
+		DamageFactor "Thermite",0;
+		+SHOOTABLE;
+	}
+
+	states
+	{
+		Spawn:
+			FCAN ABCB 4 Bright;
+			Loop;
+		Death:
+			MISL B 5 Bright { A_StartSound("world/barrelx"); A_SetRenderStyle(1.0,STYLE_ADD); }
+			MISL BC 5 Bright A_SetScale(1,1);
+			MISL D 10 Bright A_Explode(64);
+			Stop;
+	}
 }
