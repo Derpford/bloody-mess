@@ -7,7 +7,10 @@ class MacrossCannon : Weapon replaces RocketLauncher
 	default
 	{
 		Weapon.SlotNumber 4;
-
+		Weapon.AmmoType1 "RocketPile";
+		Weapon.AmmoGive1 6;
+		Weapon.AmmoUse1 0;
+		Inventory.PickupMessage "Made off with the Macross Cannon! Find a massacre!";
 	}
 
 	states
@@ -22,11 +25,15 @@ class MacrossCannon : Weapon replaces RocketLauncher
 			HSTM B 1 A_Lower(18);
 			Loop;
 		Ready:
-			HSTM B 1 A_WeaponReady();
+			HSTM B 1 
+			{
+				if(CountInv("RocketPile")>0) { A_WeaponReady(); } else { A_WeaponReady(WRF_NOFIRE); }
+			}
 			Loop;
 		Fire:
 			HSTM C 3 
 			{
+				A_TakeInventory("RocketPile",1);
 				A_SpawnItemEX("MacrossMissile",xofs:8,zofs:32,xvel:8,zvel:4,flags:SXF_SETMASTER);
 				A_StartSound("weapon/macrof",1);
 			}

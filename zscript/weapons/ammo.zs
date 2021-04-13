@@ -126,3 +126,43 @@ class PowerOrb : LightGem replaces CellPack
 			Loop;
 	}
 }
+
+class RocketPile : Ammo replaces RocketAmmo
+{
+	// A small pile of mini-rockets.
+
+	mixin Spinner;
+
+	default
+	{
+		Inventory.Amount 3;
+		Inventory.MaxAmount 150;
+		Ammo.BackpackAmount 300;
+		Inventory.PickupMessage "Grabbed some mini-rockets.";
+	}
+
+	states
+	{
+		Spawn:
+			RKTA A -1;
+			Stop;
+	}
+}
+
+class RocketCrate : RocketPile replaces RocketBox
+{
+	// A decently-large rocket crate.
+
+	default
+	{
+		Inventory.Amount 15;
+		Inventory.PickupMessage "Grabbed a crate of mini-rockets.";
+	}
+
+	states
+	{
+		Spawn:
+			HSAM B -1;
+			Stop;
+	}
+}
