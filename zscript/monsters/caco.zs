@@ -18,7 +18,6 @@ class BloodyCaco : Cacodemon replaces Cacodemon
 			HEAD EEFFEEFF 3 
 			{ 
 				angle += spinangle; spinangle *= 0.80;
-				console.printf("spinning: "..spinangle.." "..angle);
 				if(abs(spinangle)>1) 
 				{ return ResolveState(null); } else { return ResolveState("see"); }
 			}
