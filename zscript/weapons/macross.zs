@@ -108,7 +108,7 @@ class MacrossMissile: FastProjectile
 			HSBM A 1
 			{
 				bTHRUACTORS = false;
-				if(tracer) { VelIntercept(tracer); }
+				if(tracer) { VelIntercept(tracer); } else { bNOGRAVITY = false; }
 			}
 		FlyLoop:
 			HSBM A 1;
