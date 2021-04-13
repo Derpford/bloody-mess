@@ -11,10 +11,10 @@ class BloodySoul : LostSoul replaces LostSoul
 	states
 	{
 		Stagger:
-			SKUL EEEEEEEE 8
+			SKUL E 2 A_Pain();
+			SKUL EEEEEEEEEEEE 4
 			{
-				A_Pain();
-				angle += 360.0/4.0;
+				angle += 360.0/6.0;
 			}
 			Goto See;
 	}
