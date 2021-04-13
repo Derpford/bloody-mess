@@ -1,5 +1,7 @@
 class BloodyKnight : HellKnight replaces HellKnight
 {
+	mixin BloodyMonster;
+
 	default
 	{
 		BloodyKnight.StaggerHealth 250;
