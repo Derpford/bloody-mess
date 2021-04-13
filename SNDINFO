@@ -20,3 +20,6 @@ weapon/photi "sounds/photon/BRPSIDLE"
 weapon/photr "sounds/photon/PHOTCHRG"
 
 weapon/thermf "sounds/nailsg/NLSGFIRE"
+
+weapon/macrof "sounds/grenade/HSTMFIRE"
+weapon/macrox "sounds/grenade/HSTMHIT"

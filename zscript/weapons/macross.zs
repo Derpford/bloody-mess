@@ -28,6 +28,7 @@ class MacrossCannon : Weapon replaces RocketLauncher
 			HSTM C 3 
 			{
 				A_SpawnItemEX("MacrossMissile",xofs:8,zofs:32,xvel:8,zvel:4,flags:SXF_SETMASTER);
+				A_StartSound("weapon/macrof",1);
 			}
 			HSTM DEF 2;
 			HSTM B 2;
@@ -103,7 +104,7 @@ class MacrossMissile: FastProjectile
 			HSBM A 1;
 			Loop;
 		Death:
-			MISL B 4 Bright A_Explode(40);
+			MISL B 4 Bright { A_Explode(40); A_StartSound("weapon/macrox"); }
 			MISL CD 6 Bright;
 			Stop;
 	}
