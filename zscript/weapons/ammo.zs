@@ -9,7 +9,8 @@ class Nail : Ammo replaces Shell
 		Scale 0.5;
 		Inventory.Amount 2;
 		Inventory.MaxAmount 50;
-		Ammo.BackpackAmount 100;
+		Ammo.BackpackAmount 4;
+		Ammo.BackpackMaxAmount 100;
 		Inventory.PickupMessage "Grabbed some nails.";
 	}
 
@@ -52,7 +53,8 @@ class Coil : Ammo replaces Clip
 		Scale 1;
 		Inventory.Amount 15;
 		Inventory.MaxAmount 300;
-		Ammo.BackpackAmount 600;
+		Ammo.BackpackAmount 30;
+		Ammo.BackpackMaxAmount 600;
 		Inventory.PickupMessage "Grabbed a coil charge pack.";
 	}
 
@@ -94,7 +96,8 @@ class LightGem : Ammo replaces Cell
 	{
 		Inventory.Amount 20;
 		Inventory.MaxAmount 200;
-		Ammo.BackpackAmount 400;
+		Ammo.BackpackAmount 40;
+		Ammo.BackpackMaxAmount 400;
 		Inventory.PickupMessage "Grabbed a Light Gem.";
 	}
 
@@ -137,7 +140,8 @@ class RocketPile : Ammo replaces RocketAmmo
 	{
 		Inventory.Amount 3;
 		Inventory.MaxAmount 150;
-		Ammo.BackpackAmount 300;
+		Ammo.BackpackAmount 6;
+		Ammo.BackpackMaxAmount 300;
 		Inventory.PickupMessage "Grabbed some mini-rockets.";
 	}
 
