@@ -40,7 +40,6 @@ class MacrossCannon : Weapon replaces RocketLauncher
 				FLineTraceData point;
 				LineTrace(invoker.owner.angle,2048,invoker.owner.pitch,TRF_THRUACTORS,32,data:point);
 				tracer = Spawn("TargetDummy",point.HitLocation);
-				console.printf(tracer.." spawned.");
 			}
 			HSTM B 4 A_GiveToChildren("SignalItem",1);
 			Goto Ready;
