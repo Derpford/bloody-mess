@@ -52,7 +52,7 @@ class PACannon : Weapon replaces PlasmaRifle
 			} // Projectile fires here.
 			BFPF BC 3 A_SetTics(max(floor(invoker.shotSpeed)/4,1));
 			BFPS D 0 { invoker.shotSpeed = max(invoker.shotSpeed*0.90,1); }
-			BFPS A 0 A_Refire;
+			BFPS A 0 { if(CountInv("LightGem")>0) {A_Refire();} }
 			BFPS A 0 { if(invoker.shotSpeed > 8) { return ResolveState("Ready"); } else { return ResolveState(null); } }
 		Cooldown:
 			BFPS DBADBA 4 A_StartSound("weapon/photr",flags:CHANF_NOSTOP);
