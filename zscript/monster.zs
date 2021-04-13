@@ -42,6 +42,10 @@ mixin class BloodyMonster
 				}
 			}
 			if( health - damage > 0 ) { SetState(ResolveState("Stagger")); }
+		}
+
+		if(InStateSequence(curstate, resolvestate("stagger")))
+		{
 			return super.DamageMobj(inf,src,dmg,mod,flags|DMG_NO_PAIN,ang);
 		}
 		else
