@@ -10,6 +10,11 @@ mixin class BloodyMonster
 	Property StaggerHealth : staggerHealth;
 	Property BonusDrops : staggerBonusAmt, deathBonusAmt;
 
+	void TossDrop(String it, double dropAng)
+	{
+		A_SpawnItemEX(it,radius,xvel:random(3,5),zvel:random(5,7),angle:dropAng+random(-15,15));
+	}
+
 	override int DamageMobj(Actor inf, Actor src, int dmg, Name mod, int flags, double ang)
 	{
 		double dropAng = 0.0;
@@ -28,11 +33,11 @@ mixin class BloodyMonster
 					if(mod == "Thermite")
 					{
 						//Spawn bomblets here.
-						A_SpawnItemEX("MiniThermite",radius,xvel:random(3,5),angle:dropAng+random(-15,15));
+						TossDrop("MiniThermite",dropAng);
 					}
 					else
 					{
-						A_SpawnItemEX("BloodyArmorBonus",radius,xvel:random(3,5),angle:dropAng+random(-5,5));
+						TossDrop("BloodyArmorBonus",dropAng);
 					}
 				}
 			}
@@ -67,11 +72,11 @@ mixin class BloodyMonster
 		{
 			if((CountInv("Disintegrate")>0 || mod == "Disintegrate") && dropList.size() > 0)
 			{
-				A_SpawnItemEX(dropList[random(0,dropList.size()-1)],radius,xvel:random(3,5),angle:dropAng+random(-5,5));
+				TossDrop(dropList[random(0,dropList.size()-1)],dropAng);
 			}
 			else
 			{
-				A_SpawnItemEX("BloodyHealBonus",radius,xvel:random(3,5),angle:dropAng+random(-5,5));
+				TossDrop("BloodyHealBonus",dropAng);
 			}
 		}
 		super.Die(src,inf,flags,mod);
