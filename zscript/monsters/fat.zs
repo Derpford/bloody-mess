@@ -4,7 +4,7 @@ class BloodyBlob : Fatso replaces Fatso
 
 	default
 	{
-		BloodyBlob.StaggerHealth 400;
+		BloodyBlob.StaggerHealth 400,4;
 		BloodyBlob.BonusDrops 2,6;
 	}
 

@@ -4,7 +4,7 @@ class BloodyImp : DoomImp replaces DoomImp
 
 	default
 	{
-		BloodyImp.StaggerHealth 20;
+		BloodyImp.StaggerHealth 20,1;
 		BloodyImp.BonusDrops 1,4;
 	}
 	states

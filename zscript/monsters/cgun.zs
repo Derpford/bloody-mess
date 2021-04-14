@@ -4,7 +4,7 @@ class BloodyChaingunner : ChaingunGuy replaces ChaingunGuy
 
 	default
 	{
-		BloodyChaingunner.StaggerHealth 30;
+		BloodyChaingunner.StaggerHealth 30,-1;
 		BloodyChaingunner.BonusDrops 1,1;
 	}
 

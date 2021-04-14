@@ -4,7 +4,7 @@ class BloodyBones : Revenant replaces Revenant
 
 	default
 	{
-		BloodyBones.StaggerHealth 225;
+		BloodyBones.StaggerHealth 225,4;
 		BloodyBones.BonusDrops 2,2;
 	}
 

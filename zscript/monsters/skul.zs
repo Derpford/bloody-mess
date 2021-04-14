@@ -4,7 +4,7 @@ class BloodySoul : LostSoul replaces LostSoul
 
 	default
 	{
-		BloodySoul.StaggerHealth 80;
+		BloodySoul.StaggerHealth 80,0;
 		BloodySoul.BonusDrops 0,0; // No soulspam 4 u!
 	}
 

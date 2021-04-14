@@ -4,7 +4,7 @@ class BloodyShotgunner : ShotgunGuy replaces ShotgunGuy
 
 	default
 	{
-		BloodyShotgunner.StaggerHealth 20;
+		BloodyShotgunner.StaggerHealth 20,-1;
 		BloodyShotgunner.BonusDrops 1,2;	
 	}
 

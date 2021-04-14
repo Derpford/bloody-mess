@@ -4,7 +4,7 @@ class BloodyPain : PainElemental replaces PainElemental
 
 	default
 	{
-		BloodyPain.StaggerHealth 300;
+		BloodyPain.StaggerHealth 300,0;
 		BloodyPain.BonusDrops 1,5;
 	}
 

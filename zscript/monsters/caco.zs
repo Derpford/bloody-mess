@@ -6,7 +6,7 @@ class BloodyCaco : Cacodemon replaces Cacodemon
 
 	default
 	{
-		BloodyCaco.StaggerHealth 200;
+		BloodyCaco.StaggerHealth 200,5;
 		BloodyCaco.BonusDrops 2,1;
 	}
 

@@ -4,7 +4,7 @@ class BloodyWurm : Demon replaces Demon
 
 	default
 	{
-		BloodyWurm.StaggerHealth 100;
+		BloodyWurm.StaggerHealth 100,2;
 		BloodyWurm.BonusDrops 3,2;
 	}
 

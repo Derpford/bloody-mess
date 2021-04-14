@@ -6,8 +6,9 @@ mixin class BloodyMonster
 	int staggerHealth;
 	int staggerBonusAmt;
 	int deathBonusAmt;
+	int maxStaggers;
 
-	Property StaggerHealth : staggerHealth;
+	Property StaggerHealth : staggerHealth,maxStaggers;
 	Property BonusDrops : staggerBonusAmt, deathBonusAmt;
 
 	void TossDrop(String it, double dropAng)
@@ -28,17 +29,21 @@ mixin class BloodyMonster
 			while(health-dmg < staggerHealth && staggerHealth > 5)
 			{
 				staggerHealth = floor(staggerHealth/2);
-				for(int i = staggerBonusAmt; i > 0; i--)
+				if(maxStaggers != 0)
 				{
-					if(mod == "Thermite")
+					for(int i = staggerBonusAmt; i > 0; i--)
 					{
-						//Spawn bomblets here.
-						TossDrop("MiniThermite",dropAng);
+						if(mod == "Thermite")
+						{
+							//Spawn bomblets here.
+							TossDrop("MiniThermite",dropAng);
+						}
+						else
+						{
+							TossDrop("BloodyArmorBonus",dropAng);
+						}
 					}
-					else
-					{
-						TossDrop("BloodyArmorBonus",dropAng);
-					}
+					if(maxStaggers > 0) { maxStaggers -= 1; }
 				}
 			}
 			if( health - damage > 0 ) { SetState(ResolveState("Stagger")); }

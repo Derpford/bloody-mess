@@ -4,7 +4,7 @@ class BloodyBaron : BaronOfHell replaces BaronOfHell
 
 	default
 	{
-		BloodyBaron.StaggerHealth 500;
+		BloodyBaron.StaggerHealth 500,3;
 		BloodyBaron.BonusDrops 3,6;
 	}
 

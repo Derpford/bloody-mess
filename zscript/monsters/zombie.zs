@@ -4,7 +4,7 @@ class BloodyZombie : Zombieman replaces Zombieman
 	// If I'm right, I should be able to basically re-use the stock Zombie definition without having to rewrite it, while ALSO keeping all my other behavior.
 	default
 	{
-		BloodyZombie.StaggerHealth 15;
+		BloodyZombie.StaggerHealth 15,-1;
 		BloodyZombie.BonusDrops 1, 1;
 	}
 

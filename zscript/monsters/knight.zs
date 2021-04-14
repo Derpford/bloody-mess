@@ -4,7 +4,7 @@ class BloodyKnight : HellKnight replaces HellKnight
 
 	default
 	{
-		BloodyKnight.StaggerHealth 250;
+		BloodyKnight.StaggerHealth 250,3;
 		BloodyKnight.BonusDrops 2,4;
 	}	
 
