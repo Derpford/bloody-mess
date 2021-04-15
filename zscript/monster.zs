@@ -62,16 +62,29 @@ mixin class BloodyMonster
 
 	override void Die(Actor src, Actor inf, int flags, Name mod)
 	{
-		Array<String> dropList;// = {"Clip","Shell","RocketAmmo","Cell"}; // TODO: Get these dynamically
-		Inventory Next = src.Inv;
-		while (Next)
+		Array<String> initDropList = {"Coil","Nail","RocketPile","LightGem"}; // TODO: Get these dynamically
+		Array<String> dropList;
+		for(int i = 0; i < initDropList.size(); i++)
 		{
-			if (Next is 'Ammo')
+			if(src.FindInventory(initDropList[i]))
 			{
-				dropList.push(Next.GetClassName());
+				if(src.CountInv(initDropList[i])<src.FindInventory(initDropList[i]).maxAmount)
+				{
+					dropList.push(initDropList[i]);
+				}
 			}
-			Next = Next.Inv;
 		}
+
+		//Inventory Next = src.Inv;
+		//while (Next)
+		//{
+			//if (Next is 'Ammo')
+			//{
+				//dropList.push(Next.GetClassName());
+			//}
+			//Next = Next.Inv;
+		//}
+		// Doesn't work right when you pick up a backpack.
 		double dropAng = 0.0;
 		if(src)
 		{
