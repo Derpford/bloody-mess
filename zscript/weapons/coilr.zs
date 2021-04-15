@@ -37,8 +37,9 @@ class CoilRepeater : BloodyWeapon replaces Chaingun
 			REPG ABCD 1 A_Lower(12);
 			Loop;
 		Ready:
-			REPG A 1 
+			REPG AAABBBCCCDDD 1 
 			{
+				A_StartSound("weapons/sawi",flags:CHANF_NOSTOP);
 				A_ReadyIfAmmo();
 			}
 			Loop;
