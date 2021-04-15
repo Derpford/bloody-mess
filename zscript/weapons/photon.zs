@@ -16,7 +16,7 @@ class PACannon : Weapon replaces PlasmaRifle
 		Weapon.AmmoType1 "LightGem";
 		Weapon.AmmoUse1 0;
 		Weapon.AmmoGive1 20;
-		Inventory.PickupMessage "Packed a Particle Accelerator Cannon, man!";
+		Inventory.PickupMessage "Packed a Photon Accelerator Cannon, man!";
 	}
 
 	states
