@@ -11,6 +11,7 @@ class ThermiteGrinder : Weapon replaces SuperShotgun
 		Weapon.AmmoType1 "Nail";
 		Weapon.AmmoGive1 12;
 		Weapon.AmmoUse1 0;
+		Weapon.MinSelectionAmmo1 3;
 		Inventory.PickupMessage "Tracked down a Thermite Grinder!";
 	}
 
@@ -35,7 +36,7 @@ class ThermiteGrinder : Weapon replaces SuperShotgun
 			NLSG B 2
 			{
 				// Shot goes here.
-				A_TakeInventory("Nail",2);
+				A_TakeInventory("Nail",3);
 				for ( int i = -1; i <= 1; i++ )
 				{
 					A_FireProjectile("ThermiteBall",angle:i*10,pitch:-10);

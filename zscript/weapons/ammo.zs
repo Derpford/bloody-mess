@@ -7,7 +7,7 @@ class Nail : Ammo replaces Shell
 	default
 	{
 		Scale 0.5;
-		Inventory.Amount 2;
+		Inventory.Amount 4;
 		Inventory.MaxAmount 50;
 		Ammo.BackpackAmount 4;
 		Ammo.BackpackMaxAmount 100;
@@ -31,7 +31,7 @@ class NailBox : Nail replaces ShellBox
 	default
 	{
 		Scale 1;
-		Inventory.Amount 10;
+		Inventory.Amount 20;
 		Inventory.PickupMessage "Got a box of nails.";
 	}
 

@@ -9,6 +9,7 @@ class NailShotty : Weapon replaces Shotgun
 		Weapon.SlotNumber 2;
 		Weapon.AmmoType1 "Nail";
 		Weapon.AmmoUse1 0;
+		Weapon.MinSelectionAmmo1 2;
 		Weapon.AmmoGive 4;
 		Inventory.PickupMessage "Snagged a Nail Shotgun!";
 	}
@@ -33,7 +34,7 @@ class NailShotty : Weapon replaces Shotgun
 		Fire:
 			TACT E 2 Bright 
 			{ 
-				A_TakeInventory("Nail",1);
+				A_TakeInventory("Nail",2);
 				A_StartSound("weapons/shotgf");
 				// Technically, I could do this with a loop, but I don't want to deal with that.
 				A_FireProjectile("NailShot",-1.3,spawnheight: 8, pitch: -1.3); 
