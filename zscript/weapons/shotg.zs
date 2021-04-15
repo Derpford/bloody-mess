@@ -41,8 +41,11 @@ class NailShotty : Weapon replaces Shotgun
 				A_FireProjectile("NailShot",1.3,spawnheight: 8, pitch: -1.3); 
 				A_FireProjectile("NailShot",-1.3,spawnheight: 8, pitch: 1.3); 
 				A_FireProjectile("NailShot",1.3,spawnheight: 8, pitch: 1.3); 
+				A_FireProjectile("NailShot",-1.8,spawnheight: 8);
+				A_FireProjectile("NailShot",1.8,spawnheight: 8);
+				A_FireProjectile("NailShot2",0,spawnheight: 8);
 			}
-			TACT F 2 Bright { A_FireProjectile("NailShot2",0,spawnheight: 8); }
+			TACT F 2 Bright; 
 			TACT A 5;
 			TACT BC 4;
 			TACT D 3 A_StartSound("weapon/shotr");
