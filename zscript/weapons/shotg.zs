@@ -63,7 +63,7 @@ class NailShot : FastProjectile
 	default
 	{
 		Speed 40;
-		DamageFunction 7;
+		DamageFunction 8;
 		Radius 3;
 		Height 6;
 		MissileHeight 8;
