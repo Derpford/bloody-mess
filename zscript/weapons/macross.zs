@@ -9,6 +9,7 @@ class MacrossCannon : Weapon replaces RocketLauncher
 		Weapon.SlotNumber 5;
 		Weapon.AmmoType1 "RocketPile";
 		Weapon.AmmoGive1 6;
+		Weapon.MinSelectionAmmo1 1;
 		Weapon.AmmoUse1 0;
 		Inventory.PickupMessage "Made off with the Macross Cannon! Find a massacre!";
 	}
