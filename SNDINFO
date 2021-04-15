@@ -23,3 +23,8 @@ weapon/thermf "sounds/nailsg/NLSGFIRE"
 
 weapon/macrof "sounds/grenade/HSTMFIRE"
 weapon/macrox "sounds/grenade/HSTMHIT"
+
+weapon/underf "sounds/bolter/BOLTFIRE"
+$pitchset weapon/underf 0.5
+weapon/underx "sounds/photon/BRPSEXPL"
+$pitchset weapon/underf 2.0
