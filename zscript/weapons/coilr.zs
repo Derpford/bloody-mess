@@ -10,7 +10,7 @@ class CoilRepeater : Weapon replaces Chaingun
 
 	default
 	{
-		Weapon.SlotNumber 3;
+		Weapon.SlotNumber 4;
 		Weapon.AmmoType1 "Coil";
 		Weapon.AmmoUse1 0;
 		Weapon.AmmoGive1 25;

@@ -7,7 +7,7 @@ class ThermiteGrinder : Weapon replaces SuperShotgun
 
 	default
 	{
-		Weapon.SlotNumber 2;
+		Weapon.SlotNumber 3;
 		Weapon.AmmoType1 "Nail";
 		Weapon.AmmoGive1 12;
 		Weapon.AmmoUse1 0;

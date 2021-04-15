@@ -11,7 +11,7 @@ class PACannon : Weapon replaces PlasmaRifle
 	Property FireRate : shotSpeedMax;
 	default
 	{
-		Weapon.SlotNumber 5;
+		Weapon.SlotNumber 4;
 		PACannon.FireRate 16;
 		Weapon.AmmoType1 "LightGem";
 		Weapon.AmmoUse1 0;

@@ -6,7 +6,7 @@ class MacrossCannon : Weapon replaces RocketLauncher
 
 	default
 	{
-		Weapon.SlotNumber 4;
+		Weapon.SlotNumber 5;
 		Weapon.AmmoType1 "RocketPile";
 		Weapon.AmmoGive1 6;
 		Weapon.AmmoUse1 0;
