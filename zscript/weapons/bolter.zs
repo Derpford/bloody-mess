@@ -97,6 +97,7 @@ class BolterTrail : Actor
 	default
 	{
 		RenderStyle "add";
+		+NOINTERACTION;
 		+ROLLSPRITE;
 		+NOGRAVITY;
 		Scale 0.5;

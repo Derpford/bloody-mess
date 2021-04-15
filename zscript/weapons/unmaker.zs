@@ -60,6 +60,8 @@ class UndertakerShot : FastProjectile
 		Speed 60;
 		Radius 8;
 		Height 4;
+		MissileType "UndertakerTrail";
+		MissileHeight 8;
 		DamageFunction 80;
 		DamageType "Disintegrate";
 		RenderStyle "Add";
@@ -68,7 +70,7 @@ class UndertakerShot : FastProjectile
 	states
 	{
 		Spawn:
-			REDT A 1 Bright;
+			REDT AB 3 Bright;
 			Loop;
 		Death:
 			REDB A 4 Bright A_StartSound("weapon/underx");
@@ -76,6 +78,23 @@ class UndertakerShot : FastProjectile
 			REDE B 6 Bright;
 			REDE C 8 Bright;
 			REDE D 4 Bright;
+			Stop;
+	}
+}
+
+class UndertakerTrail : Actor
+{
+	default
+	{
+		+NOINTERACTION;
+		Scale 0.5;
+		RenderStyle "Add";
+	}
+
+	states
+	{
+		Spawn:
+			DBLD ABCD 1 Bright;
 			Stop;
 	}
 }
