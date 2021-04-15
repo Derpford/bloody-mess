@@ -28,13 +28,13 @@ class PACannon : Weapon replaces PlasmaRifle
 			BFPS ABCD 1 A_Raise(12);
 			Loop;
 		Deselect:
-			BFPS DCBA 1 A_Lower(12);
+			BFPS DCBA 1 { A_StopSound(4); A_Lower(12); }
 			Loop;
 		Ready:
 			BFPI ABCDEFGHIJJIHGFEDCBA 1 
 			{
 				if(CountInv("LightGem")>0) { A_WeaponReady(); } else { A_WeaponReady(WRF_NOFIRE); }
-				A_StartSound("weapon/photi",flags:CHANF_NOSTOP);
+				A_StartSound("weapon/photi",4,flags:CHANF_NOSTOP);
 				invoker.shotSpeed = invoker.shotSpeedMax;
 			}
 			Loop;
