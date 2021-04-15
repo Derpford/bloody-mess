@@ -13,7 +13,7 @@ mixin class BloodyMonster
 
 	void TossDrop(String it, double dropAng)
 	{
-		A_SpawnItemEX(it,radius,xvel:random(3,5),zvel:random(5,7),angle:dropAng+random(-15,15));
+		A_SpawnItemEX(it,radius,xvel:random(3,5),zvel:random(5,7),angle:dropAng);
 	}
 
 	override int DamageMobj(Actor inf, Actor src, int dmg, Name mod, int flags, double ang)
