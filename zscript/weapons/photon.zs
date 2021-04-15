@@ -76,11 +76,29 @@ class PhotonShot : FastProjectile
 	states
 	{
 		Spawn:
-			BAL1 A 4;
-			BAL1 B 4 Bright;
+			BAL1 AA 2 A_SpawnItemEX("PhotonTrail");
+			BAL1 BB 2 Bright A_SpawnItemEX("PhotonTrail");
 			Loop;
 		Death:
 			BAL1 CDE 4 Bright;
 			Stop;
+	}
+}
+
+class PhotonTrail : Actor
+{
+	default
+	{
+		+NOINTERACTION;
+		Scale 0.5;
+		RenderStyle "add";
+	}
+
+	states
+	{
+		Spawn:
+			BAL1 A 4 A_FadeOut(0.5);
+			BAL1 B 4 Bright;
+			Loop;
 	}
 }
