@@ -34,7 +34,7 @@ class MacrossCannon : Weapon replaces RocketLauncher
 			HSTM C 3 
 			{
 				A_TakeInventory("RocketPile",1);
-				A_SpawnItemEX("MacrossMissile",xofs:8,zofs:32,xvel:8,zvel:4,flags:SXF_SETMASTER);
+				A_SpawnItemEX("MacrossMissile",xofs:8,zofs:24,xvel:8,zvel:1,flags:SXF_SETMASTER);
 				A_StartSound("weapon/macrof",1);
 			}
 			HSTM DEF 2;
@@ -92,26 +92,17 @@ class MacrossMissile: FastProjectile
 			HSBM A 1 
 			{ 
 				angle += 15;
-				//vel.x *= 0.85;
-				//vel.y *= 0.85;
-				//if(vel.z < 0)
-				//{
-					//vel.z *= 0.85;
-				//}
-				//else
-				//{
-					//vel.z -= 1;
-				//}
+
 				if(!ageOffset)
 				{
 					ageOffset = random(0,32);
 				}
 
-				if(GetAge() > 20)
+				if(GetAge() > 10)
 				{
 					if(Vec3To(master).Length() < 64)
 					{
-						Warp(master,48,0,36+sin(GetAge()+ageOffset)*16,angle:GetAge(),flags:WARPF_ABSOLUTEANGLE);
+						Warp(master,48,0,36+sin(GetAge()+ageOffset)*12,angle:GetAge(),flags:WARPF_ABSOLUTEANGLE);
 					}
 					else
 					{
