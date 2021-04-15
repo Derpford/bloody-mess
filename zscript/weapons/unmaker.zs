@@ -11,6 +11,7 @@ class Undertaker : BloodyWeapon replaces BFG9000
 		Weapon.AmmoUse1 0;
 		Weapon.MinSelectionAmmo1 1;
 		Weapon.AmmoGive1 20;
+		Inventory.PickupMessage "Unearthed the Undertaker! God as my witness, this thing is broken.";
 	}
 
 	states
