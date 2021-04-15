@@ -106,6 +106,7 @@ class SmokeTrail : Actor
 		Scale 0.5;
 		Alpha 0.3;
 		+NOGRAVITY;
+		+NOINTERACTION;
 	}
 
 	states
