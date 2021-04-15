@@ -73,12 +73,16 @@ class MacrossMissile: FastProjectile
 {
 	// A remote-controlled minimissile.
 
+	int ageOffset;
+
 	default
 	{
 		PROJECTILE;
 		DamageFunction 16;
 		Speed 60;
-		+THRUACTORS;
+		+NOCLIP;
+		+ALLOWTHRUBITS;
+		ThruBits 1;
 	}
 
 	states
@@ -88,16 +92,33 @@ class MacrossMissile: FastProjectile
 			HSBM A 1 
 			{ 
 				angle += 15;
-				vel.x *= 0.85;
-				vel.y *= 0.85;
-				if(vel.z < 0)
+				//vel.x *= 0.85;
+				//vel.y *= 0.85;
+				//if(vel.z < 0)
+				//{
+					//vel.z *= 0.85;
+				//}
+				//else
+				//{
+					//vel.z -= 1;
+				//}
+				if(!ageOffset)
 				{
-					vel.z *= 0.85;
+					ageOffset = random(0,32);
 				}
-				else
+
+				if(GetAge() > 20)
 				{
-					vel.z -= 1;
+					if(Vec3To(master).Length() < 64)
+					{
+						Warp(master,48,0,36+sin(GetAge()+ageOffset)*16,angle:GetAge(),flags:WARPF_ABSOLUTEANGLE);
+					}
+					else
+					{
+						VelIntercept(master,10);
+					}
 				}
+
 				if(CountInv("SignalItem")>0)
 				{
 					// Set angle here.
@@ -108,12 +129,13 @@ class MacrossMissile: FastProjectile
 				{
 					return ResolveState(null);
 				}
+
 			}
 			Loop;
 		Fly:
 			HSBM A 1
 			{
-				bTHRUACTORS = false;
+				bNOCLIP = false;
 				if(tracer) { VelIntercept(tracer); } else { bNOGRAVITY = false; }
 			}
 		FlyLoop:
@@ -122,7 +144,7 @@ class MacrossMissile: FastProjectile
 		Death:
 			MISL B 0 
 			{
-				if(bTHRUACTORS)
+				if(bNOCLIP)
 				{
 					// We got here from the spawn loop.
 					return ResolveState("Spawn");
