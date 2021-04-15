@@ -39,7 +39,11 @@ class MacrossCannon : Weapon replaces RocketLauncher
 			}
 			HSTM DEF 2;
 			HSTM B 2;
-			HSTM B 2 { if(CountInv("RocketPile")>0) {A_Refire();} }
+			HSTM B 2 { if(CountInv("RocketPile")>0) {A_Refire();} else {A_Refire("Dry");}}
+			Goto Release;
+		Dry:
+			HSTM B 1;
+			HSTM B 0 A_Refire("Dry");
 		Release:
 			HSTM B 0 
 			{
