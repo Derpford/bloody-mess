@@ -1,4 +1,4 @@
-class CoilRepeater : Weapon replaces Chaingun
+class CoilRepeater : BloodyWeapon replaces Chaingun
 {
 	// A heavy coilgun with full-auto capability. Spins up as it fires, shooting faster but less accurately.
 	mixin Spinner;
@@ -39,7 +39,7 @@ class CoilRepeater : Weapon replaces Chaingun
 		Ready:
 			REPG A 1 
 			{
-				if(CountInv("Coil")>0) { A_WeaponReady(); } else { A_WeaponReady(WRF_NOFIRE); }
+				A_ReadyIfAmmo();
 			}
 			Loop;
 		Fire:
@@ -69,7 +69,7 @@ class CoilRepeater : Weapon replaces Chaingun
 				A_StartSound("weapon/repf",1); 
 				A_FireCoil();
 			} // shot goes here
-			REPG E 0 { if(CountInv("Coil")>0) {A_Refire();} }
+			REPG E 0 { A_RefireIfAmmo(); }
 			Goto SpinDown;
 		FullAuto:
 			REPG E 1 Bright { A_StartSound("weapon/repf",1); A_WeaponOffset(0,16,WOF_ADD); A_FireCoil(); } // and here
@@ -80,9 +80,9 @@ class CoilRepeater : Weapon replaces Chaingun
 			REPG CD 1 A_WeaponOffset(0,-8,WOF_ADD);
 			REPG H 1 Bright { A_StartSound("weapon/repf",1); A_WeaponOffset(0,16,WOF_ADD); A_FireCoil(); } // and here
 			REPG DA 1 A_WeaponOffset(0,-8,WOF_ADD);
-			REPG E 0 { if(CountInv("Coil")>0) {A_Refire();} }
+			REPG E 0 { A_RefireIfAmmo(); }
 		SpinDown:
-			REPG ABCD 0 { A_SetTics(invoker.shotSpeed); if(CountInv("Coil")>0) {A_Refire();} A_StartSound("weapon/repsd",flags:CHANF_NOSTOP); }
+			REPG ABCD 0 { A_SetTics(invoker.shotSpeed); A_RefireIfAmmo(); A_StartSound("weapon/repsd",flags:CHANF_NOSTOP); }
 			REPG A 0
 			{
 				if(invoker.shotSpeed < 4)

@@ -1,4 +1,4 @@
-class PACannon : Weapon replaces PlasmaRifle
+class PACannon : BloodyWeapon replaces PlasmaRifle
 {
 	// The Photon Accelerator Cannon.
 	// Fires a spread of shots which narrows as you hold down the trigger.
@@ -34,7 +34,7 @@ class PACannon : Weapon replaces PlasmaRifle
 		Ready:
 			BFPI ABCDEFGHIJJIHGFEDCBA 1 
 			{
-				if(CountInv("LightGem")>0) { A_WeaponReady(); } else { A_WeaponReady(WRF_NOFIRE); }
+				A_ReadyIfAmmo();
 				A_StartSound("weapon/photi",4,flags:CHANF_NOSTOP);
 				invoker.shotSpeed = invoker.shotSpeedMax;
 			}
@@ -53,7 +53,7 @@ class PACannon : Weapon replaces PlasmaRifle
 			} // Projectile fires here.
 			BFPF BC 3 A_SetTics(max(floor(invoker.shotSpeed)/4,1));
 			BFPS D 0 { invoker.shotSpeed = max(invoker.shotSpeed*0.90,1); }
-			BFPS A 0 { if(CountInv("LightGem")>0) {A_Refire();} }
+			BFPS A 0 { A_RefireIfAmmo(); }
 			BFPS A 0 { if(invoker.shotSpeed > 8) { return ResolveState("Ready"); } else { return ResolveState(null); } }
 		Cooldown:
 			BFPS DBADBA 4 A_StartSound("weapon/photr",flags:CHANF_NOSTOP);

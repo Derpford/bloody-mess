@@ -1,4 +1,4 @@
-class NailShotty : Weapon replaces Shotgun
+class NailShotty : BloodyWeapon replaces Shotgun
 {
 	// A nail-firing shotgun. Shoots a square pattern of nails.
 
@@ -28,7 +28,7 @@ class NailShotty : Weapon replaces Shotgun
 		Ready:
 			TACT A 1 
 			{
-				if(CountInv("Nail") > 0) { A_WeaponReady(); } else { A_WeaponReady(WRF_NOFIRE); }
+				A_ReadyIfAmmo();
 			}
 			Loop;
 		Fire:

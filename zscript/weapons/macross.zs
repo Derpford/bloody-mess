@@ -1,4 +1,4 @@
-class MacrossCannon : Weapon replaces RocketLauncher
+class MacrossCannon : BloodyWeapon replaces RocketLauncher
 {
 	// A cannon designed to coordinate missile strikes on various targets.
 	// Shots hover until the trigger is released.
@@ -28,7 +28,7 @@ class MacrossCannon : Weapon replaces RocketLauncher
 		Ready:
 			HSTM B 1 
 			{
-				if(CountInv("RocketPile")>0) { A_WeaponReady(); } else { A_WeaponReady(WRF_NOFIRE); }
+				A_ReadyIfAmmo();
 			}
 			Loop;
 		Fire:
@@ -40,7 +40,7 @@ class MacrossCannon : Weapon replaces RocketLauncher
 			}
 			HSTM DEF 2;
 			HSTM B 2;
-			HSTM B 2 { if(CountInv("RocketPile")>0) {A_Refire();} else {A_Refire("Dry");}}
+			HSTM B 2 { A_RefireIfAmmo("Fire","Dry"); }
 			Goto Release;
 		Dry:
 			HSTM B 1;

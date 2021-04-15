@@ -1,4 +1,4 @@
-class ThermiteGrinder : Weapon replaces SuperShotgun
+class ThermiteGrinder : BloodyWeapon replaces SuperShotgun
 {
 	// A device that grinds iron scrap into thermite, lobbing molten firebombs.
 	// Like a GL, but like, on fire.
@@ -29,7 +29,7 @@ class ThermiteGrinder : Weapon replaces SuperShotgun
 		Ready:
 			NLSG A 1 
 			{ 
-				if(CountInv("Nail")>=2) { A_WeaponReady(); } Else { A_WeaponReady(WRF_NOFIRE); }
+				A_ReadyIfAmmo();
 			}
 			Loop;
 		Fire:
