@@ -69,7 +69,7 @@ class CoilRepeater : BloodyWeapon replaces Chaingun
 				A_StartSound("weapon/repf",1); 
 				A_FireCoil();
 			} // shot goes here
-			REPG E 0 { A_RefireIfAmmo(); }
+			REPG E 0 { A_RefireIfAmmo("Hold"); }
 			Goto SpinDown;
 		FullAuto:
 			REPG E 1 Bright { A_StartSound("weapon/repf",1); A_WeaponOffset(0,16,WOF_ADD); A_FireCoil(); } // and here
@@ -80,7 +80,7 @@ class CoilRepeater : BloodyWeapon replaces Chaingun
 			REPG CD 1 A_WeaponOffset(0,-8,WOF_ADD);
 			REPG H 1 Bright { A_StartSound("weapon/repf",1); A_WeaponOffset(0,16,WOF_ADD); A_FireCoil(); } // and here
 			REPG DA 1 A_WeaponOffset(0,-8,WOF_ADD);
-			REPG E 0 { A_RefireIfAmmo(); }
+			REPG E 0 { A_RefireIfAmmo("Hold"); }
 		SpinDown:
 			REPG ABCD 0 { A_SetTics(invoker.shotSpeed); A_RefireIfAmmo(); A_StartSound("weapon/repsd",flags:CHANF_NOSTOP); }
 			REPG A 0
