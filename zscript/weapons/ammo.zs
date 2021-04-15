@@ -7,9 +7,9 @@ class Nail : Ammo replaces Shell
 	default
 	{
 		Scale 0.5;
-		Inventory.Amount 4;
+		Inventory.Amount 2;
 		Inventory.MaxAmount 50;
-		Ammo.BackpackAmount 4;
+		Ammo.BackpackAmount 2;
 		Ammo.BackpackMaxAmount 100;
 		Inventory.PickupMessage "Grabbed some nails.";
 	}
@@ -31,7 +31,7 @@ class NailBox : Nail replaces ShellBox
 	default
 	{
 		Scale 1;
-		Inventory.Amount 20;
+		Inventory.Amount 10;
 		Inventory.PickupMessage "Got a box of nails.";
 	}
 
@@ -51,7 +51,7 @@ class Coil : Ammo replaces Clip
 	default
 	{
 		Scale 1;
-		Inventory.Amount 15;
+		Inventory.Amount 7;
 		Inventory.MaxAmount 300;
 		Ammo.BackpackAmount 30;
 		Ammo.BackpackMaxAmount 600;
@@ -75,7 +75,7 @@ class CoilCase : Coil replaces ClipBox
 	default
 	{
 		Scale 1;
-		Inventory.Amount 60;
+		Inventory.Amount 35;
 		Inventory.PickupMessage "Grabbed a case of coil charges.";
 	}
 
@@ -94,7 +94,7 @@ class LightGem : Ammo replaces Cell
 
 	default
 	{
-		Inventory.Amount 20;
+		Inventory.Amount 10;
 		Inventory.MaxAmount 200;
 		Ammo.BackpackAmount 40;
 		Ammo.BackpackMaxAmount 400;
@@ -117,7 +117,7 @@ class PowerOrb : LightGem replaces CellPack
 	default
 	{
 		Scale 1.5;
-		Inventory.Amount 100;
+		Inventory.Amount 50;
 		Inventory.PickupMessage "Grabbed a Power Orb.";
 	}
 
