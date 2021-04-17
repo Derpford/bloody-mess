@@ -40,7 +40,10 @@ class BolterShot : FastProjectile
 	// The bolter shot. 
 	override int DoSpecialDamage(Actor tgt, int dmg, name mod)
 	{
-		double mult = min((tgt.health/tgt.SpawnHealth()),1);
+		tgt.A_GiveInventory("Disintegrate",70);
+		double rangeMax = tgt.SpawnHealth();
+		double rangeMin = rangeMax * 0.2;
+		double mult = min(max(tgt.health - rangeMin,0)/max(rangeMax-rangeMin,1),1);
 		mult = 2 - mult;
 		return floor(dmg*mult);
 	}
