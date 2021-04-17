@@ -38,6 +38,12 @@ class Bolter : BloodyWeapon
 class BolterShot : FastProjectile
 {
 	// The bolter shot. 
+	override int DoSpecialDamage(Actor tgt, int dmg, name mod)
+	{
+		double mult = min((tgt.health/tgt.SpawnHealth()),1);
+		mult = 2 - mult;
+		return floor(dmg*mult);
+	}
 	default
 	{
 		DamageFunction 10;
@@ -62,13 +68,6 @@ class BolterShot : FastProjectile
 			DLIT O 1 
 			{ 
 				A_StartSound("weapon/bolth"); 
-				if(tracer)
-				{
-					tracer.A_GiveInventory("Disintegrate",70); 
-					int dmg = floor(10.0*(1.0-((10+tracer.health)/Float(tracer.spawnHealth()))));
-					tracer.DamageMobj(self,target,dmg,"Disintegrate");
-					console.printf("Disintegrating! "..dmg);
-				}
 			}
 			DLIT NMLKJ 1;
 			DLIT JKLMNO 1;
