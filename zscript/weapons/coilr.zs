@@ -109,10 +109,10 @@ class CoilTracer : FastProjectile
 	// Does no damage! Damage is handled by the shockwave.
 	default
 	{
-		+THRUACTORS;
+		+RIPPER;
 		Scale 0.5;
 		RenderStyle "Add";
-		DamageFunction 0;
+		DamageFunction 4;
 		MissileType "CoilShockwave";
 		MissileHeight 8;
 		Radius 4;
@@ -137,6 +137,7 @@ class CoilShockwave : Actor
 	default
 	{
 		+NOGRAVITY;
+		+NOINTERACTION;
 		Scale 0.3;
 		RenderStyle "Add";
 		Alpha 0.3;
@@ -146,14 +147,14 @@ class CoilShockwave : Actor
 	{
 		Spawn:
 			RPUF A 0;
-			RPUF A 0 { if(target) { target = target.target; } }
+			RPUF A 0; //{ if(target) { target = target.target; } }
 			// Normally, A_Explode does not hurt its owner.
 			// However, its owner is tracked via the `target` var,
 			// which for a FastProjectile's trail actors, is the FastProjectile.
 			// We get around this by setting our target to our target's target, which is the player.
 			RPUF FDBA 1;
-			RPUF A 0 A_Explode(4,8,XF_NOSPLASH,true,4);
-			RPUF ABCDEF 1;
+			//RPUF A 0 A_Explode(4,8,XF_NOSPLASH,true,4);
+			RPUF BCDEF 1;
 			Stop;
 	}
 }
