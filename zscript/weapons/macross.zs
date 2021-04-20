@@ -107,7 +107,8 @@ class MacrossMissile: FastProjectile
 				{
 					if(Vec3To(master).Length() < 64)
 					{
-						Warp(master,48,0,36+sin(GetAge()+ageOffset)*12,angle:GetAge(),flags:WARPF_ABSOLUTEANGLE);
+						double dist = sin(GetAge()*2) * 12;
+						Warp(master,48,dist*sin(GetAge()+ageOffset),36+dist*cos(GetAge()+ageOffset));
 					}
 					else
 					{
@@ -135,7 +136,7 @@ class MacrossMissile: FastProjectile
 				if(tracer) { VelIntercept(tracer); } else { bNOGRAVITY = false; }
 			}
 		FlyLoop:
-			HSBM A 1;
+			HSBM A 1 { angle+=frandom(-1.,1.); VelFromAngle(60,angle); }
 			Loop;
 		Death:
 			MISL B 0 
