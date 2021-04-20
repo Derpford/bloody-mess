@@ -29,7 +29,7 @@ class BloodyMessPlayer : DoomPlayer
 			}
 
 			let myarmor = BasicArmor(FindInventory("BasicArmor"));
-			if(myarmor.Amount > 100)
+			if(myarmor && myarmor.Amount > 100)
 			{
 				myarmor.Amount -= 1;
 			}
