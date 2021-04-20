@@ -11,7 +11,7 @@ class BloodyHelltank : Cyberdemon replaces Cyberdemon
 	States
 	{
 		Stagger:
-			CYBR G AAAA 8 A_Pain();
+			CYBR GGGG 8 A_Pain();
 			Goto Missile;
 	}
 }
