@@ -28,3 +28,77 @@ class BloodyWeapon : Weapon
 		}
 	}
 }
+
+class BloodWave : Inventory replaces Chainsaw
+{
+	// A powerful inventory item that fires a bloody shockwave
+	// with disintegrating properties.
+	// On a reasonably long cooldown.
+
+	mixin Spinner;
+
+	default
+	{
+		//+INVENTORY.UNDROPPABLE;
+		+INVENTORY.INVBAR;
+		+INVENTORY.KEEPDEPLETED;
+		Inventory.Amount 100;
+		Inventory.MaxAmount 100;
+		Inventory.PickupMessage "Bagged the Blood Wave Device!";
+	}
+
+	override void DoEffect()
+	{
+		// Tick amount upward.
+		if(GetAge() % 3 == 0) { owner.A_GiveInventory("BloodWave",1); }
+	}
+
+	override bool Use(bool pickup)
+	{
+		console.printf("Used the bloodwave!");
+		console.printf(owner.CountInv("Bloodwave").." charge level");
+		if(owner.CountInv("BloodWave")>99)
+		{
+			owner.A_TakeInventory("BloodWave",100);
+			owner.A_SpawnItemEX("BloodBlast",xofs:16,zofs:32,xvel:10,flags:SXF_SETTARGET);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	states
+	{
+		Spawn:
+			PSTR A -1;
+			Stop;
+	}
+}
+
+class BloodBlast : Actor
+{
+	// The bloodwave's shockwave.
+
+	default
+	{
+		PROJECTILE;
+		Speed 30;
+		DamageFunction 30;
+		Radius 20;
+		Height 8;
+		RenderStyle "Add";
+		DamageType "Disintegrate";
+	}
+
+	states
+	{
+		Spawn:
+			REDT A 0;
+			REDT A 0 A_StartSound("weapon/underx");
+			REDE DCBA 2 Bright A_Explode(30,128,flags:0,fulldamagedistance:128);
+			REDE ABCD 4 Bright A_Explode(30,128,flags:0,fulldamagedistance:128);
+			Stop;
+	}
+}
