@@ -137,13 +137,17 @@ class MiniThermite : Actor
 	override int DamageMobj(Actor inf, Actor src, int dmg, Name mod, int flags, double ang)
 	{
 		// When damaged, the can actually starts flying away from the actor that smacked it.
-		if(mod != "Thermite")
+		if(mod != "Thermite" && !bMISSILE)
 		{
-			target = src;
+			target = inf;
 			bMISSILE = true;
 			A_FaceTarget();
+			return 0;
 		}
-		return super.DamageMobj(inf, src, dmg, mod, flags, ang);
+		else
+		{
+			return super.DamageMobj(inf, src, dmg, mod, flags, ang);
+		}
 	}
 
 
@@ -152,16 +156,17 @@ class MiniThermite : Actor
 		Spawn:
 			FCAN ABCB 4 Bright
 			{
-				if(target && bMISSILE)
+				if(bMISSILE)
 				{
+					A_Explode(1,32,XF_NOTMISSILE,fulldamagedistance:32);
 					Thrust(-4,angle);
 				}
 			}
 			Loop;
 		Death:
-			MISL B 5 Bright { A_StartSound("world/barrelx"); A_SetRenderStyle(1.0,STYLE_ADD); }
+			MISL B 5 Bright { A_Explode(64); A_StartSound("world/barrelx"); A_SetRenderStyle(1.0,STYLE_ADD); }
 			MISL BC 5 Bright A_SetScale(1,1);
-			MISL D 10 Bright A_Explode(64);
+			MISL D 10 Bright;
 			Stop;
 	}
 }
