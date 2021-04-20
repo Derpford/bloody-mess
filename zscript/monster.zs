@@ -67,13 +67,16 @@ mixin class BloodyMonster
 	{
 		Array<String> initDropList = {"Coil","Nail","RocketPile","LightGem"}; // TODO: Get these dynamically
 		Array<String> dropList;
-		for(int i = 0; i < initDropList.size(); i++)
-		{
-			if(src.FindInventory(initDropList[i]))
+		if(src)
+		{ 
+			for(int i = 0; i < initDropList.size(); i++)
 			{
-				if(src.CountInv(initDropList[i])<src.FindInventory(initDropList[i]).maxAmount)
+				if(src.FindInventory(initDropList[i]))
 				{
-					dropList.push(initDropList[i]);
+					if(src.CountInv(initDropList[i])<src.FindInventory(initDropList[i]).maxAmount)
+					{
+						dropList.push(initDropList[i]);
+					}
 				}
 			}
 		}
