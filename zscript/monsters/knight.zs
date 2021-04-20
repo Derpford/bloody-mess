@@ -14,7 +14,7 @@ class BloodyKnight : HellKnight replaces HellKnight
 			BOS2 H 3;
 			BOS2 H 3 A_Pain();
 			BOS2 A 6;
-			BOS2 H 4 { A_StartSound("knight/sight"); A_Explode(128); }
+			BOS2 H 4 { A_StartSound("knight/sight"); A_Explode(128,flags:XF_NOTMISSILE); }
 			Goto See;
 	}
 }

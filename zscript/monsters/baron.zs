@@ -14,7 +14,7 @@ class BloodyBaron : BaronOfHell replaces BaronOfHell
 			BOSS H 2;
 			BOSS H 2 A_Pain();
 			BOSS A 6;
-			BOSS H 4 { A_StartSound("baron/sight"); A_Explode(128); }
+			BOSS H 4 { A_StartSound("baron/sight"); A_Explode(128,flags:XF_NOTMISSILE); }
 			Goto See;
 	}
 }
