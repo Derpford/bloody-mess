@@ -14,7 +14,7 @@ mixin class BloodyMonster
 	void TossDrop(String it, double dropAng)
 	{
 		bool res; Actor thing;
-		[ res, thing ] = A_SpawnItemEX(it,radius,xvel:random(3,5),zvel:random(5,7),angle:dropAng);
+		[ res, thing ] = A_SpawnItemEX(it,radius,xvel:random(3,5),zvel:random(5,7),angle:dropAng,flags:SXF_ABSOLUTEANGLE);
 		let thingInv = Inventory(thing);
 		if(thingInv) { thingInv.Amount = floor(thingInv.Amount*0.5); }
 	}
