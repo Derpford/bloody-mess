@@ -125,12 +125,36 @@ class MiniThermite : Actor
 		Radius 8;
 		DamageFactor "Thermite",0;
 		+SHOOTABLE;
+		+STEPMISSILE;
+		+DROPOFF;
+		+NOEXPLODEFLOOR;
+		+THRUSPECIES;
+		+BUDDHA;
 	}
+
+	override int DamageMobj(Actor inf, Actor src, int dmg, Name mod, int flags, double ang)
+	{
+		// When damaged, the can actually starts flying away from the actor that smacked it.
+		if(mod != "Thermite")
+		{
+			target = src;
+			bMISSILE = true;
+			A_FaceTarget();
+		}
+		return super.DamageMobj(inf, src, dmg, mod, flags, ang);
+	}
+
 
 	states
 	{
 		Spawn:
-			FCAN ABCB 4 Bright;
+			FCAN ABCB 4 Bright
+			{
+				if(target && bMISSILE)
+				{
+					Thrust(-4,angle);
+				}
+			}
 			Loop;
 		Death:
 			MISL B 5 Bright { A_StartSound("world/barrelx"); A_SetRenderStyle(1.0,STYLE_ADD); }
