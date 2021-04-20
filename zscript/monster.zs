@@ -15,7 +15,6 @@ mixin class BloodyMonster
 	{
 		bool res; Actor thing;
 		dropAng += frandom(-30.0,30.0);
-		console.printf(""..dropAng);
 		[ res, thing ] = A_SpawnItemEX(it,radius,xvel:random(1,3),zvel:random(5,9),angle:dropAng,flags:SXF_ABSOLUTEANGLE);
 		let thingInv = Inventory(thing);
 		if(thingInv) { thingInv.Amount = floor(thingInv.Amount*0.5); }
