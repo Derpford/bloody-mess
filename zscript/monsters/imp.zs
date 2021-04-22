@@ -10,7 +10,7 @@ class BloodyImp : DoomImp replaces DoomImp
 	states
 	{
 		Missile:
-			TROO E 4 A_FaceTarget();
+			TROO E 4 { A_FaceTarget(); A_StartSound("imp/attack"); } 
 			TROO EEEE 2 Bright A_SpawnItemEX("FireFX",0,8,36);
 			TROO F 4 Bright;
 			TROO G 6 Bright A_SpawnProjectile("ThermiteBall",flags:CMF_OFFSETPITCH|CMF_SAVEPITCH,pitch:-5);
