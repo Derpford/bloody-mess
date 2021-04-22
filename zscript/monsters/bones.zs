@@ -16,3 +16,25 @@ class BloodyBones : Revenant replaces Revenant
 			Goto Melee;
 	}
 }
+
+class BoneBuster : RevenantTracer replaces RevenantTracer
+{
+	default
+	{
+		DamageFunction 40;
+	}
+
+	states
+	{
+		Spawn:
+			FATB AB 3 Bright 
+			{
+				if(Vec3To(tracer).length() < 128) { bSEEKERMISSILE = false; }
+				A_SeekerMissile(15,5);
+			}
+			Loop;
+		Death:
+			FBXP ABC 5 Bright;
+			Stop;
+	}
+}
