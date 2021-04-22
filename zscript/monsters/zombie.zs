@@ -12,6 +12,15 @@ class BloodyZombie : Zombieman replaces Zombieman
 
 	states
 	{
+		Missile:
+			POSS E 15 A_FaceTarget();
+			POSS F 8 Bright
+			{
+				A_StartSound("weapon/boltf");
+				A_SpawnProjectile("BolterShot");
+			}
+			POSS E 12;
+			Goto See;
 		Stagger:
 			POSS G 3 
 			{
