@@ -30,3 +30,10 @@ weapon/underf "sounds/bolter/BOLTFIRE"
 $pitchset weapon/underf 0.5
 weapon/underx "sounds/photon/BRPSEXPL"
 $pitchset weapon/underf 2.0
+
+skul/egg1 "sounds/egg/fox07.dsp.wav"
+skul/egg2 "sounds/egg/fox0a.dsp.wav"
+skul/egg3 "sounds/egg/fox0b.dsp.wav"
+skul/egg4 "sounds/egg/fox15.dsp.wav"
+
+$random skul/egg { skul/egg1 skul/egg2 skul/egg3 skul/egg4 }
