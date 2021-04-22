@@ -9,6 +9,29 @@ class BloodyHealBonus : HealthBonus replaces HealthBonus
 	}
 }
 
+class BloodyStimpack : Stimpack replaces Stimpack
+{
+	mixin Spinner;
+
+	default
+	{
+		Inventory.Amount 15;
+		Inventory.PickupMessage "Stimpack! +15 health!";
+	}
+}
+
+class BloodyMedkit : Medikit replaces Medikit
+{
+	mixin Spinner;
+
+	default
+	{
+		Inventory.Amount 30;
+		Inventory.PickupMessage "Medkit! +30 health!";
+		Health.LowMessage 25, "Medkit! What a lifesaver!";
+	}
+}
+
 class BloodyArmorBonus : ArmorBonus replaces ArmorBonus
 {
 	// So too for the armor bonus.
