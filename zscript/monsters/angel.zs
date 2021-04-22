@@ -6,9 +6,9 @@ class BloodyAngel : Archvile replaces Archvile
 	Property RezCount: rezCount;
 	default
 	{
-		BloodyAngel.StaggerHealth 15,3;
+		BloodyAngel.StaggerHealth 700,3;
 		BloodyAngel.BonusDrops 3,5;
-		Health 350;
+		Health 1050;
 		+BUDDHA;
 		RenderStyle "Translucent";
 		BloodyAngel.RezCount 2;
@@ -23,14 +23,16 @@ class BloodyAngel : Archvile replaces Archvile
 		Stagger:
 			VILE A 0
 			{
-				health = SpawnHealth();
-				bTHRUACTORS = true;
-				bFRIGHTENED = true;
-				alpha = 0.5;
-				runTimer = 87;
-				for(int i = 5; i > 0; i--)
+				if(rezCount>0)
 				{
-					A_SpawnItemEX("RezCube");
+					bTHRUACTORS = true;
+					bFRIGHTENED = true;
+					alpha = 0.5;
+					runTimer = 87;
+					for(int i = 5; i > 0; i--)
+					{
+						A_SpawnItemEX("RezCube");
+					}
 				}
 			}
 			VILE QR 12 A_Pain();
