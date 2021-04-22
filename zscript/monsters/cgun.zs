@@ -13,7 +13,7 @@ class BloodyChaingunner : ChaingunGuy replaces ChaingunGuy
 		Missile:
 			CPOS E 0 A_FaceTarget();
 			CPOS E 12 A_StartSound("weapon/repsu");
-			CPOS F 4 { A_StartSound("Weapon/repf",1); A_SpawnProjectile("CoilTracer"); } 
+			CPOS F 4 { A_StartSound("Weapon/repf",1); A_SpawnProjectile("CoilTracerEnemy"); } 
 			CPOS E 12 A_StartSound("Weapon/repsd");
 			CPOS E 1 A_CPosRefire();
 			Goto Missile;
@@ -23,5 +23,16 @@ class BloodyChaingunner : ChaingunGuy replaces ChaingunGuy
 			CPOS G 3;
 			CPOS A 4;
 			Goto See;
+	}
+}
+
+class CoilTracerEnemy : CoilTracer
+{
+	// Because god DAMN the Coil Tracer shots are powerful.
+
+	default
+	{
+		-RIPPER;
+		DamageFunction 12;
 	}
 }
