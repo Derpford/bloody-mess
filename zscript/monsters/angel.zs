@@ -70,6 +70,7 @@ class RezCube: Actor
 	default
 	{
 		+NOGRAVITY;
+		+FLOAT;
 		Speed 15;
 	}
 
