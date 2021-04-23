@@ -86,8 +86,20 @@ class MacrossMissile: FastProjectile
 		DamageFunction 16;
 		Speed 60;
 		+NOCLIP;
-		+ALLOWTHRUBITS;
-		ThruBits 1;
+		//+ALLOWTHRUBITS;
+		//ThruBits 1;
+	}
+
+	override bool CanCollideWith(Actor other, bool passive)
+	{
+		if( target == other )
+		{
+			return false;
+		}
+		else
+		{
+			return super.CanCollideWith(other,passive);
+		}
 	}
 
 	states
