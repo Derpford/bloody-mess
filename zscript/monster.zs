@@ -74,7 +74,7 @@ mixin class BloodyMonster
 					if(maxStaggers > 0) { maxStaggers -= 1; }
 				}
 			}
-			if( health - damage > 0 ) { SetState(ResolveState("Stagger")); }
+			if( health - damage > 0 && !InStateSequence(curState,resolveState("Stagger"))) { SetState(ResolveState("Stagger")); }
 		}
 
 		if(InStateSequence(curstate, resolvestate("stagger")))
