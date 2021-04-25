@@ -83,7 +83,8 @@ class BloodBlast : Actor
 
 	default
 	{
-		PROJECTILE;
+		+NOGRAVITY;
+		+THRUACTORS;
 		Speed 30;
 		DamageFunction 30;
 		Radius 20;
@@ -95,6 +96,7 @@ class BloodBlast : Actor
 	states
 	{
 		Spawn:
+		Death:
 			REDT A 0;
 			REDT A 0 A_StartSound("weapon/underx");
 			REDE DCBA 2 Bright A_Explode(30,128,flags:0,fulldamagedistance:128);
