@@ -7,6 +7,7 @@ mixin class BloodyMonster
 	int staggerBonusAmt;
 	int deathBonusAmt;
 	int maxStaggers;
+	int hitStun;
 
 	Property StaggerHealth : staggerHealth,maxStaggers;
 	Property BonusDrops : staggerBonusAmt, deathBonusAmt;
@@ -20,8 +21,31 @@ mixin class BloodyMonster
 		if(thingInv) { thingInv.Amount = floor(thingInv.Amount*0.5); }
 	}
 
+	override void Tick()
+	{
+		if(hitStun != 0 && tics<curState.tics)
+		{
+			console.printf("Hitstun Tics: "..hitStun);
+
+			A_SetTics(curState.tics+hitStun);
+			hitStun = 0;
+		}
+
+		if(tics>curState.tics && tics%3==0)
+		{
+			A_SetRenderStyle(1.0,STYLE_Stencil);
+			SetShade("Red");
+		}
+		else
+		{
+			A_SetRenderStyle(1.0,STYLE_Normal);
+		}
+		super.Tick();
+	}
+
 	override int DamageMobj(Actor inf, Actor src, int dmg, Name mod, int flags, double ang)
 	{
+		hitStun = max(hitStun, ceil(sqrt(dmg)));
 		if(health-dmg < staggerHealth)
 		{
 			double dropAng = 0.0;
@@ -61,6 +85,7 @@ mixin class BloodyMonster
 		{
 			return super.DamageMobj(inf,src,dmg,mod,flags,ang);
 		}
+
 
 	}
 
