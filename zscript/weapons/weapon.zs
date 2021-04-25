@@ -50,7 +50,7 @@ class BloodWave : Inventory replaces Chainsaw
 	override void DoEffect()
 	{
 		// Tick amount upward.
-		if(GetAge() % 3 == 0) { owner.A_GiveInventory("BloodWave",1); }
+		if( GetAge() % 3 == 0 || (CountInv("PowerStrength")>0 && GetAge() % 2 == 0) ) { owner.A_GiveInventory("BloodWave",1); }
 	}
 
 	override bool Use(bool pickup)
