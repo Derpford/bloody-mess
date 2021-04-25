@@ -13,6 +13,7 @@ version "4.5"
 #include "zscript/weapons/therm.zs"
 #include "zscript/weapons/macross.zs"
 #include "zscript/weapons/unmaker.zs"
+#include "zscript/weapons/bloodpack.zs"
 // Health/Armor
 #include "zscript/bonus.zs"
 // Monsters

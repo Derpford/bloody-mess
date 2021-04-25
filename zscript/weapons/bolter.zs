@@ -21,7 +21,15 @@ class Bolter : BloodyWeapon
 		Fire:
 			PLBG B 3 Bright 
 			{ 
-				A_FireProjectile("BolterShot"); 
+				if(CountInv("PowerStrength")>0)
+				{
+					A_FireProjectile("BolterShot",1,spawnofs_xy:-1); 
+					A_FireProjectile("BolterShot",-1,spawnofs_xy:1); 
+				}
+				else
+				{
+					A_FireProjectile("BolterShot"); 
+				}
 				A_StartSound("weapon/boltf"); 
 				A_WeaponOffset(8,0,WOF_ADD);
 			}
