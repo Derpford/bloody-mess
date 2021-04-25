@@ -55,8 +55,6 @@ class BloodWave : Inventory replaces Chainsaw
 
 	override bool Use(bool pickup)
 	{
-		console.printf("Used the bloodwave!");
-		console.printf(owner.CountInv("Bloodwave").." charge level");
 		if(owner.CountInv("BloodWave")>99)
 		{
 			owner.A_TakeInventory("BloodWave",100);

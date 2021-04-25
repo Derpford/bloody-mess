@@ -25,8 +25,6 @@ mixin class BloodyMonster
 	{
 		if(hitStun != 0 && tics<curState.tics)
 		{
-			console.printf("Hitstun Tics: "..hitStun);
-
 			A_SetTics(curState.tics+hitStun);
 			hitStun = 0;
 		}
