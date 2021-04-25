@@ -22,13 +22,13 @@ mixin class BloodyMonster
 
 	override int DamageMobj(Actor inf, Actor src, int dmg, Name mod, int flags, double ang)
 	{
-		double dropAng = 0.0;
-		if(src)
-		{
-			dropAng = angleTo(src);
-		}
 		if(health-dmg < staggerHealth)
 		{
+			double dropAng = 0.0;
+			if(src)
+			{
+				dropAng = angleTo(src);
+			}
 			// We're not dead, but we're staggered.
 			while(health-dmg < staggerHealth && staggerHealth > 5)
 			{
