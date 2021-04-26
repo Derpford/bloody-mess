@@ -10,22 +10,22 @@ LISTMENU "MainMenu"
 {
 	StaticPatch 44, 12, "M_DOOM"
 	Position 2, 92
-	PatchItem "M_NGAME", "n", "PlayerclassMenu"
+	TextItem "New Game", "n", "PlayerclassMenu"
 	ifOption(SwapMenu)
 	{
-		PatchItem "M_LOADG", "l", "LoadGameMenu"
-		PatchItem "M_SAVEG", "s", "SaveGameMenu"
-		PatchItem "M_OPTION","o", "OptionsMenu"
+		TextItem "Load Game", "l", "LoadGameMenu"
+		TextItem "Save Game", "s", "SaveGameMenu"
+		TextItem "Options","o", "OptionsMenu"
 	}
 	else
 	{
-		PatchItem "M_OPTION","o", "OptionsMenu"
-		PatchItem "M_LOADG", "l", "LoadGameMenu"
-		PatchItem "M_SAVEG", "s", "SaveGameMenu"
+		TextItem "Options","o", "OptionsMenu"
+		TextItem "Load Game", "l", "LoadGameMenu"
+		TextItem "Save Game", "s", "SaveGameMenu"
 	}
 	ifOption(ReadThis)
 	{
-		PatchItem "M_RDTHIS","r", "ReadThisMenu"
+		TextItem "README","r", "ReadThisMenu"
 	}
-	PatchItem "M_QUITG", "q", "QuitMenu"
+	TextItem "Quit Game", "q", "QuitMenu"
 }
