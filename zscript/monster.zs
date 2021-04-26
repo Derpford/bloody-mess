@@ -29,7 +29,7 @@ mixin class BloodyMonster
 			hitStun = 0;
 		}
 
-		if(tics>curState.tics && tics%3==0)
+		if(tics>curState.tics && GetAge()%3==0)
 		{
 			A_SetRenderStyle(1.0,STYLE_Stencil);
 			SetShade("Red");
