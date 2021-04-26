@@ -11,7 +11,7 @@ class BloodPack : Berserk replaces Berserk
 	states
 	{
 		Spawn:
-			BPAK A -1;
+			BPAK B -1;
 			Stop;
 	}
 }
