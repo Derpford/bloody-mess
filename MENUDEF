@@ -1,0 +1,31 @@
+DEFAULTLISTMENU
+{
+	Font "BigFont", "Untranslated"
+	Selector "M_SKULL1", -32, -5
+	Linespacing 16
+	Font "BigFont", "Red"
+}
+
+LISTMENU "MainMenu"
+{
+	StaticPatch 44, 12, "M_DOOM"
+	Position 2, 92
+	PatchItem "M_NGAME", "n", "PlayerclassMenu"
+	ifOption(SwapMenu)
+	{
+		PatchItem "M_LOADG", "l", "LoadGameMenu"
+		PatchItem "M_SAVEG", "s", "SaveGameMenu"
+		PatchItem "M_OPTION","o", "OptionsMenu"
+	}
+	else
+	{
+		PatchItem "M_OPTION","o", "OptionsMenu"
+		PatchItem "M_LOADG", "l", "LoadGameMenu"
+		PatchItem "M_SAVEG", "s", "SaveGameMenu"
+	}
+	ifOption(ReadThis)
+	{
+		PatchItem "M_RDTHIS","r", "ReadThisMenu"
+	}
+	PatchItem "M_QUITG", "q", "QuitMenu"
+}
