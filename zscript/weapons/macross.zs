@@ -163,7 +163,7 @@ class MacrossMissile: FastProjectile
 					return ResolveState(null);
 				}
 			}
-			MISL B 4 Bright { A_Explode(40); A_StartSound("weapon/macrox"); }
+			MISL B 4 Bright { A_Explode(60); A_StartSound("weapon/macrox"); }
 			MISL CD 6 Bright;
 			Stop;
 	}
