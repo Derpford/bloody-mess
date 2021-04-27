@@ -176,7 +176,10 @@ class MiniThermite : Actor
 		{
 			target = inf;
 			bMISSILE = true;
-			A_FaceTarget();
+			A_FaceTarget(ang_offset:180);
+			double offs = DeltaAngle(angle, target.angle) / 2.0;
+			//angle += offs;
+			angle = target.angle - clamp(offs,-15.0,15.0);
 			return 0;
 		}
 		else
@@ -194,7 +197,7 @@ class MiniThermite : Actor
 				if(bMISSILE)
 				{
 					A_Explode(1,32,XF_NOTMISSILE,fulldamagedistance:32);
-					Thrust(-4,angle);
+					Thrust(4,angle);
 				}
 			}
 			Loop;
