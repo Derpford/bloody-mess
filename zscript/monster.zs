@@ -8,6 +8,8 @@ mixin class BloodyMonster
 	int deathBonusAmt;
 	int maxStaggers;
 	int hitStun;
+	int style;
+	double oldAlpha;
 
 	Property StaggerHealth : staggerHealth,maxStaggers;
 	Property BonusDrops : staggerBonusAmt, deathBonusAmt;
@@ -21,6 +23,13 @@ mixin class BloodyMonster
 		if(thingInv) { thingInv.Amount = floor(thingInv.Amount*0.5); }
 	}
 
+	override void PostBeginPlay()
+	{
+		Super.PostBeginPlay();
+		style = GetRenderStyle();
+		oldAlpha = alpha;
+	}
+
 	override void Tick()
 	{
 		if(hitStun != 0 && tics<curState.tics)
@@ -31,12 +40,14 @@ mixin class BloodyMonster
 
 		if(tics>curState.tics && GetAge()%3==0)
 		{
+			style = GetRenderStyle();
+			oldAlpha = alpha;
 			A_SetRenderStyle(1.0,STYLE_Stencil);
 			SetShade("Red");
 		}
 		else
 		{
-			A_SetRenderStyle(1.0,STYLE_Normal);
+			if(style && oldAlpha) { A_SetRenderStyle(oldAlpha,style); }
 		}
 		super.Tick();
 	}
