@@ -56,7 +56,7 @@ mixin class BloodyMonster
 
 	override int DamageMobj(Actor inf, Actor src, int dmg, Name mod, int flags, double ang)
 	{
-		hitStun = max(hitStun, ceil(sqrt(dmg)));
+		if(mod != "Massacre") { hitStun = max(hitStun, ceil(sqrt(dmg))); }
 		if(health-dmg < staggerHealth)
 		{
 			double dropAng = 0.0;
