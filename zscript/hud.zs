@@ -131,8 +131,12 @@ class BloodyStatusBar : BaseStatusBar
 
 
 		// Finally, the BWD's charge meter.
-		int bloodwave = GetAmount("Bloodwave");
-		DrawBar("REDBA0","bwmeter",bloodwave,100,(0,-4),0,SHADER_REVERSE|SHADER_VERT,cbarflags); 
+		let bwd = CPlayer.mo.FindInventory("Bloodwave");
+		if(bwd)
+		{
+			let bwdAmt = GetAmount("Bloodwave");
+			DrawBar("REDBA0","bwmeter",bwdAmt,100,(0,-4),0,SHADER_REVERSE|SHADER_VERT,cbarflags); 
+		}
 		
 	}
 }
