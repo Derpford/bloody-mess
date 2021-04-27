@@ -114,13 +114,21 @@ class BloodyStatusBar : BaseStatusBar
 		}
 
 		// Keys.
+		String keySprites[6] =
+		{
+			"STKEYS2",
+			"STKEYS0",
+			"STKEYS1",
+			"STKEYS5",
+			"STKEYS3",
+			"STKEYS4"
+		};
+
 		for(int i = 0; i < 6; i++)
 		{
-			if(CPlayer.mo.CheckKeys(i+1,false,true))
-			{
-				DrawImage("STKEYS"..i, (-40 + (16*i),-48),cbarflags,scale:(2,2));
-			}
+			if(CPlayer.mo.CheckKeys(i+1,false,true)) { DrawImage(keySprites[i],(-40+(16*i),-56),cbarflags,scale:(2,2)); }
 		}
+
 
 		// Finally, the BWD's charge meter.
 		int bloodwave = GetAmount("Bloodwave");
