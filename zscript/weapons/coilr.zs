@@ -42,7 +42,7 @@ class CoilRepeater : BloodyWeapon replaces Chaingun
 				int offs = -2;
 				if(GetAge() % 2 == 0) { offs = 2; }
 				A_WeaponOffset(0,offs+24,WOF_INTERPOLATE);
-				if(GetAge() % 2 == 0) { A_StartSound("weapons/sawidle"); }
+				if(GetAge() % 2 == 0) { A_StartSound("weapon/repi"); }
 				A_ReadyIfAmmo(WRF_NOBOB);
 			}
 			Loop;

@@ -6,15 +6,17 @@ weapon/shotr "sounds/shotg/TACPUMP"
 weapon/nailh "sounds/nailsg/NAILHIT"
 $limit weapon/nailh 0
 $rolloff weapon/nailh 400 2400
-$volume weapon/nailh 0.25;
+$volume weapon/nailh 0.25
 weapon/nailhx "sounds/nailsg/NAILHTBD"
 $limit weapon/nailhx 0
 $rolloff weapon/nailhx 400 2400
-$volume weapon/nailhx 0.5;
+$volume weapon/nailhx 0.5
 
 weapon/repf "sounds/repeater/REPGFIRE"
 weapon/repsu "sounds/repeater/REPGSPIN"
 weapon/repsd "sounds/repeater/REPGSTOP"
+weapon/repi dssawidl 
+$volume weapon/repi 0.3
 
 weapon/photf "sounds/photon/PHOTFIRE"
 $limit weapon/photf 0
