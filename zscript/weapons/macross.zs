@@ -108,7 +108,6 @@ class MacrossMissile: FastProjectile
 			HSBM A 0;
 			HSBM A 1 
 			{ 
-				angle += 15;
 
 				if(!ageOffset)
 				{
@@ -120,7 +119,7 @@ class MacrossMissile: FastProjectile
 					if(Vec3To(master).Length() < 64)
 					{
 						double dist = sin(GetAge()*2) * 12;
-						Warp(master,48,dist*sin(GetAge()+ageOffset),36+dist*cos(GetAge()+ageOffset),angle:angle,flags:WARPF_WARPINTERPOLATION);
+						Warp(master,48,dist*sin(GetAge()+ageOffset),36+dist*cos(GetAge()+ageOffset),flags:WARPF_WARPINTERPOLATION);
 					}
 					else
 					{
