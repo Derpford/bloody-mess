@@ -177,7 +177,8 @@ class MiniThermite : Actor
 			target = inf;
 			bMISSILE = true;
 			A_FaceTarget(ang_offset:180);
-			double offs = DeltaAngle(angle, target.angle) / 2.0;
+			double offs = 0.0;
+			if(target) { offs = DeltaAngle(angle, target.angle) / 2.0; }
 			//angle += offs;
 			angle = target.angle - clamp(offs,-15.0,15.0);
 			return 0;
