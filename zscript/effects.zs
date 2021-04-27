@@ -15,3 +15,14 @@ mixin class Spinner
 		Super.Tick();
 	}
 }
+
+mixin class ShowAmount
+{
+	// Adds the item's amount to its pickup message.
+
+	override String PickupMessage()
+	{
+		return Super.PickupMessage().." ("..amount..")";
+	}
+
+}

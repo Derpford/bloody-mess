@@ -2,6 +2,7 @@ class BloodyHealBonus : HealthBonus replaces HealthBonus
 {
 	// To make up for the health drain over time, this health bonus gives 3 points of health.
 	mixin Spinner;
+	mixin ShowAmount;
 	default
 	{
 		Inventory.Amount 3;
@@ -12,6 +13,7 @@ class BloodyHealBonus : HealthBonus replaces HealthBonus
 class BloodyStimpack : Stimpack replaces Stimpack
 {
 	mixin Spinner;
+	mixin ShowAmount;
 
 	default
 	{
@@ -23,6 +25,7 @@ class BloodyStimpack : Stimpack replaces Stimpack
 class BloodyMedkit : Medikit replaces Medikit
 {
 	mixin Spinner;
+	mixin ShowAmount;
 
 	default
 	{
@@ -36,6 +39,7 @@ class BloodyArmorBonus : ArmorBonus replaces ArmorBonus
 {
 	// So too for the armor bonus.
 	mixin Spinner;
+	mixin ShowAmount;
 	default
 	{
 		Armor.SaveAmount 3;
