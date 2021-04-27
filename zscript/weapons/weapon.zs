@@ -52,7 +52,7 @@ class BloodWave : Inventory replaces Chainsaw
 	override void DoEffect()
 	{
 		// Tick amount upward.
-		if( GetAge() % 3 == 0 || (CountInv("PowerStrength")>0 && GetAge() % 2 == 0) ) { owner.A_GiveInventory("BloodWave",1); }
+		if( GetAge() % 4 == 0 || (CountInv("PowerStrength")>0 && GetAge() % 2 == 0) ) { owner.A_GiveInventory("BloodWave",1); }
 	}
 
 	override bool Use(bool pickup)
@@ -99,8 +99,8 @@ class BloodBlast : Actor
 		Death:
 			REDT A 0;
 			REDT A 0 A_StartSound("weapon/underx");
-			REDE DCBA 2 Bright A_Explode(30,128,flags:0,fulldamagedistance:128);
-			REDE ABCD 4 Bright A_Explode(30,128,flags:0,fulldamagedistance:128);
+			REDE DCBA 2 Bright A_Explode(20,128,flags:0,fulldamagedistance:128);
+			REDE ABCD 4 Bright A_Explode(20,128,flags:0,fulldamagedistance:128);
 			Stop;
 	}
 }
