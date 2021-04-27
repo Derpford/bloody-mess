@@ -22,7 +22,15 @@ mixin class ShowAmount
 
 	override String PickupMessage()
 	{
-		return Super.PickupMessage().." ("..amount..")";
+		if(self is "ArmorBonus") 
+		{ 
+			let arm = ArmorBonus(self);
+			return Super.PickupMessage().." ("..arm.saveamount..")"; 
+		}
+		else
+		{
+			return Super.PickupMessage().." ("..amount..")";
+		}	
 	}
 
 }

@@ -20,7 +20,9 @@ mixin class BloodyMonster
 		dropAng += frandom(-30.0,30.0);
 		[ res, thing ] = A_SpawnItemEX(it,radius,xvel:random(1,3),zvel:random(5,9),angle:dropAng,flags:SXF_ABSOLUTEANGLE);
 		let thingInv = Inventory(thing);
-		if(thingInv) { thingInv.Amount = floor(thingInv.Amount*0.5); }
+		let thingArm = ArmorBonus(thing);
+		if(thingInv) { thingInv.Amount = ceil(thingInv.Amount*0.5); }
+		if(thingArm) { thingArm.SaveAmount = ceil(thingArm.SaveAmount*0.5); }
 	}
 
 	override void PostBeginPlay()
