@@ -18,7 +18,7 @@ class BloodyStimpack : Stimpack replaces Stimpack
 	default
 	{
 		Inventory.Amount 15;
-		Inventory.PickupMessage "Stimpack! +15 health!";
+		Inventory.PickupMessage "Stimpack!";
 	}
 }
 
@@ -30,7 +30,7 @@ class BloodyMedkit : Medikit replaces Medikit
 	default
 	{
 		Inventory.Amount 30;
-		Inventory.PickupMessage "Medkit! +30 health!";
+		Inventory.PickupMessage "Medkit!";
 		Health.LowMessage 25, "Medkit! What a lifesaver!";
 	}
 }
