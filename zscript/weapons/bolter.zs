@@ -65,8 +65,8 @@ class BolterShot : FastProjectile
 		Speed 30;
 		Projectile;
 		Scale 0.5;
-		Radius 6;
-		Height 12;
+		Radius 4;
+		Height 6;
 		MissileHeight 8;
 		RenderStyle "add";
 	}

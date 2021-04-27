@@ -120,7 +120,7 @@ class MacrossMissile: FastProjectile
 					if(Vec3To(master).Length() < 64)
 					{
 						double dist = sin(GetAge()*2) * 12;
-						Warp(master,48,dist*sin(GetAge()+ageOffset),36+dist*cos(GetAge()+ageOffset));
+						Warp(master,48,dist*sin(GetAge()+ageOffset),36+dist*cos(GetAge()+ageOffset),angle:angle,flags:WARPF_WARPINTERPOLATION);
 					}
 					else
 					{

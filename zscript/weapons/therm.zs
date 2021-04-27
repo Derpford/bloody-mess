@@ -65,7 +65,7 @@ class ThermiteBall : Actor
 		-NOGRAVITY;
 		RenderStyle "Add";
 		Speed 25;
-		Height 8;
+		Height 2;
 		Radius 8;
 		DamageFunction 12;
 		DamageType "Thermite";

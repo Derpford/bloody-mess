@@ -65,7 +65,7 @@ class NailShot : FastProjectile
 		Speed 40;
 		DamageFunction 8;
 		Radius 3;
-		Height 6;
+		Height 3;
 		MissileHeight 8;
 		MissileType "SmokeTrail";
 	}

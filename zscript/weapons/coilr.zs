@@ -114,7 +114,7 @@ class CoilTracer : FastProjectile
 		RenderStyle "Add";
 		DamageFunction 4;
 		MissileType "CoilShockwave";
-		MissileHeight 8;
+		MissileHeight 3;
 		Radius 4;
 		Speed 80;
 	}
