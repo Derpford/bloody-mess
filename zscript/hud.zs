@@ -113,6 +113,15 @@ class BloodyStatusBar : BaseStatusBar
 			}
 		}
 
+		// Keys.
+		for(int i = 0; i < 6; i++)
+		{
+			if(CPlayer.mo.CheckKeys(i+1,false,true))
+			{
+				DrawImage("STKEYS"..i, (-40 + (16*i),-48),cbarflags,scale:(2,2));
+			}
+		}
+
 		// Finally, the BWD's charge meter.
 		int bloodwave = GetAmount("Bloodwave");
 		DrawBar("REDBA0","bwmeter",bloodwave,100,(0,-4),0,SHADER_REVERSE|SHADER_VERT,cbarflags); 
