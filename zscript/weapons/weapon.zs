@@ -42,6 +42,8 @@ class BloodWave : Inventory replaces Chainsaw
 		//+INVENTORY.UNDROPPABLE;
 		+INVENTORY.INVBAR;
 		+INVENTORY.KEEPDEPLETED;
+		+INVENTORY.PERSISTENTPOWER;
+		Inventory.InterHubAmount 100;
 		Inventory.Amount 100;
 		Inventory.MaxAmount 100;
 		Inventory.PickupMessage "Bagged the Blood Wave Device!";
