@@ -3,6 +3,7 @@ class Nail : Ammo replaces Shell
 	// Individual nails.
 
 	mixin Spinner;
+	mixin ShowAmount;
 
 	default
 	{
@@ -47,6 +48,7 @@ class Coil : Ammo replaces Clip
 {
 	// A small coilgun ammo pack.
 	mixin Spinner;
+	mixin ShowAmount;
 
 	default
 	{
@@ -91,6 +93,7 @@ class LightGem : Ammo replaces Cell
 {
 	// A glowy rock to feed your PACannon with.
 	mixin Spinner;
+	mixin ShowAmount;
 
 	default
 	{
@@ -135,6 +138,7 @@ class RocketPile : Ammo replaces RocketAmmo
 	// A small pile of mini-rockets.
 
 	mixin Spinner;
+	mixin ShowAmount;
 
 	default
 	{
