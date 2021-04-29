@@ -15,7 +15,7 @@ $volume weapon/nailhx 0.5
 weapon/repf "sounds/repeater/REPGFIRE"
 weapon/repsu "sounds/repeater/REPGSPIN"
 weapon/repsd "sounds/repeater/REPGSTOP"
-weapon/repi dssawidl 
+$alias weapon/repi weapons/sawidle
 $volume weapon/repi 0.3
 
 weapon/photf "sounds/photon/PHOTFIRE"
