@@ -46,5 +46,17 @@ class BloodyLolth : SpiderMastermind replaces SpiderMastermind
 			SPID A 4 A_TakeInventory("SuperArmor",100);
 			Goto See;
 
+		Missile:
+			SPID A 20 { A_FaceTarget(); A_StartSound("weapon/repsu",pitch:2.0); }
+		MissileLoop:
+			SPID GHG 3 Bright
+			{
+				A_StartSound("weapon/carf");
+				A_SpawnProjectile("CoilCarbineShot",angle:frandom(-3.0,3.0));
+				A_MonsterRefire(60,"See");
+			}
+			SPID A 4;
+			loop;
+
 	}
 }
