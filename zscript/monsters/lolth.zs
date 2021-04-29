@@ -11,7 +11,7 @@ class BloodyLolth : SpiderMastermind replaces SpiderMastermind
 	states
 	{
 		Stagger:
-			SPID I 3 A_Pain();
+			SPID I 3 { A_Pain(); A_GiveInventory("SuperArmor",100); }
 			SPID I 5;
 			TNT1 A 3;
 			SPID I 5;
@@ -32,7 +32,7 @@ class BloodyLolth : SpiderMastermind replaces SpiderMastermind
 			TNT1 A 5;
 			SPID A 4;
 			TNT1 A 5;
-			SPID A 4;
+			SPID A 4 A_TakeInventory("SuperArmor",100);
 			Goto See;
 
 	}

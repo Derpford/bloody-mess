@@ -1,0 +1,7 @@
+Submitted: Fuzzyblaze, Infirnex
+Decorate: Fuzzyblaze, Infirnex
+GLDefs: Infirnex
+Sounds: Fuzzyblaze
+Sprites: Fuzzyblaze, id Software, FreeDoom Team
+Sprite Edit: Infirnex
+Idea Base: Doom 3 Plasma Rifle

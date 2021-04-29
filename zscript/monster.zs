@@ -56,7 +56,11 @@ mixin class BloodyMonster
 
 	override int DamageMobj(Actor inf, Actor src, int dmg, Name mod, int flags, double ang)
 	{
-		if(mod != "Massacre") { hitStun = max(hitStun, ceil(sqrt(dmg))); }
+		if(mod != "Massacre" && CountInv("SuperArmor")<1) 
+		{ 
+			hitStun = max(hitStun, ceil(sqrt(dmg))); 
+			hitStun = min(hitStun,35);
+		}
 		if(health-dmg < staggerHealth)
 		{
 			double dropAng = 0.0;
@@ -85,8 +89,13 @@ mixin class BloodyMonster
 					if(maxStaggers > 0) { maxStaggers -= 1; }
 				}
 			}
-			if( health - damage > 0 && !InStateSequence(curState,resolveState("Stagger"))) { SetState(ResolveState("Stagger")); }
-		}
+			if( health - damage > 0 && 
+				!InStateSequence(curState,resolveState("Stagger")) &&
+				CountInv("SuperArmor")<1) 
+				{ 
+					SetState(ResolveState("Stagger")); 
+				}
+			}
 
 		if(InStateSequence(curstate, resolvestate("stagger")))
 		{
@@ -147,6 +156,21 @@ mixin class BloodyMonster
 		super.Die(src,inf,flags,mod);
 	}
 
+}
+
+class SuperArmor : Inventory
+{
+	// Doesn't protect from damage. Instead, it stops staggers.
+	default
+	{
+		inventory.amount 1;
+		inventory.maxamount 999;
+	}
+
+	override void DoEffect()
+	{
+		owner.A_TakeInventory("SuperArmor",1);
+	}	
 }
 
 class MiniThermite : Actor
