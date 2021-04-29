@@ -2,6 +2,8 @@ class BloodyLolth : SpiderMastermind replaces SpiderMastermind
 {
 	mixin BloodyMonster;
 
+	int runTimer;
+
 	default
 	{
 		BloodyLolth.StaggerHealth 2000,-1;
@@ -25,9 +27,18 @@ class BloodyLolth : SpiderMastermind replaces SpiderMastermind
 			SPID I 2;
 			TNT1 A 3;
 		Run:
-			TNT1 AAAAAAAAAA 1 A_Wander();
+			TNT1 A 1 { runTimer = 35 * 3; }
+		RunLoop:
+			TNT1 A 1 
+			{
+				speed = 36;
+				A_Wander();
+				runTimer--;
+				if(runTimer < 1) { return ResolveState("Uncloak"); } else { return ResolveState(null); }
+			}
+			loop;
 		Uncloak:
-			TNT1 A 5;
+			TNT1 A 5 { speed = 12; }
 			SPID A 4;
 			TNT1 A 5;
 			SPID A 4;
