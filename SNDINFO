@@ -47,6 +47,10 @@ weapon/underf "sounds/bolter/BOLTFIRE"
 $pitchset weapon/underf 0.5
 weapon/underx "sounds/photon/BRPSEXPL"
 $pitchset weapon/underf 2.0
+weapon/underxd "sounds/photon/BRPSEXPL"
+$pitchset weapon/underxd 2.0
+$volume weapon/underxd 0.3
+$rolloff weapon/underxd 400 4800
 
 skul/egg1 "sounds/egg/fox07.dsp.wav"
 skul/egg2 "sounds/egg/fox0a.dsp.wav"

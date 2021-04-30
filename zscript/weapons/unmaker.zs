@@ -73,7 +73,7 @@ class UndertakerShot : FastProjectile
 			REDT AB 3 Bright;
 			Loop;
 		Death:
-			REDB A 4 Bright A_StartSound("weapon/underx");
+			REDB A 4 Bright { A_StartSound("weapon/underx",1); A_StartSound("weapon/underxd"); } 
 			REDE A 5 Bright A_Explode(80);
 			REDE B 6 Bright;
 			REDE C 8 Bright;
