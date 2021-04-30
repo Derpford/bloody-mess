@@ -1,5 +1,6 @@
 weapon/boltf "sounds/bolter/BOLTFIRE"
 weapon/bolth "sounds/repeater/REPGHIT"
+$limit weapon/bolth 4;
 
 weapon/shotr "sounds/shotg/TACPUMP"
 
