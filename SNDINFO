@@ -32,6 +32,10 @@ weapon/thermf "sounds/nailsg/NLSGFIRE"
 
 weapon/macrof "sounds/grenade/HSTMFIRE"
 weapon/macrox "sounds/grenade/HSTMHIT"
+$alias weapon/mmisf weapons/rocklf
+$limit weapon/mmisf 2
+weapon/mmisi "sounds/nailsg/NAILFLY"
+$pitchset weapon/mmisi 0.5
 
 weapon/underf "sounds/bolter/BOLTFIRE"
 $pitchset weapon/underf 0.5

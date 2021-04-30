@@ -143,15 +143,22 @@ class MacrossMissile: FastProjectile
 		Fly:
 			HSBM A 1
 			{
+				A_StartSound("weapon/mmisf",1);
 				bNOCLIP = false;
 				if(tracer) { VelIntercept(tracer); } else { bNOGRAVITY = false; }
 			}
 		FlyLoop:
-			HSBM A 1 { angle+=frandom(-1.,1.); VelFromAngle(60,angle); }
+			HSBM A 1 
+			{ 
+				A_StartSound("weapon/mmisi",flags:CHANF_NOSTOP);
+				angle+=frandom(-1.,1.); VelFromAngle(60,angle); 
+				if(GetAge()%3 == 0) { A_SpawnItemEX("MacrossJet",-8); }
+			}
 			Loop;
 		Death:
 			MISL B 0 
 			{
+				A_StopSound(4);
 				if(bNOCLIP)
 				{
 					// We got here from the spawn loop.
@@ -164,6 +171,23 @@ class MacrossMissile: FastProjectile
 			}
 			MISL B 4 Bright { A_Explode(60); A_StartSound("weapon/macrox"); }
 			MISL CD 6 Bright;
+			Stop;
+	}
+}
+
+class MacrossJet : Actor
+{
+	default
+	{
+		+NOINTERACTION;
+	}
+
+	states
+	{
+		Spawn:
+			MANF A 2 Bright;
+			TNT1 A 5 { A_SetScale(0.1); A_SetRenderStyle(1.0,STYLE_ADD); }
+			BAL1 CDE 3 Bright;
 			Stop;
 	}
 }

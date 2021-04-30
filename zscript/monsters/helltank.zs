@@ -10,6 +10,7 @@ class BloodyHelltank : Cyberdemon replaces Cyberdemon
 
 	action void A_HelltankShot()
 	{
+		A_StartSound("weapon/macrof");
 		Actor shot; 
 		shot = invoker.Spawn("MacrossMissile",Vec3Angle(48,angle,height/2.0));
 		shot.master = invoker;
