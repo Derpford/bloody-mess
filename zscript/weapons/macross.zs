@@ -150,7 +150,7 @@ class MacrossMissile: FastProjectile
 		FlyLoop:
 			HSBM A 1 
 			{ 
-				A_StartSound("weapon/mmisi",flags:CHANF_NOSTOP);
+				A_StartSound("weapon/mmisi",4,flags:CHANF_NOSTOP);
 				angle+=frandom(-1.,1.); VelFromAngle(60,angle); 
 				if(GetAge()%3 == 0) { A_SpawnItemEX("MacrossJet",-8); }
 			}
