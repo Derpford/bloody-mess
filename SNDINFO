@@ -52,6 +52,9 @@ $pitchset weapon/underxd 2.0
 $volume weapon/underxd 0.3
 $rolloff weapon/underxd 400 4800
 
+seek/beep dsitemup
+seek/lock dsgetpow
+
 skul/egg1 "sounds/egg/fox07.dsp.wav"
 skul/egg2 "sounds/egg/fox0a.dsp.wav"
 skul/egg3 "sounds/egg/fox0b.dsp.wav"

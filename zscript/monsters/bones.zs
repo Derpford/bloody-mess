@@ -29,8 +29,13 @@ class BoneBuster : RevenantTracer replaces RevenantTracer
 		Spawn:
 			FATB AB 3 Bright 
 			{
-				if(Vec3To(tracer).length() < 128) { bSEEKERMISSILE = false; }
-				A_SeekerMissile(15,5);
+				A_StartSound("weapon/mmisi",1,CHANF_NOSTOP);
+				if(Vec3To(tracer).length() < 128 && bSEEKERMISSILE) { bSEEKERMISSILE = false; A_StartSound("seek/lock"); }
+				if(bSEEKERMISSILE) { A_SeekerMissile(15,5); }
+			}
+			FATB A 0
+			{
+				if(bSEEKERMISSILE) { A_StartSound("seek/beep"); }
 			}
 			Loop;
 		Death:
