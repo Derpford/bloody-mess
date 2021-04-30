@@ -10,6 +10,7 @@ class BloodyAngel : Archvile replaces Archvile
 		BloodyAngel.BonusDrops 3,5;
 		Health 1050;
 		+BUDDHA;
+		+NOTARGET;
 		RenderStyle "Translucent";
 		BloodyAngel.RezCount 2;
 	}
@@ -19,6 +20,21 @@ class BloodyAngel : Archvile replaces Archvile
 		See:
 			VILE AABBCCDDEEFF 2 A_Chase(null,"Missile");
 			Loop;
+
+		Missile:
+			VILE G 10 Bright { A_FaceTarget(); A_StartSound("vile/start"); }
+			VILE H 8 Bright;
+			VILE IJKLMN 9 Bright A_FaceTarget();
+			VILE N 7
+			{
+				A_StartSound("weapon/underf",1);
+				A_FaceTarget();
+				A_SpawnProjectile("VileTracer",8,flags:CMF_ABSOLUTEPITCH);
+				A_SpawnProjectile("VileTracer",8,angle:-3,flags:CMF_ABSOLUTEPITCH);
+				A_SpawnProjectile("VileTracer",8,angle:3,flags:CMF_ABSOLUTEPITCH);
+			}
+			VILE OP 6;
+			Goto See;
 
 		Stagger:
 			VILE A 0
@@ -42,6 +58,7 @@ class BloodyAngel : Archvile replaces Archvile
 		Run:
 			VILE ABCDEF 2 
 			{
+				alpha = 0.5;
 				A_Chase(null,null);
 				runTimer--;
 				if(runTimer < 1)
@@ -65,6 +82,26 @@ class BloodyAngel : Archvile replaces Archvile
 	}
 }
 
+class VileTracer : CoilTracer
+{
+	// A flamey CoilTracer that does less damage and flies a bit slower.
+	default
+	{
+		DamageFunction 2;
+		Speed 50;
+		+STEPMISSILE;
+	}
+
+	states
+	{
+		Spawn:
+			FIRE ABCDCBA 1 Bright A_StartSound("weapon/mmisi",flags:CHANF_NOSTOP);
+			Loop;
+		Death:
+			FIRE ABCDEFGH 3 Bright A_StopSound(4);
+			Stop;
+	}
+}
 class RezCube: Actor
 {
 	default

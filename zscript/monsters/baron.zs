@@ -19,3 +19,12 @@ class BloodyBaron : BaronOfHell replaces BaronOfHell
 			Goto See;
 	}
 }
+
+class BloodyBaronBall : BaronBall replaces BaronBall
+{
+	// I hate damage randomization.
+	default
+	{
+		DamageFunction 36;
+	}
+}
