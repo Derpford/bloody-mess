@@ -37,6 +37,8 @@ class PACannon : BloodyWeapon replaces PlasmaRifle
 				A_ReadyIfAmmo();
 				A_StartSound("weapon/photi",4,flags:CHANF_NOSTOP);
 				invoker.shotSpeed = invoker.shotSpeedMax;
+				A_OverlayPivot(1,wy:0.2);
+				A_OverlayScale(1,1.0,1.0,WOF_INTERPOLATE);
 			}
 			Loop;
 		Fire:
@@ -50,10 +52,18 @@ class PACannon : BloodyWeapon replaces PlasmaRifle
 					A_FireProjectile("PhotonShot",invoker.shotSpeed*i*0.5);
 				}
 				A_TakeInventory("LightGem",1);
+				A_OverlayScale(1,1.5,1.5,WOF_INTERPOLATE);
 			} // Projectile fires here.
-			BFPF BC 3 A_SetTics(max(floor(invoker.shotSpeed)/4,1));
-			BFPS D 0 { invoker.shotSpeed = max(invoker.shotSpeed*0.90,1); }
-			BFPS A 0 { A_RefireIfAmmo(); }
+			BFPF BC 3 
+			{
+				A_SetTics(clamp(floor(invoker.shotSpeed)/4,1,3));
+				A_OverlayScale(1,-0.20,-0.20,WOF_ADD);
+			}
+			BFPS D 0 
+			{ 
+				invoker.shotSpeed = max(invoker.shotSpeed*0.90,1); 
+				A_RefireIfAmmo(); 
+			}
 			BFPS A 0 { if(invoker.shotSpeed > 8) { return ResolveState("Ready"); } else { return ResolveState(null); } }
 		Cooldown:
 			BFPS DBADBA 4 A_StartSound("weapon/photr",flags:CHANF_NOSTOP);

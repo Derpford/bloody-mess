@@ -14,6 +14,12 @@ class Undertaker : BloodyWeapon replaces BFG9000
 		Inventory.PickupMessage "Unearthed the Undertaker! God as my witness, this thing is broken.";
 	}
 
+	action void A_UndertakerReady()
+	{
+		A_OverlayPivot(1,0.2,0.2);
+		A_ReadyIfAmmo();
+	}
+
 	states
 	{
 		Spawn:
@@ -28,13 +34,13 @@ class Undertaker : BloodyWeapon replaces BFG9000
 		Ready:
 			UNMK A 1 
 			{
-				A_ReadyIfAmmo();
+				A_UndertakerReady();
 
 				if(random(0,16)<1) { return ResolveState("Idle"); } else { return ResolveState(null); }
 			}
 			Loop;
 		Idle:
-			UNMK ABCOCOCBCBA 3 A_ReadyIfAmmo();
+			UNMK ABCOCOCBCBA 3 A_UndertakerReady();
 			Goto Ready;
 		Fire:
 			UNMK D 2
@@ -44,9 +50,14 @@ class Undertaker : BloodyWeapon replaces BFG9000
 				A_FireProjectile("UndertakerShot");
 				A_TakeInventory("LightGem",4);
 				A_WeaponOffset(16,16,WOF_ADD);
+				A_OverlayScale(1,1.6,1.6,WOF_INTERPOLATE);
 			}
 			UNMK OB 3 A_WeaponOffset(8,8,WOF_ADD);
-			UNMK OCA 2 A_WeaponOffset(-8,-8,WOF_ADD);
+			UNMK OCA 2 
+			{
+				A_WeaponOffset(-8,-8,WOF_ADD);
+				A_OverlayScale(1,-0.2,-0.2,WOF_ADD);
+			}
 			Goto Ready;
 	}
 }

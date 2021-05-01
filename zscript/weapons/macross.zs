@@ -29,6 +29,7 @@ class MacrossCannon : BloodyWeapon replaces RocketLauncher
 			HSTM B 1 
 			{
 				A_ReadyIfAmmo();
+				A_OverlayPivot(1);
 			}
 			Loop;
 		Fire:
@@ -37,8 +38,9 @@ class MacrossCannon : BloodyWeapon replaces RocketLauncher
 				A_TakeInventory("RocketPile",1);
 				A_SpawnItemEX("MacrossMissile",xofs:8,zofs:24,xvel:8,zvel:1,flags:SXF_SETMASTER);
 				A_StartSound("weapon/macrof",1);
+				A_OverlayScale(1,1.6,1.6,WOF_INTERPOLATE);
 			}
-			HSTM DEF 2;
+			HSTM DEF 2 A_OverlayScale(1,-0.2,-0.2,WOF_ADD);
 			HSTM B 2;
 			HSTM B 2 { A_RefireIfAmmo("Fire","Dry"); }
 			Goto Release;

@@ -29,7 +29,11 @@ class CoilCarbine : BloodyWeapon replaces Pistol
 			PLZM D 1 A_Lower(18);
 			Loop;
 		Ready:
-			PLZM A 1 A_ReadyIfAmmo();
+			PLZM A 1 
+			{
+				A_ReadyIfAmmo();
+				A_OVerlayPivot(1);
+			}
 			Loop;
 		Fire:
 			PLZM B 1
@@ -37,9 +41,14 @@ class CoilCarbine : BloodyWeapon replaces Pistol
 				A_StartSound("weapon/carf",1);
 				A_TakeInventory("Coil",2);
 				A_FireProjectile("CoilCarbineShot",frandom(-2.0,2.0),pitch:frandom(0,-0.8));
+				A_OverlayScale(1,1.5,1.5,WOF_INTERPOLATE);
 			}
 			PLZM C 2 A_WeaponOffset(0,12,WOF_ADD);
-			PLZM CD 2 A_WeaponOffset(0,-4,WOF_ADD);
+			PLZM CD 2 
+			{
+				A_WeaponOffset(0,-4,WOF_ADD);
+				A_OverlayScale(1,-0.25,-0.25,WOF_ADD);
+			}
 			PLZM A 1 A_WeaponOffset(0,-4,WOF_ADD);
 			Goto Ready;
 	}

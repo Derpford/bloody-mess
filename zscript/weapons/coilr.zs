@@ -22,6 +22,8 @@ class CoilRepeater : BloodyWeapon replaces Chaingun
 	action void A_FireCoil()
 	{
 		A_TakeInventory("Coil",1);
+		A_WeaponOffset(0,16,WOF_ADD);
+		A_OverlayScale(1,1.4,1.4,WOF_INTERPOLATE);
 		A_FireProjectile("CoilTracer",frandom(-2.2,2.2)*(4 - invoker.shotSpeed),pitch:frandom(0.1,-0.15)*(4 - invoker.shotSpeed) );
 	}
 
@@ -44,6 +46,7 @@ class CoilRepeater : BloodyWeapon replaces Chaingun
 				A_WeaponOffset(0,offs+24,WOF_INTERPOLATE);
 				if(GetAge() % 2 == 0) { A_StartSound("weapon/repi"); }
 				A_ReadyIfAmmo(WRF_NOBOB);
+				A_OverlayPivot(1,0.7);
 			}
 			Loop;
 		Fire:
@@ -54,11 +57,16 @@ class CoilRepeater : BloodyWeapon replaces Chaingun
 			{
 				if(invoker.shotSpeed == 0) { return ResolveState("FullAuto"); } else { return ResolveState(null); }
 			}
-			REPG ABCD 0 { A_WeaponOffset(0,-4,WOF_ADD); A_SetTics(invoker.shotSpeed); A_StartSound("weapon/repsu",4,flags:CHANF_NOSTOP); }
+			REPG ABCD 0 
+			{ 
+				A_WeaponOffset(0,-4,WOF_ADD); 
+				A_OverlayScale(1,-0.1,-0.1,WOF_ADD);
+				A_SetTics(invoker.shotSpeed); 
+				A_StartSound("weapon/repsu",4,flags:CHANF_NOSTOP); 
+			}
 		FireReal:
 			REPG E 0
 			{
-				A_WeaponOffset(0,16,WOF_ADD);
 				A_StopSound(4);
 				invoker.shotCount += 1;
 				if(invoker.shotCount % (10 - (2*invoker.shotSpeed) ) == 0)//&& invoker.shotSpeed > 2) || invoker.shotCount % 8 == 0)
@@ -76,14 +84,14 @@ class CoilRepeater : BloodyWeapon replaces Chaingun
 			REPG E 0 { A_RefireIfAmmo("Hold"); }
 			Goto SpinDown;
 		FullAuto:
-			REPG E 1 Bright { A_StartSound("weapon/repf",1); A_WeaponOffset(0,16,WOF_ADD); A_FireCoil(); } // and here
-			REPG AB 1 A_WeaponOffset(0,-8,WOF_ADD);
-			REPG F 1 Bright { A_StartSound("weapon/repf",1); A_WeaponOffset(0,16,WOF_ADD); A_FireCoil(); } // and here
-			REPG BC 1 A_WeaponOffset(0,-8,WOF_ADD);
-			REPG G 1 Bright { A_StartSound("weapon/repf",1); A_WeaponOffset(0,16,WOF_ADD); A_FireCoil(); } // and here
-			REPG CD 1 A_WeaponOffset(0,-8,WOF_ADD);
-			REPG H 1 Bright { A_StartSound("weapon/repf",1); A_WeaponOffset(0,16,WOF_ADD); A_FireCoil(); } // and here
-			REPG DA 1 A_WeaponOffset(0,-8,WOF_ADD);
+			REPG E 1 Bright { A_StartSound("weapon/repf",1); A_FireCoil(); } // and here
+			REPG AB 1 { A_WeaponOffset(0,-8,WOF_ADD); A_OverlayScale(1,-0.2,-0.2,WOF_ADD); }
+			REPG F 1 Bright { A_StartSound("weapon/repf",1); A_FireCoil(); } // and here
+			REPG BC 1 { A_WeaponOffset(0,-8,WOF_ADD); A_OverlayScale(1,-0.2,-0.2,WOF_ADD); }
+			REPG G 1 Bright { A_StartSound("weapon/repf",1); A_FireCoil(); } // and here
+			REPG CD 1 { A_WeaponOffset(0,-8,WOF_ADD); A_OverlayScale(1,-0.2,-0.2,WOF_ADD); }
+			REPG H 1 Bright { A_StartSound("weapon/repf",1); A_FireCoil(); } // and here
+			REPG DA 1 { A_WeaponOffset(0,-8,WOF_ADD); A_OverlayScale(1,-0.2,-0.2,WOF_ADD); }
 			REPG E 0 { A_RefireIfAmmo("Hold"); }
 		SpinDown:
 			REPG ABCD 0 { A_SetTics(invoker.shotSpeed); A_WeaponOffset(0,32,WOF_INTERPOLATE); A_RefireIfAmmo(); A_StartSound("weapon/repsd",flags:CHANF_NOSTOP); }

@@ -29,6 +29,7 @@ class NailShotty : BloodyWeapon replaces Shotgun
 			TACT A 1 
 			{
 				A_ReadyIfAmmo();
+				A_OverlayPivot(1,wy:0);
 			}
 			Loop;
 		Fire:
@@ -44,9 +45,11 @@ class NailShotty : BloodyWeapon replaces Shotgun
 				A_FireProjectile("NailShot",-1.8,spawnheight: 8);
 				A_FireProjectile("NailShot",1.8,spawnheight: 8);
 				A_FireProjectile("NailShot2",0,spawnheight: 8);
+				A_OverlayScale(1,1.8,1.8,WOF_INTERPOLATE);
 			}
-			TACT F 2 Bright; 
-			TACT A 5;
+			TACT F 2 Bright A_OverlayScale(1,1.5,1.5,WOF_INTERPOLATE); 
+			TACT A 4 A_OverlayScale(1,1.25,1.25,WOF_INTERPOLATE);
+			TACT A 1 A_OverlayScale(1,1.0,1.0,WOF_INTERPOLATE);
 			TACT BC 4;
 			TACT D 3 A_StartSound("weapon/shotr");
 			TACT CB 3;

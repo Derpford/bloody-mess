@@ -30,6 +30,7 @@ class ThermiteGrinder : BloodyWeapon replaces SuperShotgun
 			NLSG A 1 
 			{ 
 				A_ReadyIfAmmo();
+				A_OverlayPivot(1);
 			}
 			Loop;
 		Fire:
@@ -44,11 +45,11 @@ class ThermiteGrinder : BloodyWeapon replaces SuperShotgun
 				A_WeaponOffset(0,12,WOF_ADD);
 				A_StartSound("weapon/thermf");
 			}
-			NLSG C 2 A_WeaponOffset(0,8,WOF_ADD);
+			NLSG C 2 A_OverlayScale(1,0.5,0.5,WOF_ADD);//A_WeaponOffset(0,8,WOF_ADD);
 			NLSG A 5;
-			NLSG A 8 A_WeaponOffset(0,-10,WOF_ADD);
+			NLSG A 8 A_OverlayScale(1,-0.25,-0.25,WOF_ADD);//A_WeaponOffset(0,-10,WOF_ADD);
 			NLSG A 5;
-			NLSG A 6 A_WeaponOffset(0,-10,WOF_ADD);
+			NLSG A 6 A_OverlayScale(1,-0.25,-0.25,WOF_ADD);//A_WeaponOffset(0,-10,WOF_ADD);
 			Goto Ready;
 	}
 	

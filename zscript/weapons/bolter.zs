@@ -32,12 +32,13 @@ class Bolter : BloodyWeapon
 				}
 				A_StartSound("weapon/boltf"); 
 				A_WeaponOffset(8,0,WOF_ADD);
+				A_OverlayScale(1,0.5,0.5,WOF_ADD);
 			}
 			PLBG A 3 A_WeaponOffset(8,6,WOF_ADD);
 			PLBG C 4 A_WeaponOffset(4,4,WOF_ADD);
-			PLBG A 3 A_WeaponOffset(-4,0,WOF_ADD);
+			PLBG A 3 A_OverlayScale(1,-0.5,-0.5,WOF_ADD);//A_WeaponOffset(-4,0,WOF_ADD);
 			PLBG A 3 A_WeaponOffset(-16,-3,WOF_ADD);
-			PLBG A 2 A_WeaponOffset(0,-7,WOF_ADD);
+			PLBG A 2 A_WeaponOffset(-4,-7,WOF_ADD);
 			Goto Ready;
 
 	}
