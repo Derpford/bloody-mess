@@ -9,6 +9,7 @@ class BloodyImp : DoomImp replaces DoomImp
 	}
 	states
 	{
+		Melee:
 		Missile:
 			// Maximum range is 25**2 * sin(90)
 			TROO E 4 { A_FaceTarget(); A_StartSound("imp/attack"); } 
