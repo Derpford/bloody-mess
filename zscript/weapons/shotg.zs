@@ -48,11 +48,26 @@ class NailShotty : BloodyWeapon replaces Shotgun
 				A_OverlayScale(1,1.8,1.8,WOF_INTERPOLATE);
 			}
 			TACT F 2 Bright A_OverlayScale(1,1.5,1.5,WOF_INTERPOLATE); 
-			TACT A 4 A_OverlayScale(1,1.25,1.25,WOF_INTERPOLATE);
-			TACT A 1 A_OverlayScale(1,1.0,1.0,WOF_INTERPOLATE);
-			TACT BC 4;
-			TACT D 3 A_StartSound("weapon/shotr");
-			TACT CB 3;
+			TACT A 3 
+			{	
+				A_OverlayScale(1,1.25,1.25,WOF_INTERPOLATE);
+				A_WeaponOffset(0,5,WOF_ADD);
+			}
+			TACT A 2 
+			{
+				A_OverlayScale(1,1.0,1.0,WOF_INTERPOLATE);
+				A_OverlayRotate(1,10,WOF_ADD);
+			}
+			TACT BC 3 
+			{
+				A_WeaponOffset(0,5,WOF_ADD);
+			}
+			TACT D 5 A_StartSound("weapon/shotr");
+			TACT CB 3 
+			{
+				A_OverlayRotate(1,-5,WOF_ADD);
+				A_WeaponOffset(0,-5,WOF_ADD);
+			}
 			TACT A 2;
 			Goto Ready;
 
