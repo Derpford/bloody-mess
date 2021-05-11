@@ -15,17 +15,17 @@ class BloodyWeapon : Weapon
 		}
 	}
 
-	action void A_RefireIfAmmo(StateLabel st = "Fire",StateLabel backup = "Ready")
+	action void A_RefireIfAmmo(StateLabel st = "Fire")
 	{
 		int amt = invoker.owner.CountInv(invoker.AmmoType1);
 		if(amt>invoker.MinSelAmmo1 || amt>invoker.AmmoUse1)
 		{
 			A_Refire(st);
 		}
-		else
-		{
-			invoker.SetState(invoker.ResolveState(backup));
-		}
+		//else
+		//{
+		//	invoker.SetState(invoker.ResolveState(backup));
+		//}
 	}
 }
 
