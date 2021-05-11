@@ -7,6 +7,7 @@ class Undertaker : BloodyWeapon replaces BFG9000
 	default
 	{
 		Weapon.SlotNumber 5;
+		Weapon.SlotPriority 0.5;
 		Weapon.AmmoType1 "LightGem";
 		Weapon.AmmoUse1 0;
 		Weapon.MinSelectionAmmo1 1;
