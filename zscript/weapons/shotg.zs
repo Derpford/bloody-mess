@@ -36,15 +36,21 @@ class NailShotty : BloodyWeapon replaces Shotgun
 		Fire:
 			TACT E 2 Bright 
 			{ 
-				A_TakeInventory("Nail",2);
+				A_TakeInventory("Nail",1);
 				A_StartSound("weapon/shotf");
-				// Technically, I could do this with a loop, but I don't want to deal with that.
+				/*
 				A_FireProjectile("NailShot",-1.3,spawnheight: 8, pitch: -1.3); 
 				A_FireProjectile("NailShot",1.3,spawnheight: 8, pitch: -1.3); 
 				A_FireProjectile("NailShot",-1.3,spawnheight: 8, pitch: 1.3); 
 				A_FireProjectile("NailShot",1.3,spawnheight: 8, pitch: 1.3); 
 				A_FireProjectile("NailShot",-1.8,spawnheight: 8);
 				A_FireProjectile("NailShot",1.8,spawnheight: 8);
+				*/
+				double j = GetAge()%360;
+				for(int i = 0; i<=360; i+=120)
+				{
+					A_FireProjectile("NailShot",cos(i+j)*1.1,spawnheight: 8,pitch:sin(i+j)*1.1);
+				}
 				A_FireProjectile("NailShot2",0,spawnheight: 8);
 				A_OverlayScale(1,1.8,1.8,WOF_INTERPOLATE);
 				A_OverlayRotate(1,0);
