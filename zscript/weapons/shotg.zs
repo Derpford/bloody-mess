@@ -98,12 +98,11 @@ class NailShotty : BloodyWeapon replaces Shotgun
 
 class NailShot : FastProjectile
 {
-	// A heavy iron nail. Does just a little less damage than a blaster shot by itself, but a group of 5...
-
+	// A heavy iron nail, doing about as much damage as a bolter blast would to a healthy enemy.
 	default
 	{
 		Speed 40;
-		DamageFunction 8;
+		DamageFunction 10;
 		Radius 3;
 		Height 3;
 		MissileHeight 8;
