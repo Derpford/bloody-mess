@@ -24,7 +24,7 @@ class BloodyWeapon : Weapon
 		}
 		else
 		{
-			A_Refire(backup);
+			invoker.SetState(invoker.ResolveState(backup));
 		}
 	}
 }

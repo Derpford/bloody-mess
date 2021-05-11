@@ -42,7 +42,17 @@ class MacrossCannon : BloodyWeapon replaces RocketLauncher
 			}
 			HSTM DEF 2 A_OverlayScale(1,-0.2,-0.2,WOF_ADD);
 			HSTM B 2;
-			HSTM B 2 { A_RefireIfAmmo("Fire","Dry"); }
+			HSTM B 2 
+			{ 
+				if(CountInv("RocketPile")>0)
+				{
+					A_RefireIfAmmo("Fire"); 
+				}
+				else
+				{
+					A_Refire("Dry");
+				}
+			}
 			Goto Release;
 		Dry:
 			HSTM B 1;
