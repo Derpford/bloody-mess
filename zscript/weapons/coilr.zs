@@ -12,7 +12,7 @@ class CoilRepeater : BloodyWeapon replaces Chaingun
 	{
 		Weapon.SlotNumber 4;
 		Weapon.AmmoType1 "Coil";
-		Weapon.AmmoUse1 0;
+		Weapon.AmmoUse1 2;
 		Weapon.MinSelectionAmmo1 1;
 		Weapon.AmmoGive1 25;
 		CoilRepeater.FireRate 4;
@@ -24,7 +24,7 @@ class CoilRepeater : BloodyWeapon replaces Chaingun
 		A_TakeInventory("Coil",used);
 		A_WeaponOffset(0,16,WOF_ADD);
 		A_OverlayScale(1,1.4,1.4,WOF_INTERPOLATE);
-		A_FireProjectile("CoilTracer",frandom(-2.2,2.2)*(4 - invoker.shotSpeed),pitch:frandom(0.1,-0.15)*(4 - invoker.shotSpeed) );
+		A_FireProjectile("CoilTracer",frandom(-2.2,2.2)*(4 - invoker.shotSpeed),false,pitch:frandom(0.1,-0.15)*(4 - invoker.shotSpeed) );
 	}
 
 	states
@@ -45,8 +45,10 @@ class CoilRepeater : BloodyWeapon replaces Chaingun
 				if(GetAge() % 2 == 0) { offs = 2; }
 				A_WeaponOffset(0,offs+24,WOF_INTERPOLATE);
 				if(GetAge() % 2 == 0) { A_StartSound("weapon/repi"); }
-				A_ReadyIfAmmo(WRF_NOBOB);
+				A_WeaponReady(WRF_NOBOB);
 				A_OverlayPivot(1,0.7);
+				A_OverlayScale(1,1.0,1.0,WOF_INTERPOLATE);
+				if(invoker.shotspeed<4) { return ResolveState("SpinDown"); } else { return ResolveState(null); }
 			}
 			Loop;
 		Fire:
@@ -81,7 +83,7 @@ class CoilRepeater : BloodyWeapon replaces Chaingun
 				A_StartSound("weapon/repf",1); 
 				A_FireCoil(2);
 			} // shot goes here
-			REPG E 0 { A_RefireIfAmmo("Hold"); }
+			REPG E 0 { A_Refire("Hold"); }
 			Goto SpinDown;
 		FullAuto:
 			REPG E 1 Bright { A_StartSound("weapon/repf",1); A_FireCoil(); } // and here
@@ -92,9 +94,9 @@ class CoilRepeater : BloodyWeapon replaces Chaingun
 			REPG CD 1 { A_WeaponOffset(0,-8,WOF_ADD); A_OverlayScale(1,-0.2,-0.2,WOF_ADD); }
 			REPG H 1 Bright { A_StartSound("weapon/repf",1); A_FireCoil(); } // and here
 			REPG DA 1 { A_WeaponOffset(0,-8,WOF_ADD); A_OverlayScale(1,-0.2,-0.2,WOF_ADD); }
-			REPG E 0 { A_RefireIfAmmo("Hold"); }
+			REPG E 0 { A_Refire("Hold"); }
 		SpinDown:
-			REPG ABCD 0 { A_SetTics(invoker.shotSpeed); A_WeaponOffset(0,32,WOF_INTERPOLATE); A_RefireIfAmmo(); A_StartSound("weapon/repsd",flags:CHANF_NOSTOP); }
+			REPG ABCD 0 { A_SetTics(invoker.shotSpeed); A_WeaponOffset(0,32,WOF_INTERPOLATE); A_Refire(); A_StartSound("weapon/repsd",flags:CHANF_NOSTOP); }
 			REPG A 0
 			{
 				if(invoker.shotSpeed < 4)

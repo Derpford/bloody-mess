@@ -14,7 +14,7 @@ class PACannon : BloodyWeapon replaces PlasmaRifle
 		Weapon.SlotNumber 4;
 		PACannon.FireRate 16;
 		Weapon.AmmoType1 "LightGem";
-		Weapon.AmmoUse1 0;
+		Weapon.AmmoUse1 1;
 		Weapon.MinSelectionAmmo1 1;
 		Weapon.AmmoGive1 20;
 		Inventory.PickupMessage "Packed a Photon Accelerator Cannon, man!";
@@ -34,7 +34,7 @@ class PACannon : BloodyWeapon replaces PlasmaRifle
 		Ready:
 			BFPI ABCDEFGHIJJIHGFEDCBA 1 
 			{
-				A_ReadyIfAmmo();
+				A_WeaponReady();
 				A_StartSound("weapon/photi",4,flags:CHANF_NOSTOP);
 				invoker.shotSpeed = invoker.shotSpeedMax;
 				A_OverlayPivot(1,wy:0.2);
@@ -49,7 +49,7 @@ class PACannon : BloodyWeapon replaces PlasmaRifle
 				A_StartSound("weapon/photf",1,CHANF_OVERLAP);
 				for(int i = -2; i < 3; i+=1)
 				{
-					A_FireProjectile("PhotonShot",invoker.shotSpeed*i*0.5);
+					A_FireProjectile("PhotonShot",invoker.shotSpeed*i*0.5,false);
 				}
 				A_TakeInventory("LightGem",1);
 				A_OverlayScale(1,1.5,1.5,WOF_INTERPOLATE);
@@ -62,7 +62,7 @@ class PACannon : BloodyWeapon replaces PlasmaRifle
 			BFPS D 0 
 			{ 
 				invoker.shotSpeed = max(invoker.shotSpeed*0.90,1); 
-				A_RefireIfAmmo(); 
+				A_Refire(); 
 			}
 			BFPS A 0 { if(invoker.shotSpeed > 8) { return ResolveState("Ready"); } else { return ResolveState(null); } }
 		Cooldown:

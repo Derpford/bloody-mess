@@ -11,8 +11,8 @@ class CoilCarbine : BloodyWeapon replaces Pistol
 		Weapon.SlotNumber 2;
 		Weapon.SlotPriority 1.0;
 		Weapon.AmmoType1 "Coil";
-		Weapon.AmmoUse1 0;
-		Weapon.MinSelectionAmmo1 2;
+		Weapon.AmmoUse1 2;
+		//Weapon.MinSelectionAmmo1 2;
 		Weapon.AmmoGive1 18;
 		Inventory.PickupMessage "Collected a Coil Carbine!";
 	}
@@ -31,7 +31,7 @@ class CoilCarbine : BloodyWeapon replaces Pistol
 		Ready:
 			PLZM A 1 
 			{
-				A_ReadyIfAmmo();
+				A_WeaponReady();
 				A_OVerlayPivot(1);
 			}
 			Loop;
@@ -39,7 +39,7 @@ class CoilCarbine : BloodyWeapon replaces Pistol
 			PLZM B 1
 			{
 				A_StartSound("weapon/carf",1);
-				A_TakeInventory("Coil",2);
+				//A_TakeInventory("Coil",2);
 				A_FireProjectile("CoilCarbineShot",frandom(-2.0,2.0),pitch:frandom(0,-0.8));
 				A_OverlayScale(1,1.5,1.5,WOF_INTERPOLATE);
 			}

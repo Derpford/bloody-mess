@@ -28,7 +28,7 @@ class MacrossCannon : BloodyWeapon replaces RocketLauncher
 		Ready:
 			HSTM B 1 
 			{
-				A_ReadyIfAmmo();
+				A_WeaponReady();
 				A_OverlayPivot(1);
 			}
 			Loop;
@@ -46,7 +46,7 @@ class MacrossCannon : BloodyWeapon replaces RocketLauncher
 			{ 
 				if(CountInv("RocketPile")>0)
 				{
-					A_RefireIfAmmo("Fire"); 
+					A_Refire("Fire"); 
 				}
 				else
 				{

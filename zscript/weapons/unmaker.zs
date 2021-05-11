@@ -9,8 +9,8 @@ class Undertaker : BloodyWeapon replaces BFG9000
 		Weapon.SlotNumber 5;
 		Weapon.SlotPriority 0.5;
 		Weapon.AmmoType1 "LightGem";
-		Weapon.AmmoUse1 0;
-		Weapon.MinSelectionAmmo1 1;
+		Weapon.AmmoUse1 4;
+		//Weapon.MinSelectionAmmo1 1;
 		Weapon.AmmoGive1 20;
 		Inventory.PickupMessage "Unearthed the Undertaker! God as my witness, this thing is broken.";
 	}
@@ -18,7 +18,7 @@ class Undertaker : BloodyWeapon replaces BFG9000
 	action void A_UndertakerReady()
 	{
 		A_OverlayPivot(1,0.2,0.2);
-		A_ReadyIfAmmo();
+		A_WeaponReady();
 	}
 
 	states
@@ -49,7 +49,7 @@ class Undertaker : BloodyWeapon replaces BFG9000
 				//Shot goes here.
 				A_StartSound("weapon/underf");
 				A_FireProjectile("UndertakerShot");
-				A_TakeInventory("LightGem",4);
+				//A_TakeInventory("LightGem",4);
 				A_WeaponOffset(16,16,WOF_ADD);
 				A_OverlayScale(1,1.6,1.6,WOF_INTERPOLATE);
 			}

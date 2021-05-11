@@ -10,8 +10,8 @@ class ThermiteGrinder : BloodyWeapon replaces SuperShotgun
 		Weapon.SlotNumber 3;
 		Weapon.AmmoType1 "Nail";
 		Weapon.AmmoGive1 12;
-		Weapon.AmmoUse1 0;
-		Weapon.MinSelectionAmmo1 3;
+		Weapon.AmmoUse1 3;
+		//Weapon.MinSelectionAmmo1 3;
 		Inventory.PickupMessage "Tracked down a Thermite Grinder!";
 	}
 
@@ -29,7 +29,7 @@ class ThermiteGrinder : BloodyWeapon replaces SuperShotgun
 		Ready:
 			NLSG A 1 
 			{ 
-				A_ReadyIfAmmo();
+				A_WeaponReady();
 				A_OverlayPivot(1);
 			}
 			Loop;
@@ -40,7 +40,7 @@ class ThermiteGrinder : BloodyWeapon replaces SuperShotgun
 				A_TakeInventory("Nail",3);
 				for ( int i = -1; i <= 1; i++ )
 				{
-					A_FireProjectile("ThermiteBall",angle:i*10,pitch:-10);
+					A_FireProjectile("ThermiteBall",angle:i*10,false,pitch:-10);
 				}
 				A_WeaponOffset(0,12,WOF_ADD);
 				A_StartSound("weapon/thermf");

@@ -9,10 +9,21 @@ class NailShotty : BloodyWeapon replaces Shotgun
 		Weapon.SlotNumber 2;
 		Weapon.SlotPriority 0.5;
 		Weapon.AmmoType1 "Nail";
-		Weapon.AmmoUse1 0;
-		Weapon.MinSelectionAmmo1 2;
+		Weapon.AmmoUse1 1;
 		Weapon.AmmoGive 4;
 		Inventory.PickupMessage "Snagged a Nail Shotgun!";
+	}
+
+	action void A_FireNails()
+	{
+		//invoker.owner.A_TakeInventory("Nail",1);
+		invoker.owner.A_StartSound("weapon/shotf");
+		double j = GetAge()%360;
+		for(int i = 0; i<=360; i+=120)
+		{
+			A_FireProjectile("NailShot",cos(i+j)*1.1,false,spawnheight: 8,pitch:sin(i+j)*1.1);
+		}
+		A_FireProjectile("NailShot2",0,spawnheight: 8);
 	}
 
 	states
@@ -29,29 +40,14 @@ class NailShotty : BloodyWeapon replaces Shotgun
 		Ready:
 			TACT A 1 
 			{
-				A_ReadyIfAmmo();
+				A_WeaponReady();
 				A_OverlayPivot(1,wy:0);
 			}
 			Loop;
 		Fire:
 			TACT E 2 Bright 
 			{ 
-				A_TakeInventory("Nail",1);
-				A_StartSound("weapon/shotf");
-				/*
-				A_FireProjectile("NailShot",-1.3,spawnheight: 8, pitch: -1.3); 
-				A_FireProjectile("NailShot",1.3,spawnheight: 8, pitch: -1.3); 
-				A_FireProjectile("NailShot",-1.3,spawnheight: 8, pitch: 1.3); 
-				A_FireProjectile("NailShot",1.3,spawnheight: 8, pitch: 1.3); 
-				A_FireProjectile("NailShot",-1.8,spawnheight: 8);
-				A_FireProjectile("NailShot",1.8,spawnheight: 8);
-				*/
-				double j = GetAge()%360;
-				for(int i = 0; i<=360; i+=120)
-				{
-					A_FireProjectile("NailShot",cos(i+j)*1.1,spawnheight: 8,pitch:sin(i+j)*1.1);
-				}
-				A_FireProjectile("NailShot2",0,spawnheight: 8);
+				A_FireNails();
 				A_OverlayScale(1,1.8,1.8,WOF_INTERPOLATE);
 				A_OverlayRotate(1,0);
 			}
@@ -66,31 +62,31 @@ class NailShotty : BloodyWeapon replaces Shotgun
 				A_OverlayScale(1,1.0,1.0,WOF_INTERPOLATE);
 			}
 			TACT A 4 A_WeaponOffset(0,-5,WOF_ADD);
-			TACT A 0 A_RefireIfAmmo();
+			TACT A 0 A_Refire();
 		Pump:
 			TACT A 5 
 			{
 				A_OverlayRotate(1,10,WOF_ADD);
 				A_WeaponOffset(0,15,WOF_ADD);
-				A_RefireIfAmmo();
+				A_Refire();
 			}
 			TACT BC 4 
 			{
 				A_WeaponOffset(0,15,WOF_ADD);
-				A_RefireIfAmmo();
+				A_Refire();
 			}
 			TACT D 6 
 			{
 				A_StartSound("weapon/shotr");
-				A_RefireIfAmmo();
+				A_Refire();
 			}
 			TACT CB 4 
 			{
 				A_OverlayRotate(1,-5,WOF_ADD);
 				A_WeaponOffset(0,-15,WOF_ADD);
-				A_RefireIfAmmo();
+				A_Refire();
 			}
-			TACT A 4 A_RefireIfAmmo();
+			TACT A 4 A_Refire();
 			Goto Ready;
 
 	}
