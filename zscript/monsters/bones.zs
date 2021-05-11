@@ -30,7 +30,17 @@ class BoneBuster : RevenantTracer replaces RevenantTracer
 			FATB AB 3 Bright 
 			{
 				A_StartSound("weapon/mmisi",1,CHANF_NOSTOP);
-				if(Vec3To(tracer).length() < 128 && bSEEKERMISSILE) { bSEEKERMISSILE = false; A_StartSound("seek/lock"); }
+				if(tracer)
+				{
+					if(Vec3To(tracer).length() < 128 && bSEEKERMISSILE) 
+					{ 
+						bSEEKERMISSILE = false; A_StartSound("seek/lock"); 
+					}
+				}
+				else
+				{
+					bSEEKERMISSILE = false;
+				}
 				if(bSEEKERMISSILE) { A_SeekerMissile(15,5); }
 			}
 			FATB A 0
