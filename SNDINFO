@@ -3,6 +3,8 @@ weapon/bolth "sounds/repeater/REPGHIT"
 $limit weapon/bolth 4;
 
 weapon/shotr "sounds/shotg/TACPUMP"
+weapon/shotf "sounds/nailsg/NLSGFIRE"
+$pitchset weapon/shotf 1.2
 
 weapon/nailh "sounds/nailsg/NAILHIT"
 $limit weapon/nailh 0

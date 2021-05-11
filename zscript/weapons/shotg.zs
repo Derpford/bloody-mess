@@ -36,7 +36,7 @@ class NailShotty : BloodyWeapon replaces Shotgun
 			TACT E 2 Bright 
 			{ 
 				A_TakeInventory("Nail",2);
-				A_StartSound("weapons/shotgf");
+				A_StartSound("weapon/shotf");
 				// Technically, I could do this with a loop, but I don't want to deal with that.
 				A_FireProjectile("NailShot",-1.3,spawnheight: 8, pitch: -1.3); 
 				A_FireProjectile("NailShot",1.3,spawnheight: 8, pitch: -1.3); 
@@ -46,6 +46,7 @@ class NailShotty : BloodyWeapon replaces Shotgun
 				A_FireProjectile("NailShot",1.8,spawnheight: 8);
 				A_FireProjectile("NailShot2",0,spawnheight: 8);
 				A_OverlayScale(1,1.8,1.8,WOF_INTERPOLATE);
+				A_OverlayRotate(1,0);
 			}
 			TACT F 2 Bright A_OverlayScale(1,1.5,1.5,WOF_INTERPOLATE); 
 			TACT A 3 
@@ -56,19 +57,33 @@ class NailShotty : BloodyWeapon replaces Shotgun
 			TACT A 2 
 			{
 				A_OverlayScale(1,1.0,1.0,WOF_INTERPOLATE);
-				A_OverlayRotate(1,10,WOF_ADD);
 			}
-			TACT BC 3 
+			TACT A 4 A_WeaponOffset(0,-5,WOF_ADD);
+			TACT A 0 A_RefireIfAmmo();
+		Pump:
+			TACT A 5 
 			{
-				A_WeaponOffset(0,5,WOF_ADD);
+				A_OverlayRotate(1,10,WOF_ADD);
+				A_WeaponOffset(0,15,WOF_ADD);
+				A_RefireIfAmmo();
 			}
-			TACT D 5 A_StartSound("weapon/shotr");
-			TACT CB 3 
+			TACT BC 4 
+			{
+				A_WeaponOffset(0,15,WOF_ADD);
+				A_RefireIfAmmo();
+			}
+			TACT D 6 
+			{
+				A_StartSound("weapon/shotr");
+				A_RefireIfAmmo();
+			}
+			TACT CB 4 
 			{
 				A_OverlayRotate(1,-5,WOF_ADD);
-				A_WeaponOffset(0,-5,WOF_ADD);
+				A_WeaponOffset(0,-15,WOF_ADD);
+				A_RefireIfAmmo();
 			}
-			TACT A 2;
+			TACT A 4 A_RefireIfAmmo();
 			Goto Ready;
 
 	}
