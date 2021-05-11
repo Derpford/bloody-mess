@@ -19,9 +19,9 @@ class CoilRepeater : BloodyWeapon replaces Chaingun
 		Inventory.PickupMessage "Retrieved a Coil Repeater!";
 	}
 
-	action void A_FireCoil()
+	action void A_FireCoil(int used = 1)
 	{
-		A_TakeInventory("Coil",1);
+		A_TakeInventory("Coil",used);
 		A_WeaponOffset(0,16,WOF_ADD);
 		A_OverlayScale(1,1.4,1.4,WOF_INTERPOLATE);
 		A_FireProjectile("CoilTracer",frandom(-2.2,2.2)*(4 - invoker.shotSpeed),pitch:frandom(0.1,-0.15)*(4 - invoker.shotSpeed) );
@@ -79,7 +79,7 @@ class CoilRepeater : BloodyWeapon replaces Chaingun
 			{ 
 				A_SetTics(invoker.shotSpeed); 
 				A_StartSound("weapon/repf",1); 
-				A_FireCoil();
+				A_FireCoil(2);
 			} // shot goes here
 			REPG E 0 { A_RefireIfAmmo("Hold"); }
 			Goto SpinDown;
