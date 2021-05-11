@@ -7,6 +7,7 @@ class NailShotty : BloodyWeapon replaces Shotgun
 	default
 	{
 		Weapon.SlotNumber 2;
+		Weapon.SlotPriority 0.5;
 		Weapon.AmmoType1 "Nail";
 		Weapon.AmmoUse1 0;
 		Weapon.MinSelectionAmmo1 2;
