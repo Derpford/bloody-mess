@@ -60,13 +60,31 @@ class BloodWave : Inventory replaces Chainsaw
 		if(owner.CountInv("BloodWave")>99)
 		{
 			owner.A_TakeInventory("BloodWave",100);
-			owner.A_SpawnItemEX("BloodBlast",xofs:16,zofs:32,xvel:10,flags:SXF_SETTARGET);
+			//owner.A_SpawnItemEX("BloodBlast",xofs:16,zofs:32,xvel:10,flags:SXF_SETTARGET);
+			Vector3 newPos = owner.Vec3Offset(0,0,32);
+			let it = owner.spawn("BloodBlast",newPos);
+			if(it)
+			{
+				it.target = owner;
+				it.Vel3DFromAngle(15,owner.angle,owner.pitch);
+			}
+			A_ThrustZ(-10,owner.angle,owner.pitch,owner);
 			return true;
 		}
 		else
 		{
 			return false;
 		}
+	}
+
+	action void A_ThrustZ(double speed, double angle, double pitch, actor victim = null)
+	{
+		if(victim == null)
+		{
+			victim = invoker;
+		}
+		victim.Thrust(cos(pitch)*speed,angle);
+		victim.vel.z -= sin(pitch)*speed;
 	}
 
 	states
