@@ -15,6 +15,16 @@ class BloodyWeapon : Weapon
 		}
 	}
 
+	action void A_ThrustZ(double speed, double angle, double pitch, actor victim = null)
+	{
+		if(victim == null)
+		{
+			victim = invoker;
+		}
+		victim.Thrust(cos(pitch)*speed,angle);
+		victim.vel.z -= sin(pitch)*speed;
+	}
+
 	action void A_RefireIfAmmo(StateLabel st = "Fire")
 	{
 		int amt = invoker.owner.CountInv(invoker.AmmoType1);

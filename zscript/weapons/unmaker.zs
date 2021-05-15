@@ -52,6 +52,7 @@ class Undertaker : BloodyWeapon replaces BFG9000
 				//A_TakeInventory("LightGem",4);
 				A_WeaponOffset(16,16,WOF_ADD);
 				A_OverlayScale(1,1.6,1.6,WOF_INTERPOLATE);
+				invoker.A_ThrustZ(-6,invoker.owner.angle,invoker.owner.pitch,invoker.owner);
 			}
 			UNMK OB 3 A_WeaponOffset(8,8,WOF_ADD);
 			UNMK OCA 2 
@@ -86,7 +87,7 @@ class UndertakerShot : FastProjectile
 			Loop;
 		Death:
 			REDB A 4 Bright { A_StartSound("weapon/underx",1); A_StartSound("weapon/underxd"); } 
-			REDE A 5 Bright A_Explode(80);
+			REDE A 5 Bright A_Explode(80,flags:0);
 			REDE B 6 Bright;
 			REDE C 8 Bright;
 			REDE D 4 Bright;
