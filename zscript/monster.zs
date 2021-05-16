@@ -182,7 +182,7 @@ class MiniThermite : Actor
 	{
 		Scale 0.5;
 		Health 10;
-		Height 32;
+		Height 24;
 		Radius 8;
 		DamageFactor "Thermite",0;
 		+SHOOTABLE;
@@ -200,7 +200,7 @@ class MiniThermite : Actor
 		{
 			target = inf;
 			bMISSILE = true;
-			bSPECTRAL = true;
+			bSHOOTABLE = false;
 			A_FaceTarget(ang_offset:180);
 			double offs = 0.0;
 			if(target) { offs = DeltaAngle(angle, target.angle) / 2.0; }
