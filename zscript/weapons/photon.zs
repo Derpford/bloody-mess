@@ -26,10 +26,10 @@ class PACannon : BloodyWeapon replaces PlasmaRifle
 			BRPO A -1;
 			Stop;
 		Select:
-			BFPS ABCD 1 A_Raise(12);
+			BFPS ABCD 1 A_Raise(24);
 			Loop;
 		Deselect:
-			BFPS DCBA 1 { A_StopSound(4); A_Lower(12); }
+			BFPS DCBA 1 { A_StopSound(4); A_Lower(24); }
 			Loop;
 		Ready:
 			BFPI ABCDEFGHIJJIHGFEDCBA 1 

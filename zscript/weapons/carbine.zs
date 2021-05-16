@@ -23,10 +23,10 @@ class CoilCarbine : BloodyWeapon replaces Pistol
 			PLZM E -1;
 			Stop;
 		Select:
-			PLZM D 1 A_Raise(18);
+			PLZM D 1 A_Raise(24);
 			Loop;
 		Deselect:
-			PLZM D 1 A_Lower(18);
+			PLZM D 1 A_Lower(24);
 			Loop;
 		Ready:
 			PLZM A 1 

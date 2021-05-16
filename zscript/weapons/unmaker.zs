@@ -27,10 +27,10 @@ class Undertaker : BloodyWeapon replaces BFG9000
 			UNMA A -1;
 			Stop;
 		Select:
-			UNMK A 1 A_Raise(18);
+			UNMK A 1 A_Raise(24);
 			Loop;
 		Deselect:
-			UNMK A 1 A_Lower(18);
+			UNMK A 1 A_Lower(24);
 			Loop;
 		Ready:
 			UNMK A 1 

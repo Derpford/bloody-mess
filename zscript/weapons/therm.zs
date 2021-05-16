@@ -21,10 +21,10 @@ class ThermiteGrinder : BloodyWeapon replaces SuperShotgun
 			NLSG D -1;
 			Stop;
 		Select:
-			NLSG A 1 A_Raise(18);
+			NLSG A 1 A_Raise(24);
 			Loop;
 		Deselect:
-			NLSG A 1 A_Lower(18);
+			NLSG A 1 A_Lower(24);
 			Loop;
 		Ready:
 			NLSG A 1 

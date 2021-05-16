@@ -10,10 +10,10 @@ class Bolter : BloodyWeapon
 	states
 	{
 		Select:
-			PLBG A 1 A_Raise(18);
+			PLBG A 1 A_Raise(24);
 			Loop;
 		Deselect:
-			PLBG A 1 A_Lower(18);
+			PLBG A 1 A_Lower(24);
 			Loop;
 		Ready:
 			PLBG A 1 A_WeaponReady();

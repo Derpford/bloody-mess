@@ -32,10 +32,10 @@ class NailShotty : BloodyWeapon replaces Shotgun
 			TACT I -1;
 			Stop;
 		Select:
-			TACT A 1 A_Raise(18);
+			TACT A 1 A_Raise(24);
 			Loop;
 		Deselect:
-			TACT A 1 A_Lower(18);
+			TACT A 1 A_Lower(24);
 			Loop;
 		Ready:
 			TACT A 1 
@@ -69,23 +69,23 @@ class NailShotty : BloodyWeapon replaces Shotgun
 			{
 				A_OverlayRotate(1,10,WOF_ADD);
 				A_WeaponOffset(0,15,WOF_ADD);
-				A_Refire();
+				A_WeaponReady(WRF_NOBOB);
 			}
 			TACT BC 4 
 			{
 				A_WeaponOffset(0,15,WOF_ADD);
-				A_Refire();
+				A_WeaponReady(WRF_NOBOB);
 			}
 			TACT D 6 
 			{
 				A_StartSound("weapon/shotr");
-				A_Refire();
+				A_WeaponReady(WRF_NOBOB);
 			}
 			TACT CB 4 
 			{
 				A_OverlayRotate(1,-5,WOF_ADD);
 				A_WeaponOffset(0,-15,WOF_ADD);
-				A_Refire();
+				A_WeaponReady(WRF_NOBOB);
 			}
 			TACT A 4 A_Refire();
 			Goto Ready;

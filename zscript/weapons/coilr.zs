@@ -33,10 +33,10 @@ class CoilRepeater : BloodyWeapon replaces Chaingun
 			REPG I -1;
 			Stop;
 		Select:
-			REPG DCBA 1 A_Raise(12);
+			REPG DCBA 1 A_Raise(24);
 			Loop;
 		Deselect:
-			REPG ABCD 1 A_Lower(12);
+			REPG ABCD 1 A_Lower(24);
 			Loop;
 		Ready:
 			REPG AAABBBCCCDDD 3 

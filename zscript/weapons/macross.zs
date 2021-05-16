@@ -20,10 +20,10 @@ class MacrossCannon : BloodyWeapon replaces RocketLauncher
 			HSTM A -1;
 			Stop;
 		Select:
-			HSTM B 1 A_Raise(18);
+			HSTM B 1 A_Raise(24);
 			Loop;
 		Deselect:
-			HSTM B 1 A_Lower(18);
+			HSTM B 1 A_Lower(24);
 			Loop;
 		Ready:
 			HSTM B 1 
