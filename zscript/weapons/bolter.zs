@@ -60,7 +60,7 @@ class BolterShot : FastProjectile
 	{
 		DamageFunction 10;
 		DamageType "Disintegrate";
-		MissileType "BolterTrail";
+		//MissileType "BolterTrail";
 		+ROLLSPRITE;
 		+HITTRACER;
 		Speed 30;
@@ -74,15 +74,30 @@ class BolterShot : FastProjectile
 	states
 	{
 		Spawn:
-			DLIT J 1 { roll += 12; }
+			DLIT J 0;
+			DLIT J 0 { roll = random(0,179); }
+		Fly:
+			DLIT J 1 
+			{ 
+				roll += 12; 
+				double dy; double dz; double vy; double vz;
+				vy = sin(roll); dy = vy * 4;
+				vz = cos(roll); dz = vz * 4;
+				A_SpawnItemEX("BolterTrail",yofs:dy,zofs:dz,yvel:vy,zvel:vz);
+				A_SpawnItemEX("BolterTrail",yofs:-dy,zofs:-dz,yvel:-vy,zvel:-vz);
+			}
 			Loop;
 		Death:
 			DLIT O 1 
 			{ 
 				A_StartSound("weapon/bolth"); 
+				for(int i = 8; i>0; i--)
+				{
+					A_SpawnItemEX("BolterTrail",xvel:-1);
+				}
 			}
-			DLIT NMLKJ 1;
-			DLIT JKLMNO 1;
+			DLIT NLJ 1 A_SpawnItemEX("BolterTrail",xvel:-1);
+			DLIT JKLMNO 1 A_SpawnItemEX("BolterTrail",xvel:-1);
 			Stop;
 	}
 }
@@ -111,14 +126,16 @@ class BolterTrail : Actor
 		+NOINTERACTION;
 		+ROLLSPRITE;
 		+NOGRAVITY;
-		Scale 0.5;
+		Scale 0.25;
 	}
 	states
 	{
 		Spawn:
-			DLIT K 0;
-			DLIT K 0 { A_ChangeVelocity(0,random(-1,1),random(-1,1),CVF_RELATIVE); }
-			DLIT KLMNO 2 { roll += 15; }
+			DLIT KLMNO 2 
+			{ 
+				roll += 15; 
+				A_ChangeVelocity(0,random(-1,1),random(-1,1),CVF_RELATIVE);
+			}
 			Stop;
 	}
 }
