@@ -49,6 +49,7 @@ class NailShotty : BloodyWeapon replaces Shotgun
 			{ 
 				A_FireNails();
 				A_OverlayScale(1,1.8,1.8,WOF_INTERPOLATE);
+				A_WeaponOffset();
 				A_OverlayRotate(1,0);
 			}
 			TACT F 2 Bright A_OverlayScale(1,1.5,1.5,WOF_INTERPOLATE); 
