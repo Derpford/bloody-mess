@@ -200,6 +200,7 @@ class MiniThermite : Actor
 		{
 			target = inf;
 			bMISSILE = true;
+			bSPECTRAL = true;
 			A_FaceTarget(ang_offset:180);
 			double offs = 0.0;
 			if(target) { offs = DeltaAngle(angle, target.angle) / 2.0; }
