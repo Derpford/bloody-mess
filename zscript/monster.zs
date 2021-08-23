@@ -182,7 +182,7 @@ class MiniThermite : Actor
 	{
 		Scale 0.5;
 		Health 10;
-		Height 24;
+		Height 32;
 		Radius 8;
 		DamageFactor "Thermite",0;
 		+SHOOTABLE;
