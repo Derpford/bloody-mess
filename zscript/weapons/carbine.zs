@@ -61,6 +61,7 @@ class CoilCarbineShot : FastProjectile
 	default
 	{
 		DamageFunction 20;
+		Radius 8;
 		MissileType "CoilCarbTrail";
 		MissileHeight 8;
 		RenderStyle "Add";
