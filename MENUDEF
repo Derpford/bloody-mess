@@ -8,8 +8,9 @@ DEFAULTLISTMENU
 
 LISTMENU "MainMenu"
 {
-	StaticPatch 44, 12, "M_DOOM"
-	Position 2, 92
+	StaticPatch 64, 8, "M_DOOM"
+	Selector "M_SKULL1", -24, -5
+	Position 24, 92
 	TextItem "New Game", "n", "PlayerclassMenu"
 	ifOption(SwapMenu)
 	{
