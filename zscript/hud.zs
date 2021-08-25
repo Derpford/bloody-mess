@@ -60,7 +60,7 @@ class BloodyStatusBar : BaseStatusBar
 				DrawBar("hbar","HBEMPTY",plr.Health,100,(-32,-4),0,0,lbarflags); 
 			}
 
-			DrawString(mBigFont,FormatNumber(plr.Health,3),(-160,-32),txtflags,Font.CR_BRICK);
+			DrawString(mBigFont,FormatNumber(plr.Health,3),(-120,-36),txtflags,Font.CR_BRICK);
 		}
 
 		if(armAmt > 0)
@@ -74,7 +74,7 @@ class BloodyStatusBar : BaseStatusBar
 				DrawBar("abar","abempty",armAmt,100,(-32,-4),0,0,lbarflags);
 			}
 
-			DrawString(mBigFont,FormatNumber(armAmt,3),(-108,-32),txtflags,Font.CR_LIGHTBLUE);
+			DrawString(mBigFont,FormatNumber(armAmt,3),(-120,-26),txtflags,Font.CR_LIGHTBLUE);
 		}
 
 		// Next, ammunition.
@@ -105,7 +105,7 @@ class BloodyStatusBar : BaseStatusBar
 
 			if(primary && AmmoTypes[i] == primary.GetClassName())
 			{
-				DrawString(mBigFont,FormatNumber(amt,3),(48+(32*i),-56),txtflags,Font.CR_GREEN);
+				DrawString(mSmallFont,FormatNumber(amt,3),(48+(32*i),-56),txtflags,Font.CR_CYAN);
 			}
 			else
 			{
