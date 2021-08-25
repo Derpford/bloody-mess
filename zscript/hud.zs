@@ -113,6 +113,36 @@ class BloodyStatusBar : BaseStatusBar
 			}
 		}
 
+		// The BWD's charge meter.
+		let bwd = CPlayer.mo.FindInventory("Bloodwave");
+		if(bwd)
+		{
+			let bwdAmt = GetAmount("Bloodwave");
+			DrawBar("REDBA0","bwmeter",bwdAmt,100,(0,-4),0,SHADER_REVERSE|SHADER_VERT,cbarflags); 
+		}
+
+		// The main weapon's ammunition counter.
+		if(primary)
+		{
+			int amt = GetAmount(primary.GetClassName());
+			int digits;
+
+			if(amt<10)
+			{
+				digits = 1;
+			}
+			else if(amt<100)
+			{
+				digits = 2;
+			}
+			else
+			{
+				digits = 3;
+			}
+			
+			DrawString(mBigFont,FormatNumber(amt,digits),(-(digits-1),-32),txtflags,Font.CR_CYAN);
+		}
+
 		// Keys.
 		String keySprites[6] =
 		{
@@ -130,13 +160,6 @@ class BloodyStatusBar : BaseStatusBar
 		}
 
 
-		// Finally, the BWD's charge meter.
-		let bwd = CPlayer.mo.FindInventory("Bloodwave");
-		if(bwd)
-		{
-			let bwdAmt = GetAmount("Bloodwave");
-			DrawBar("REDBA0","bwmeter",bwdAmt,100,(0,-4),0,SHADER_REVERSE|SHADER_VERT,cbarflags); 
-		}
 		
 	}
 }
