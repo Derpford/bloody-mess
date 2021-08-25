@@ -60,7 +60,7 @@ class WeaponSpawnHandler : EventHandler
 			return; // we've already run the replace step
 		}
 
-		if(e.thing is "BloodPack")
+		if(e.thing is "Berserk")
 		{
 			if(NeedsWeapon("BloodWave"))
 			{
