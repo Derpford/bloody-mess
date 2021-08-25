@@ -5,6 +5,7 @@ version "4.5"
 #include "zscript/effects.zs"
 #include "zscript/hud.zs"
 // Weapons/ammo
+#include "zscript/weaponhandler.zs"
 #include "zscript/weapons/ammo.zs"
 #include "zscript/weapons/weapon.zs"
 #include "zscript/weapons/bolter.zs"

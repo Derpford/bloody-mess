@@ -8,6 +8,12 @@ class BloodPack : Berserk replaces Berserk
 		Inventory.PickupMessage "Demonic blood sample! Powerful stuff!";
 	}
 
+	override void postbeginplay()
+	{
+		super.postbeginplay();
+		
+	}
+
 	states
 	{
 		Spawn:

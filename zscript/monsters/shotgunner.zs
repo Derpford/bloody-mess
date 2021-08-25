@@ -6,6 +6,7 @@ class BloodyShotgunner : ShotgunGuy replaces ShotgunGuy
 	{
 		BloodyShotgunner.StaggerHealth 20,-1;
 		BloodyShotgunner.BonusDrops 1,2;	
+		DropItem "NailShotty";
 	}
 
 	states
