@@ -1,4 +1,4 @@
-# Bloody Mess!
+# BloodWave!
 A back-to-basics weapon/monster mod.
 ---
 
