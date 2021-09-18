@@ -6,7 +6,7 @@ class BloodyMonsterHandler : EventHandler
 	{
 		bool res; Actor thing;
 		dropAng += frandom(-30.0,30.0);
-		[ res, thing ] = tosser.A_SpawnItemEX(it,radius,xvel:random(1,3),zvel:random(5,9),angle:dropAng,flags:SXF_ABSOLUTEANGLE);
+		[ res, thing ] = tosser.A_SpawnItemEX(it,tosser.radius,xvel:random(1,3),zvel:random(5,9),angle:dropAng,flags:SXF_ABSOLUTEANGLE);
 		let thingInv = Inventory(thing);
 		let thingArm = ArmorBonus(thing);
 		if(thingInv) { thingInv.Amount = ceil(thingInv.Amount*0.5); }
@@ -15,7 +15,7 @@ class BloodyMonsterHandler : EventHandler
 
 	override void WorldThingDamaged(WorldEvent e)
 	{
-		if(e.Thing is "BloodyMonster")
+		if(e.Thing.CountInv("BloodyFlag")>0)
 		{
 			return; // This thing already handles its own stuff.
 		}
@@ -23,7 +23,7 @@ class BloodyMonsterHandler : EventHandler
 		// Hitstun handling.
 		if(e.DamageType != "Massacre" && e.Thing.CountInv("SuperArmor")<1) 
 		{ 
-			int hitStun = max(hitStun, ceil(sqrt(dmg))); 
+			int hitStun = ceil(sqrt(e.Damage)); 
 			hitStun = min(hitStun,35);
 			e.Thing.A_GiveInventory("HitStunTok",hitStun);
 		}
@@ -55,7 +55,8 @@ class BloodyMonsterHandler : EventHandler
 
 		if(e.Thing.CountInv("StaggerTok")>0)
 		{
-			e.DamageFlags |= DMG_NO_PAIN;
+			//e.DamageFlags |= DMG_NO_PAIN;
+			// Can't set damage flags to keep the target from paining during their stagger...
 		}
 	}
 
@@ -88,7 +89,7 @@ class BloodyMonsterHandler : EventHandler
 
 		for(int i = 0; i < deathBonusAmt; i++)
 		{
-			if((CountInv("Disintegrate")>0 || (e.inflictor && e.inflictor.DamageType == "Disintegrate")) 
+			if((e.thing.CountInv("Disintegrate")>0 || (e.inflictor && e.inflictor.DamageType == "Disintegrate")) 
 			&& dropList.size() > 0)
 			{
 				TossDrop(e.Thing,dropList[random(0,dropList.size()-1)],dropAng);
@@ -103,8 +104,8 @@ class BloodyMonsterHandler : EventHandler
 
 class HitStunTok : Inventory
 {
-	string style;
-	string oldStyle;
+	int style;
+	int oldStyle;
 	double oldAlpha;
 	// Exists to track hitstun.
 	default
@@ -124,7 +125,6 @@ class HitStunTok : Inventory
 		if(stun != 0 && owner.tics<owner.curState.tics)
 		{
 			owner.A_SetTics(owner.curState.tics+stun);
-			owner.A_TakeInventory("HitStunTok",1000);
 		}
 
 		if(owner.tics>owner.curState.tics && owner.GetAge()%3==0)
@@ -137,6 +137,8 @@ class HitStunTok : Inventory
 		{
 			if(oldStyle && oldAlpha) { A_SetRenderStyle(oldAlpha,oldStyle); }
 		}
+
+		owner.A_TakeInventory("HitStunTok",1000);
 	}
 }
 
@@ -152,11 +154,12 @@ class PainTok : Inventory
 	{
 		if(owner && !owner.bCORPSE)
 		{
-			if(!owner.InStateSequence(owner.curstate,owner.ResolveState("Pain")))
+			if(owner.ResolveState("Pain") && !owner.InStateSequence(owner.curstate,owner.ResolveState("Pain")))
 			{
-				owner.curstate = owner.ResolveState("Pain");
+				owner.SetState(owner.ResolveState("Pain"));
 			}
 		}
+		owner.A_TakeInventory("PainTok",1);
 	}
 }
 
