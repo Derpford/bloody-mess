@@ -2,5 +2,5 @@ gameinfo
 {
 	PlayerClasses = "BloodyMessPlayer"
 	StatusBarClass = "BloodyStatusBar"
-	AddEventHandlers = "WeaponSpawnHandler, BloodyMonsterHandler"
+	AddEventHandlers = "WeaponSpawnHandler","BloodyMonsterHandler"
 }
