@@ -7,6 +7,7 @@ mixin class Spinner
 	default
 	{
 		+WALLSPRITE;
+		+BRIGHT;
 	}
 
 	override void Tick()
