@@ -1,3 +1,12 @@
+class BloodyFlag : Inventory
+{
+	// Workaround for detecting Bloody Monster mixin.
+	default
+	{
+		inventory.maxamount 1;
+	}
+}
+
 mixin class BloodyMonster 
 {
 	// All of Bloody Mess's monsters will drop a few armor bonuses on stagger and a burst of health bonuses on death.
@@ -30,6 +39,7 @@ mixin class BloodyMonster
 		Super.PostBeginPlay();
 		style = GetRenderStyle();
 		oldAlpha = alpha;
+		A_GiveInventory("BloodyFlag");
 	}
 
 	override void Tick()
