@@ -27,7 +27,8 @@ $alias weapon/repi weapons/sawidle
 $volume weapon/repi 0.3
 
 weapon/photf "sounds/photon/PHOTFIRE"
-$limit weapon/photf 0
+$limit weapon/photf 2
+$volume weapon/photf 0.5
 weapon/photi "sounds/photon/BRPSIDLE"
 weapon/photr "sounds/photon/PHOTCHRG"
 
